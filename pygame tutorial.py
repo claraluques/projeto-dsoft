@@ -21,8 +21,15 @@ bot1Img = pygame.image.load('botao1.png')
 bot1Img = pygame.transform.scale(bot1Img, (50,100))
 
 
+bot2Img = pygame.image.load('botao2.png')
+bot2Img = pygame.transform.scale(bot2Img, (50,100))
+
+
 def bot1(x, y):
     gameDisplay.blit(bot1Img,(x,y))
+
+def bot2(x, y):
+    gameDisplay.blit(bot2Img,( x+50 ,y-100))
 
 x = (display_width/2)
 y = (display_height*0.2)
@@ -35,7 +42,7 @@ while not crashed:
             crashed = True
             
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_DOWN:
+            if event.key == pygame.K_s:
                 y_change = 5
             elif event.key == pygame.K_UP:
                 y_change = -5
@@ -48,12 +55,13 @@ while not crashed:
                 y_change = 0
     
     
-
+    
     y += y_change
     
     
     gameDisplay.fill(white)
     bot1(x, y)
+    bot2(x, y)
 
     pygame.display.update()
     clock.tick(60)
