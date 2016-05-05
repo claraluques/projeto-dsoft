@@ -1,5 +1,5 @@
 import pygame
-from Bolinha import Bolinha
+import random
 
 pygame.init()
 
@@ -37,25 +37,39 @@ bot5Img = pygame.transform.scale(bot5Img, (100,100))
 
 
 
-def bot1(x, y):
-    gameDisplay.blit(bot1Img,(x,y))
+def bot1(x, y1):
+    gameDisplay.blit(bot1Img,(x,y1))
 
-def bot2(x, y):
-    gameDisplay.blit(bot2Img,( x+79 , y-100))
+def bot2(x, y2):
+    gameDisplay.blit(bot2Img,( x+79 , y2))
  
-def bot3(x, y):
-    gameDisplay.blit(bot3Img,(x+158 , y-50))
+def bot3(x, y3):
+    gameDisplay.blit(bot3Img,(x+158 , y3))
     
-def bot4(x, y):
-    gameDisplay.blit(bot4Img,(x+236 , y+20))
+def bot4(x, y4):
+    gameDisplay.blit(bot4Img,(x+236 , y4))
 
-def bot5(x, y):
-    gameDisplay.blit(bot5Img,(x+316 , y+100))
+def bot5(x, y5):
+    gameDisplay.blit(bot5Img,(x+316 , y5))
+
+
+
+
+
 
 x = (190)
 
-y = (display_height*0.2)
+y1 =random.randrange(-600,0)
+y2 =random.randrange(-600,0)
+y3 =random.randrange(-600,0)
+y4 =random.randrange(-600,0)
+y5 =random.randrange(-600,0)
 y_change = 0
+
+
+
+
+area_de_acerto = display_height - 500 
 
 xacerto1 = display_height*0.8
 xacerto2 = display_height
@@ -69,9 +83,12 @@ while not crashed:
             if event.key == pygame.K_s:
                 y_change = 5
             elif event.key == pygame.K_UP:
-                y_change = -5
-            elif event.key == pygame.K_q:
-                if 
+               y_change = -5
+#            elif event.key == pygame.K_q:
+#                if y >= 500:
+#                    print('missed')
+                
+                
             
             
         if event.type == pygame.KEYUP:
@@ -84,7 +101,11 @@ while not crashed:
             
 
         
-    y += y_change
+    y1 += y_change
+    y2 += y_change
+    y3 += y_change
+    y4 += y_change
+    y5 += y_change
     
 
     
@@ -96,11 +117,27 @@ while not crashed:
 #    bolinha1.posx(0,y)
 
         
-    bot1(x, y)
-    bot2(x, y)
-    bot3(x, y)    
-    bot4(x, y)
-    bot5(x, y)
+    bot1(x, y1)
+    bot2(x, y2)
+    bot3(x, y3)    
+    bot4(x, y4)
+    bot5(x, y5)
+    
+    if y1 > display_height:
+        y1 = random.randrange(-100,0) 
+        
+    if y2 > display_height:
+        y2 = random.randrange(-100,0)
+        
+    if y3 > display_height:
+        y3 = random.randrange(-100,0)
+        
+    if y4 > display_height:
+        y4 = random.randrange(-100,0)
+        
+    if y5 > display_height:
+        y5 = random.randrange(-100,0)
+    
     
     pygame.display.update()
     clock.tick(60)
