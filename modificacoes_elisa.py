@@ -73,7 +73,6 @@ area_de_acerto = display_height - 500
 
 xacerto1 = display_height*0.8
 xacerto2 = display_height
-
 score = 0
 
 while not crashed:
@@ -84,87 +83,23 @@ while not crashed:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_s:
                 y_change = 5
-                
             elif event.key == pygame.K_UP:
                y_change = -5
-               
-            elif event.key == pygame.K_q:
-                d1 = y1-550
-                if d1 < 0:
-                    d1 = -d1
-                if d1 < 5:
+            elif event.key == pygame.K_a:
+                d = y1-550
+                if d < 0:
+                    d = -d
+                if d < 5:
                     print('PERFECT')
                     score += 1
-                    print("SCORE: {0}".format(score))
+                elif d < 25:
+                    print ("VERY GOOD")
+                    score += 1
 
-                elif d1 < 25:
-                    print ("VERY GOOD")
-                    score += 1
-                    print("SCORE: {0}".format(score))
                 else:
                     print("MISSED")
-                    
-            elif event.key == pygame.K_w:
-                d2 = y2-550
-                if d2 < 0:
-                    d2 = -d2
-                if d2 < 5:
-                    print('PERFECT')
-                    score += 1
-                    print("SCORE: {0}".format(score))
-  
-                elif d2 < 25:
-                    print ("VERY GOOD")
-                    score += 1
-                    print("SCORE: {0}".format(score))
-                else:
-                    print("MISSED")
-                    
-            elif event.key == pygame.K_e:
-                d3 = y3-550
-                if d3 < 0:
-                    d3 = -d3
-                if d3 < 5:
-                    print('PERFECT')
-                    score += 1
-                    print("SCORE: {0}".format(score))
-                elif d3 < 25:
-                    print ("VERY GOOD")
-                    score += 1
-                    print("SCORE: {0}".format(score))
-                else:
-                    print("MISSED")
-                    
-            elif event.key == pygame.K_r:
-                d4 = y4-550
-                if d4 < 0:
-                    d4 = -d4
-                if d4 < 5:
-                    print('PERFECT')
-                    score += 1
-                    print("SCORE: {0}".format(score))
-                elif d4 < 25:
-                    print ("VERY GOOD")
-                    score += 1
-                    print("SCORE: {0}".format(score))
-                else:
-                    print("MISSED")
-                    
-            elif event.key == pygame.K_SPACE:
-                d5 = y5-550
-                if d5 < 0:
-                    d5 = -d5
-                if d5 < 5:
-                    print('PERFECT')
-                    score += 1
-                    print("SCORE: {0}".format(score))
-                elif d5 < 25:
-                    print ("VERY GOOD")
-                    score += 1
-                    print("SCORE: {0}".format(score))
-                else:
-                    print("MISSED")
-
+                
+            
             
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_DOWN:
@@ -174,7 +109,7 @@ while not crashed:
     
     
             
-
+    print("SCORE: {0}".format(score))
         
     y1 += y_change
     y2 += y_change
@@ -186,7 +121,7 @@ while not crashed:
     
     gameDisplay.fill(purple)
     gameDisplay.blit(guitarraImg, (0, 0))
-    pygame.draw.line(gameDisplay, white ,[200,600], [600,600], 1)
+    pygame.draw.line(gameDisplay, white ,[200,550],[800,550], 1)
     
 
 #    bolinha1 = Bolinha(y)
@@ -219,4 +154,3 @@ while not crashed:
     clock.tick(60)
     
 pygame.quit()
-quit()
