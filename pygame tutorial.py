@@ -117,7 +117,7 @@ while not crashed:
     
     gameDisplay.fill(purple)
     gameDisplay.blit(guitarraImg, (0, 0))
-    pygame.draw.line(gameDisplay, white ,200,550, 800,550, 1)
+    pygame.draw.line(gameDisplay, white ,[200,600], [600,600], 1)
     
 
 #    bolinha1 = Bolinha(y)
