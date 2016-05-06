@@ -6,7 +6,7 @@ pygame.init()
 display_width = 800
 display_height = 650
 
-
+black = (0,0,0)
 white = (255,255,255)
 purple = (151,65,239)
 
@@ -51,6 +51,13 @@ def bot4(x, y4):
 
 def bot5(x, y5):
     gameDisplay.blit(bot5Img,(x+316 , y5))
+
+def Score(count):
+    font = pygame.font.SysFont(None, 25)
+    text = font.render("Score: "+str(count), True, black)
+    gameDisplay.blit(text,(700,0))
+
+
 
 ganhou = False
     
@@ -203,7 +210,7 @@ while not crashed:
 #    bolinha1 = Bolinha(y)
 #    bolinha1.posx(0,y)
 
-        
+    Score(score)   
     bot1(x, y1)
     bot2(x, y2)
     bot3(x, y3)    
@@ -225,7 +232,7 @@ while not crashed:
     if y5 > display_height:
         y5 = random.randrange(-300,0)
     
-    if score == 10:
+    if score == 100:
         ganhou = True
     if ganhou == True:
         crashed = True
