@@ -4,7 +4,7 @@ import random
 pygame.init()
 
 display_width = 800
-display_height = 600
+display_height = 650
 
 
 white = (255,255,255)
@@ -17,7 +17,7 @@ crashed = False
 
 
 guitarraImg = pygame.image.load('guitarra.png')
-guitarraImg = pygame.transform.scale(guitarraImg, (800,600))
+guitarraImg = pygame.transform.scale(guitarraImg, (800,650))
 
 
 bot1Img = pygame.image.load('botao1.png')
@@ -59,7 +59,7 @@ def bot5(x, y5):
 
 x = (190)
 
-y1 =random.randrange(-600,0)
+y1 =550
 y2 =random.randrange(-600,0)
 y3 =random.randrange(-600,0)
 y4 =random.randrange(-600,0)
@@ -117,6 +117,7 @@ while not crashed:
     
     gameDisplay.fill(purple)
     gameDisplay.blit(guitarraImg, (0, 0))
+    pygame.draw.line(gameDisplay, white ,200,550, 800,550, 1)
     
 
 #    bolinha1 = Bolinha(y)
