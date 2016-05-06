@@ -52,7 +52,8 @@ def bot4(x, y4):
 def bot5(x, y5):
     gameDisplay.blit(bot5Img,(x+316 , y5))
 
-
+ganhou = False
+    
 
 
 
@@ -77,6 +78,7 @@ xacerto2 = display_height
 score = 0
 
 while not crashed:
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             crashed = True
@@ -183,7 +185,7 @@ while not crashed:
     
     
             
-
+    
         
     y1 += y_change
     y2 += y_change
@@ -223,6 +225,10 @@ while not crashed:
     if y5 > display_height:
         y5 = random.randrange(-300,0)
     
+    if score == 10:
+        ganhou = True
+    if ganhou == True:
+        crashed = True
     
     pygame.display.update()
     clock.tick(60)
