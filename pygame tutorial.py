@@ -59,7 +59,7 @@ def bot5(x, y5):
 
 x = (190)
 
-y1 =550
+y1 =random.randrange(-600,0)
 y2 =random.randrange(-600,0)
 y3 =random.randrange(-600,0)
 y4 =random.randrange(-600,0)
@@ -94,13 +94,14 @@ while not crashed:
                     d1 = -d1
                 if d1 < 5:
                     print('PERFECT')
-                    score += 1
+                    y1=random.randrange(-600,0)
+                    score +=2
                     print("SCORE: {0}".format(score))
-
                 elif d1 < 25:
                     print ("VERY GOOD")
                     score += 1
                     print("SCORE: {0}".format(score))
+                    y1 =random.randrange(-600,0)
                 else:
                     print("MISSED")
                     
@@ -110,13 +111,14 @@ while not crashed:
                     d2 = -d2
                 if d2 < 5:
                     print('PERFECT')
-                    score += 1
+                    score += 2
                     print("SCORE: {0}".format(score))
-  
+                    y2 =random.randrange(-600,0)
                 elif d2 < 25:
                     print ("VERY GOOD")
                     score += 1
                     print("SCORE: {0}".format(score))
+                    y2 =random.randrange(-600,0)
                 else:
                     print("MISSED")
                     
@@ -126,12 +128,14 @@ while not crashed:
                     d3 = -d3
                 if d3 < 5:
                     print('PERFECT')
-                    score += 1
+                    score += 2
                     print("SCORE: {0}".format(score))
+                    y3 =random.randrange(-600,0)
                 elif d3 < 25:
                     print ("VERY GOOD")
                     score += 1
                     print("SCORE: {0}".format(score))
+                    y3 =random.randrange(-600,0)
                 else:
                     print("MISSED")
                     
@@ -141,27 +145,32 @@ while not crashed:
                     d4 = -d4
                 if d4 < 5:
                     print('PERFECT')
-                    score += 1
+                    score += 2
                     print("SCORE: {0}".format(score))
+                    y4 =random.randrange(-600,0)
                 elif d4 < 25:
                     print ("VERY GOOD")
                     score += 1
                     print("SCORE: {0}".format(score))
+                    y4 =random.randrange(-600,0)
                 else:
                     print("MISSED")
                     
-            elif event.key == pygame.K_SPACE:
+                    
+            elif event.key == pygame.K_t:
                 d5 = y5-550
                 if d5 < 0:
                     d5 = -d5
                 if d5 < 5:
                     print('PERFECT')
-                    score += 1
+                    score += 2
                     print("SCORE: {0}".format(score))
+                    y5 =random.randrange(-600,0)
                 elif d5 < 25:
                     print ("VERY GOOD")
                     score += 1
                     print("SCORE: {0}".format(score))
+                    y5 =random.randrange(-600,0)
                 else:
                     print("MISSED")
 
