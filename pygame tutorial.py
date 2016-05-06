@@ -84,10 +84,16 @@ while not crashed:
                 y_change = 5
             elif event.key == pygame.K_UP:
                y_change = -5
-#            elif event.key == pygame.K_q:
-#                if y >= 500:
-#                    print('missed')
-                
+            elif event.key == pygame.K_a:
+                d = y1-550
+                if d < 0:
+                    d = -d
+                if d < 5:
+                    print('PERFECT')
+                elif d < 25:
+                    print ("VERY GOOD")
+                else:
+                    print("MISSED")
                 
             
             
@@ -124,19 +130,19 @@ while not crashed:
     bot5(x, y5)
     
     if y1 > display_height:
-        y1 = random.randrange(-100,0) 
+        y1 = random.randrange(-200,0) 
         
     if y2 > display_height:
         y2 = random.randrange(-100,0)
         
     if y3 > display_height:
-        y3 = random.randrange(-100,0)
+        y3 = random.randrange(-400,0)
         
     if y4 > display_height:
-        y4 = random.randrange(-100,0)
+        y4 = random.randrange(-250,0)
         
     if y5 > display_height:
-        y5 = random.randrange(-100,0)
+        y5 = random.randrange(-300,0)
     
     
     pygame.display.update()
