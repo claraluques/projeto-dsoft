@@ -6,5 +6,3 @@ class musicas:
         musica1 = list(musica1txt[0])
         return musica1
         
-        
-print (musicas.musica_1())
