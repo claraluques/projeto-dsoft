@@ -104,13 +104,19 @@ while not crashed:
                 if d1 < 5:
                     print('PERFECT')
                     y1=random.randrange(-600,0)
-                    score +=2
+                    score +=3
                     print("SCORE: {0}".format(score))
-                elif d1 < 25:
+                elif d1 < 15:
                     print ("VERY GOOD")
-                    score += 1
+                    score += 2
                     print("SCORE: {0}".format(score))
                     y1 =random.randrange(-600,0)
+                elif d1 < 25:
+                    print ("GOOD")
+                    score += 1
+                    print("SCORE: {0}".format(score))
+                    y1 =random.randrange(-600,0)                    
+                    
                 else:
                     print("MISSED")
                     
@@ -120,14 +126,19 @@ while not crashed:
                     d2 = -d2
                 if d2 < 5:
                     print('PERFECT')
-                    score += 2
+                    score += 3
                     print("SCORE: {0}".format(score))
                     y2 =random.randrange(-600,0)
                 elif d2 < 25:
                     print ("VERY GOOD")
-                    score += 1
+                    score += 2
                     print("SCORE: {0}".format(score))
                     y2 =random.randrange(-600,0)
+                elif d2 < 25:
+                    print ("GOOD")
+                    score += 1
+                    print("SCORE: {0}".format(score))
+                    y2 =random.randrange(-600,0)                    
                 else:
                     print("MISSED")
                     
@@ -137,14 +148,19 @@ while not crashed:
                     d3 = -d3
                 if d3 < 5:
                     print('PERFECT')
-                    score += 2
+                    score += 3
                     print("SCORE: {0}".format(score))
                     y3 =random.randrange(-600,0)
                 elif d3 < 25:
                     print ("VERY GOOD")
-                    score += 1
+                    score += 2
                     print("SCORE: {0}".format(score))
                     y3 =random.randrange(-600,0)
+                elif d3 < 25:
+                    print ("GOOD")
+                    score += 1
+                    print("SCORE: {0}".format(score))
+                    y3 =random.randrange(-600,0) 
                 else:
                     print("MISSED")
                     
@@ -154,14 +170,19 @@ while not crashed:
                     d4 = -d4
                 if d4 < 5:
                     print('PERFECT')
-                    score += 2
+                    score += 3
                     print("SCORE: {0}".format(score))
                     y4 =random.randrange(-600,0)
                 elif d4 < 25:
                     print ("VERY GOOD")
-                    score += 1
+                    score += 2
                     print("SCORE: {0}".format(score))
                     y4 =random.randrange(-600,0)
+                elif d4 < 25:
+                    print ("GOOD")
+                    score += 1
+                    print("SCORE: {0}".format(score))
+                    y4 =random.randrange(-600,0)                 
                 else:
                     print("MISSED")
                     
@@ -172,14 +193,19 @@ while not crashed:
                     d5 = -d5
                 if d5 < 5:
                     print('PERFECT')
-                    score += 2
+                    score += 3
                     print("SCORE: {0}".format(score))
                     y5 =random.randrange(-600,0)
                 elif d5 < 25:
                     print ("VERY GOOD")
-                    score += 1
+                    score += 2
                     print("SCORE: {0}".format(score))
                     y5 =random.randrange(-600,0)
+                elif d5 < 25:
+                    print ("GOOD")
+                    score += 1
+                    print("SCORE: {0}".format(score))
+                    y5 =random.randrange(-600,0)                
                 else:
                     print("MISSED")
 
