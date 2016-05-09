@@ -193,9 +193,9 @@ while not crashed:
     y4 += y_change
     y5 += y_change
     
-    gameDisplay.fill(purple)
-    gameDisplay.blit(guitarraImg, (0, 0))
-    pygame.draw.line(gameDisplay, white ,[200,600], [600,600], 1)
+#    gameDisplay.fill(purple)
+#    gameDisplay.blit(guitarraImg, (0, 0))
+#    pygame.draw.line(gameDisplay, white ,[200,600], [600,600], 1)
     
     Score(score)   
     

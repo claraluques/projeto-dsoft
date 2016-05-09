@@ -1,4 +1,10 @@
+import pygame
+
 class teclas:  
+    def __init__(self):
+    self.gameDisplay.fill(purple)
+    self.gameDisplay.blit(guitarraImg, (0, 0))
+    self.pygame.draw.line(gameDisplay, white ,[200,600], [600,600], 1)
     
     def tecla1(x, y1):
         tecla1Img = pygame.image.load('botao1.png')
