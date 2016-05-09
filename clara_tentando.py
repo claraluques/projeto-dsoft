@@ -2,12 +2,13 @@ import pygame
 import random
 from classe_musicas import musicas as m
 
+
 pygame.init()
 
 display_width = 800
 display_height = 650
 
-
+black = (0,0,0)
 white = (255,255,255)
 purple = (151,65,239)
 
@@ -53,18 +54,43 @@ def bot4(x, y4):
 def bot5(x, y5):
     gameDisplay.blit(bot5Img,(x+316 , y5))
 
+def Score(count):
+    font = pygame.font.SysFont(None, 25)
+    text = font.render("Score: "+str(count), True, black)
+    gameDisplay.blit(text,(700,0))
 
+
+
+ganhou = False
+    
 
 
 
 
 x = (190)
 
-y1 = 300
-y2 = 300
-y3 = 300
-y4 = 300
-y5 = 300
+#y1 =random.randrange(-600,0)
+#y2 =random.randrange(-600,0)
+#y3 =random.randrange(-600,0)
+#y4 =random.randrange(-600,0)
+#y5 =random.randrange(-600,0)
+
+musica1 = m.musica_1()
+print (musica1)
+
+for nota in range (len(musica1)):
+    x = -600
+    if nota == 0:
+        y1 = -600
+    elif nota == 1:
+        y2 = (x-100*nota)
+    elif nota == 2:
+        y3 = (x-100*nota)
+    elif nota == 3:
+        y4 = (x-100*nota)
+    elif nota == 4:
+        y5 = (x-100*nota)
+
 y_change = 0
 
 
@@ -77,11 +103,8 @@ xacerto2 = display_height
 
 score = 0
 
-musica1 = m.musica_1()
-
-print (musica1)
-
 while not crashed:
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             crashed = True
@@ -99,13 +122,20 @@ while not crashed:
                     d1 = -d1
                 if d1 < 5:
                     print('PERFECT')
-                    score += 1
+#                    y1=random.randrange(-600,0)
+                    score +=3
                     print("SCORE: {0}".format(score))
-
-                elif d1 < 25:
+                elif d1 < 15:
                     print ("VERY GOOD")
+                    score += 2
+                    print("SCORE: {0}".format(score))
+#                    y1 =random.randrange(-600,0)
+                elif d1 < 25:
+                    print ("GOOD")
                     score += 1
                     print("SCORE: {0}".format(score))
+#                    y1 =random.randrange(-600,0)                    
+                    
                 else:
                     print("MISSED")
                     
@@ -115,13 +145,19 @@ while not crashed:
                     d2 = -d2
                 if d2 < 5:
                     print('PERFECT')
-                    score += 1
+                    score += 3
                     print("SCORE: {0}".format(score))
-  
+#                    y2 =random.randrange(-600,0)
                 elif d2 < 25:
                     print ("VERY GOOD")
+                    score += 2
+                    print("SCORE: {0}".format(score))
+#                    y2 =random.randrange(-600,0)
+                elif d2 < 25:
+                    print ("GOOD")
                     score += 1
                     print("SCORE: {0}".format(score))
+#                    y2 =random.randrange(-600,0)                    
                 else:
                     print("MISSED")
                     
@@ -131,12 +167,19 @@ while not crashed:
                     d3 = -d3
                 if d3 < 5:
                     print('PERFECT')
-                    score += 1
+                    score += 3
                     print("SCORE: {0}".format(score))
+#                    y3 =random.randrange(-600,0)
                 elif d3 < 25:
                     print ("VERY GOOD")
+                    score += 2
+                    print("SCORE: {0}".format(score))
+#                    y3 =random.randrange(-600,0)
+                elif d3 < 25:
+                    print ("GOOD")
                     score += 1
                     print("SCORE: {0}".format(score))
+#                    y3 =random.randrange(-600,0) 
                 else:
                     print("MISSED")
                     
@@ -146,27 +189,42 @@ while not crashed:
                     d4 = -d4
                 if d4 < 5:
                     print('PERFECT')
-                    score += 1
+                    score += 3
                     print("SCORE: {0}".format(score))
+#                    y4 =random.randrange(-600,0)
                 elif d4 < 25:
                     print ("VERY GOOD")
+                    score += 2
+                    print("SCORE: {0}".format(score))
+#                    y4 =random.randrange(-600,0)
+                elif d4 < 25:
+                    print ("GOOD")
                     score += 1
                     print("SCORE: {0}".format(score))
+#                    y4 =random.randrange(-600,0)                 
                 else:
                     print("MISSED")
                     
-            elif event.key == pygame.K_SPACE:
+                    
+            elif event.key == pygame.K_t:
                 d5 = y5-550
                 if d5 < 0:
                     d5 = -d5
                 if d5 < 5:
                     print('PERFECT')
-                    score += 1
+                    score += 3
                     print("SCORE: {0}".format(score))
+#                    y5 =random.randrange(-600,0)
                 elif d5 < 25:
                     print ("VERY GOOD")
+                    score += 2
+                    print("SCORE: {0}".format(score))
+#                    y5 =random.randrange(-600,0)
+                elif d5 < 25:
+                    print ("GOOD")
                     score += 1
                     print("SCORE: {0}".format(score))
+#                    y5 =random.randrange(-600,0)                
                 else:
                     print("MISSED")
 
@@ -178,33 +236,15 @@ while not crashed:
                 y_change = 0
     
     
-        
-#    y1 += y_change
-#    y2 += y_change
-#    y3 += y_change
-#    y4 += y_change
-#    y5 += y_change
+            
     
         
-        
-        for nota in range (len(musica1)):
-            if nota == 0:
-                bot1(x, y1)
-            elif nota == 1:
-                bot2(x, y2)
-            elif nota == 2:
-                bot3(x, y3)
-            elif nota == 3:
-                bot4(x, y4)
-            elif nota == 4:
-                bot5(x, y5)
-            elif nota == 8:
-                continue
-            y1 += y_change
-            y2 += y_change
-            y3 += y_change
-            y4 += y_change
-            y5 += y_change
+    y1 += y_change
+    y2 += y_change
+    y3 += y_change
+    y4 += y_change
+    y5 += y_change
+    
 
     
     gameDisplay.fill(purple)
@@ -215,12 +255,12 @@ while not crashed:
 #    bolinha1 = Bolinha(y)
 #    bolinha1.posx(0,y)
 
-        
-#    bot1(x, y1)
-#    bot2(x, y2)
-#    bot3(x, y3)    
-#    bot4(x, y4)
-#    bot5(x, y5)
+    Score(score)   
+    bot1(x, y1)
+    bot2(x, y2)
+    bot3(x, y3)    
+    bot4(x, y4)
+    bot5(x, y5)
     
 #    if y1 > display_height:
 #        y1 = random.randrange(-200,0) 
@@ -237,6 +277,10 @@ while not crashed:
 #    if y5 > display_height:
 #        y5 = random.randrange(-300,0)
     
+    if score == 100:
+        ganhou = True
+    if ganhou == True:
+        crashed = True
     
     pygame.display.update()
     clock.tick(60)
