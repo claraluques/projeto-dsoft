@@ -1,6 +1,7 @@
 import pygame
 import random
 from classe_musicas import musicas as m
+from classe_teclas import teclas as t
 
 
 pygame.init()
@@ -17,63 +18,17 @@ pygame.display.set_caption(('Bolinha descendo!'))
 clock = pygame.time.Clock()
 crashed = False
 
-
 guitarraImg = pygame.image.load('guitarra.png')
 guitarraImg = pygame.transform.scale(guitarraImg, (800,650))
-
-
-bot1Img = pygame.image.load('botao1.png')
-bot1Img = pygame.transform.scale(bot1Img, (100,100))
-
-bot2Img = pygame.image.load('botao2.png')
-bot2Img = pygame.transform.scale(bot2Img, (100,100))
-
-bot3Img = pygame.image.load('botao3.png')
-bot3Img = pygame.transform.scale(bot3Img, (100,100))
-
-bot4Img = pygame.image.load('botao4.png')
-bot4Img = pygame.transform.scale(bot4Img, (100,100))
-
-bot5Img = pygame.image.load('botao5.png')
-bot5Img = pygame.transform.scale(bot5Img, (100,100))
-
-
-
-def bot1(x, y1):
-    gameDisplay.blit(bot1Img,(x,y1))
-
-def bot2(x, y2):
-    gameDisplay.blit(bot2Img,( x+79 , y2))
- 
-def bot3(x, y3):
-    gameDisplay.blit(bot3Img,(x+158 , y3))
-    
-def bot4(x, y4):
-    gameDisplay.blit(bot4Img,(x+236 , y4))
-
-def bot5(x, y5):
-    gameDisplay.blit(bot5Img,(x+316 , y5))
 
 def Score(count):
     font = pygame.font.SysFont(None, 25)
     text = font.render("Score: "+str(count), True, black)
     gameDisplay.blit(text,(700,0))
 
-
-
 ganhou = False
-    
-
-
-
 
 x = (190)
-
-#y1 =random.randrange(-600,0)
-#y2 =random.randrange(-600,0)
-#y3 =random.randrange(-600,0)
-#y4 =random.randrange(-600,0)
-#y5 =random.randrange(-600,0)
 
 musica1 = m.musica_1()
 print (musica1)
@@ -92,9 +47,6 @@ for nota in range (len(musica1)):
         y5 = (x-100*nota)
 
 y_change = 0
-
-
-
 
 area_de_acerto = display_height - 500 
 
@@ -234,33 +186,24 @@ while not crashed:
                 y_change = 0
             elif event.key == pygame.K_UP:
                 y_change = 0
-    
-    
-            
-    
-        
+           
     y1 += y_change
     y2 += y_change
     y3 += y_change
     y4 += y_change
     y5 += y_change
     
-
-    
     gameDisplay.fill(purple)
     gameDisplay.blit(guitarraImg, (0, 0))
     pygame.draw.line(gameDisplay, white ,[200,600], [600,600], 1)
     
-
-#    bolinha1 = Bolinha(y)
-#    bolinha1.posx(0,y)
-
     Score(score)   
-    bot1(x, y1)
-    bot2(x, y2)
-    bot3(x, y3)    
-    bot4(x, y4)
-    bot5(x, y5)
+    
+    t.tecla1(x, y1)
+    t.tecla2(x, y2)
+    t.tecla3(x, y3)    
+    t.tecla4(x, y4)
+    t.tecla5(x, y5)
     
 #    if y1 > display_height:
 #        y1 = random.randrange(-200,0) 
