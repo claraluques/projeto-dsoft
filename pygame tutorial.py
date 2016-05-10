@@ -1,6 +1,33 @@
 import pygame
 import random
 
+def process_key(y, score):
+    d1 = y - 550
+    if d1 < 0:
+        d1 = -d1
+    if d1 < 5:
+        print('PERFECT')
+        Perfect(650,100)
+        y = random.randrange(-600,0)
+        score +=3
+        print("SCORE: {0}".format(score))
+        
+    elif d1 < 15:
+        print ("VERY GOOD")
+        score += 2
+        print("SCORE: {0}".format(score))
+        y =random.randrange(-600,0)
+    elif d1 < 25:
+        print ("GOOD")
+        score += 1
+        print("SCORE: {0}".format(score))
+        y = random.randrange(-600,0)                    
+        
+    else:
+        print("MISSED")
+        
+    return (y, score)
+
 pygame.init()
 
 display_width = 800
@@ -15,11 +42,24 @@ pygame.display.set_caption(('Bolinha descendo!'))
 clock = pygame.time.Clock()
 crashed = False
 
+pygame.image.load
 
 guitarraImg = pygame.image.load('guitarra.png')
 guitarraImg = pygame.transform.scale(guitarraImg, (800,650))
 
+#botoes = []
+#for i in range(5):
+#    filename = 'botao{0}.png'.format(i+1)
+#    botaoImg = pygame.image.load(filename)
+#    botaoImg = pygame.transform.scale(botaoImg, (100,100))
+#    
+#    botoes.append(botaoImg)
+ 
 
+PerfectImg = pygame.image.load('Perfect.sprite.png')
+PerfectImg = pygame.transform.scale(PerfectImg, (100,100))
+
+   
 bot1Img = pygame.image.load('botao1.png')
 bot1Img = pygame.transform.scale(bot1Img, (100,100))
 
@@ -35,7 +75,8 @@ bot4Img = pygame.transform.scale(bot4Img, (100,100))
 bot5Img = pygame.image.load('botao5.png')
 bot5Img = pygame.transform.scale(bot5Img, (100,100))
 
-
+#def bot(i, x, y):
+#    gameDisplay.blit(botoes[i], (x,y))
 
 def bot1(x, y1):
     gameDisplay.blit(bot1Img,(x,y1))
@@ -53,11 +94,12 @@ def bot5(x, y5):
     gameDisplay.blit(bot5Img,(x+316 , y5))
 
 def Score(count):
-    font = pygame.font.SysFont(None, 25)
+    font = pygame.font.SysFont(None,40)
     text = font.render("Score: "+str(count), True, black)
-    gameDisplay.blit(text,(700,0))
+    gameDisplay.blit(text,(650,0))    
 
-
+def Perfect(x, y):
+    gameDisplay.blit(PerfectImg ,(650, 200))
 
 ganhou = False
     
@@ -82,6 +124,7 @@ area_de_acerto = display_height - 500
 xacerto1 = display_height*0.8
 xacerto2 = display_height
 
+
 score = 0
 
 while not crashed:
@@ -95,138 +138,32 @@ while not crashed:
                 y_change = 5
                 
             elif event.key == pygame.K_UP:
-               y_change = -5
+                y_change = -5
                
             elif event.key == pygame.K_q:
-                d1 = y1-550
-                if d1 < 0:
-                    d1 = -d1
-                if d1 < 5:
-                    print('PERFECT')
-                    y1=random.randrange(-600,0)
-                    score +=3
-                    print("SCORE: {0}".format(score))
-                elif d1 < 15:
-                    print ("VERY GOOD")
-                    score += 2
-                    print("SCORE: {0}".format(score))
-                    y1 =random.randrange(-600,0)
-                elif d1 < 25:
-                    print ("GOOD")
-                    score += 1
-                    print("SCORE: {0}".format(score))
-                    y1 =random.randrange(-600,0)                    
-                    
-                else:
-                    print("MISSED")
+                y1, score = process_key(y1, score)
                     
             elif event.key == pygame.K_w:
-                d2 = y2-550
-                if d2 < 0:
-                    d2 = -d2
-                if d2 < 5:
-                    print('PERFECT')
-                    score += 3
-                    print("SCORE: {0}".format(score))
-                    y2 =random.randrange(-600,0)
-                elif d2 < 25:
-                    print ("VERY GOOD")
-                    score += 2
-                    print("SCORE: {0}".format(score))
-                    y2 =random.randrange(-600,0)
-                elif d2 < 25:
-                    print ("GOOD")
-                    score += 1
-                    print("SCORE: {0}".format(score))
-                    y2 =random.randrange(-600,0)                    
-                else:
-                    print("MISSED")
+                y2, score = process_key(y2, score)
                     
             elif event.key == pygame.K_e:
-                d3 = y3-550
-                if d3 < 0:
-                    d3 = -d3
-                if d3 < 5:
-                    print('PERFECT')
-                    score += 3
-                    print("SCORE: {0}".format(score))
-                    y3 =random.randrange(-600,0)
-                elif d3 < 25:
-                    print ("VERY GOOD")
-                    score += 2
-                    print("SCORE: {0}".format(score))
-                    y3 =random.randrange(-600,0)
-                elif d3 < 25:
-                    print ("GOOD")
-                    score += 1
-                    print("SCORE: {0}".format(score))
-                    y3 =random.randrange(-600,0) 
-                else:
-                    print("MISSED")
+                y3, score = process_key(y3, score)
                     
             elif event.key == pygame.K_r:
-                d4 = y4-550
-                if d4 < 0:
-                    d4 = -d4
-                if d4 < 5:
-                    print('PERFECT')
-                    score += 3
-                    print("SCORE: {0}".format(score))
-                    y4 =random.randrange(-600,0)
-                elif d4 < 25:
-                    print ("VERY GOOD")
-                    score += 2
-                    print("SCORE: {0}".format(score))
-                    y4 =random.randrange(-600,0)
-                elif d4 < 25:
-                    print ("GOOD")
-                    score += 1
-                    print("SCORE: {0}".format(score))
-                    y4 =random.randrange(-600,0)                 
-                else:
-                    print("MISSED")
-                    
-                    
+                y4, score = process_key(y4, score)
+                                        
             elif event.key == pygame.K_t:
-                d5 = y5-550
-                if d5 < 0:
-                    d5 = -d5
-                if d5 < 5:
-                    print('PERFECT')
-                    score += 3
-                    print("SCORE: {0}".format(score))
-                    y5 =random.randrange(-600,0)
-                elif d5 < 25:
-                    print ("VERY GOOD")
-                    score += 2
-                    print("SCORE: {0}".format(score))
-                    y5 =random.randrange(-600,0)
-                elif d5 < 25:
-                    print ("GOOD")
-                    score += 1
-                    print("SCORE: {0}".format(score))
-                    y5 =random.randrange(-600,0)                
-                else:
-                    print("MISSED")
-
+                y5, score = process_key(y5, score)
             
         if event.type == pygame.KEYUP:
-            if event.key == pygame.K_DOWN:
+            if event.key == pygame.K_DOWN or event.key == pygame.K_UP:
                 y_change = 0
-            elif event.key == pygame.K_UP:
-                y_change = 0
-    
-    
-            
-    
         
     y1 += y_change
     y2 += y_change
     y3 += y_change
     y4 += y_change
     y5 += y_change
-    
-
     
     gameDisplay.fill(purple)
     gameDisplay.blit(guitarraImg, (0, 0))
