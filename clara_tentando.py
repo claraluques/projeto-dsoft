@@ -1,13 +1,15 @@
 import pygame
 import random
 from classe_musicas import musicas as m
+from classe_teclas import teclas as t
+
 
 pygame.init()
 
 display_width = 800
 display_height = 650
 
-
+black = (0,0,0)
 white = (255,255,255)
 purple = (151,65,239)
 
@@ -16,59 +18,35 @@ pygame.display.set_caption(('Bolinha descendo!'))
 clock = pygame.time.Clock()
 crashed = False
 
-
 guitarraImg = pygame.image.load('guitarra.png')
 guitarraImg = pygame.transform.scale(guitarraImg, (800,650))
 
+def Score(count):
+    font = pygame.font.SysFont(None, 25)
+    text = font.render("Score: "+str(count), True, black)
+    gameDisplay.blit(text,(700,0))
 
-bot1Img = pygame.image.load('botao1.png')
-bot1Img = pygame.transform.scale(bot1Img, (100,100))
-
-bot2Img = pygame.image.load('botao2.png')
-bot2Img = pygame.transform.scale(bot2Img, (100,100))
-
-bot3Img = pygame.image.load('botao3.png')
-bot3Img = pygame.transform.scale(bot3Img, (100,100))
-
-bot4Img = pygame.image.load('botao4.png')
-bot4Img = pygame.transform.scale(bot4Img, (100,100))
-
-bot5Img = pygame.image.load('botao5.png')
-bot5Img = pygame.transform.scale(bot5Img, (100,100))
-
-
-
-def bot1(x, y1):
-    gameDisplay.blit(bot1Img,(x,y1))
-
-def bot2(x, y2):
-    gameDisplay.blit(bot2Img,( x+79 , y2))
- 
-def bot3(x, y3):
-    gameDisplay.blit(bot3Img,(x+158 , y3))
-    
-def bot4(x, y4):
-    gameDisplay.blit(bot4Img,(x+236 , y4))
-
-def bot5(x, y5):
-    gameDisplay.blit(bot5Img,(x+316 , y5))
-
-
-
-
-
+ganhou = False
 
 x = (190)
 
-y1 = 300
-y2 = 300
-y3 = 300
-y4 = 300
-y5 = 300
+musica1 = m.musica_1()
+print (musica1)
+
+for nota in range (len(musica1)):
+    x = -600
+    if nota == 0:
+        y1 = -600
+    elif nota == 1:
+        y2 = (x-100*nota)
+    elif nota == 2:
+        y3 = (x-100*nota)
+    elif nota == 3:
+        y4 = (x-100*nota)
+    elif nota == 4:
+        y5 = (x-100*nota)
+
 y_change = 0
-
-
-
 
 area_de_acerto = display_height - 500 
 
@@ -77,11 +55,8 @@ xacerto2 = display_height
 
 score = 0
 
-musica1 = m.musica_1()
-
-print (musica1)
-
 while not crashed:
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             crashed = True
@@ -99,13 +74,20 @@ while not crashed:
                     d1 = -d1
                 if d1 < 5:
                     print('PERFECT')
-                    score += 1
+#                    y1=random.randrange(-600,0)
+                    score +=3
                     print("SCORE: {0}".format(score))
-
-                elif d1 < 25:
+                elif d1 < 15:
                     print ("VERY GOOD")
+                    score += 2
+                    print("SCORE: {0}".format(score))
+#                    y1 =random.randrange(-600,0)
+                elif d1 < 25:
+                    print ("GOOD")
                     score += 1
                     print("SCORE: {0}".format(score))
+#                    y1 =random.randrange(-600,0)                    
+                    
                 else:
                     print("MISSED")
                     
@@ -115,13 +97,19 @@ while not crashed:
                     d2 = -d2
                 if d2 < 5:
                     print('PERFECT')
-                    score += 1
+                    score += 3
                     print("SCORE: {0}".format(score))
-  
+#                    y2 =random.randrange(-600,0)
                 elif d2 < 25:
                     print ("VERY GOOD")
+                    score += 2
+                    print("SCORE: {0}".format(score))
+#                    y2 =random.randrange(-600,0)
+                elif d2 < 25:
+                    print ("GOOD")
                     score += 1
                     print("SCORE: {0}".format(score))
+#                    y2 =random.randrange(-600,0)                    
                 else:
                     print("MISSED")
                     
@@ -131,12 +119,19 @@ while not crashed:
                     d3 = -d3
                 if d3 < 5:
                     print('PERFECT')
-                    score += 1
+                    score += 3
                     print("SCORE: {0}".format(score))
+#                    y3 =random.randrange(-600,0)
                 elif d3 < 25:
                     print ("VERY GOOD")
+                    score += 2
+                    print("SCORE: {0}".format(score))
+#                    y3 =random.randrange(-600,0)
+                elif d3 < 25:
+                    print ("GOOD")
                     score += 1
                     print("SCORE: {0}".format(score))
+#                    y3 =random.randrange(-600,0) 
                 else:
                     print("MISSED")
                     
@@ -146,27 +141,42 @@ while not crashed:
                     d4 = -d4
                 if d4 < 5:
                     print('PERFECT')
-                    score += 1
+                    score += 3
                     print("SCORE: {0}".format(score))
+#                    y4 =random.randrange(-600,0)
                 elif d4 < 25:
                     print ("VERY GOOD")
+                    score += 2
+                    print("SCORE: {0}".format(score))
+#                    y4 =random.randrange(-600,0)
+                elif d4 < 25:
+                    print ("GOOD")
                     score += 1
                     print("SCORE: {0}".format(score))
+#                    y4 =random.randrange(-600,0)                 
                 else:
                     print("MISSED")
                     
-            elif event.key == pygame.K_SPACE:
+                    
+            elif event.key == pygame.K_t:
                 d5 = y5-550
                 if d5 < 0:
                     d5 = -d5
                 if d5 < 5:
                     print('PERFECT')
-                    score += 1
+                    score += 3
                     print("SCORE: {0}".format(score))
+#                    y5 =random.randrange(-600,0)
                 elif d5 < 25:
                     print ("VERY GOOD")
+                    score += 2
+                    print("SCORE: {0}".format(score))
+#                    y5 =random.randrange(-600,0)
+                elif d5 < 25:
+                    print ("GOOD")
                     score += 1
                     print("SCORE: {0}".format(score))
+#                    y5 =random.randrange(-600,0)                
                 else:
                     print("MISSED")
 
@@ -176,51 +186,24 @@ while not crashed:
                 y_change = 0
             elif event.key == pygame.K_UP:
                 y_change = 0
+           
+    y1 += y_change
+    y2 += y_change
+    y3 += y_change
+    y4 += y_change
+    y5 += y_change
     
+#    gameDisplay.fill(purple)
+#    gameDisplay.blit(guitarraImg, (0, 0))
+#    pygame.draw.line(gameDisplay, white ,[200,600], [600,600], 1)
     
-        
-#    y1 += y_change
-#    y2 += y_change
-#    y3 += y_change
-#    y4 += y_change
-#    y5 += y_change
+    Score(score)   
     
-        
-        
-        for nota in range (len(musica1)):
-            if nota == 0:
-                bot1(x, y1)
-            elif nota == 1:
-                bot2(x, y2)
-            elif nota == 2:
-                bot3(x, y3)
-            elif nota == 3:
-                bot4(x, y4)
-            elif nota == 4:
-                bot5(x, y5)
-            elif nota == 8:
-                continue
-            y1 += y_change
-            y2 += y_change
-            y3 += y_change
-            y4 += y_change
-            y5 += y_change
-
-    
-    gameDisplay.fill(purple)
-    gameDisplay.blit(guitarraImg, (0, 0))
-    pygame.draw.line(gameDisplay, white ,[200,600], [600,600], 1)
-    
-
-#    bolinha1 = Bolinha(y)
-#    bolinha1.posx(0,y)
-
-        
-#    bot1(x, y1)
-#    bot2(x, y2)
-#    bot3(x, y3)    
-#    bot4(x, y4)
-#    bot5(x, y5)
+    t.tecla1(x, y1)
+    t.tecla2(x, y2)
+    t.tecla3(x, y3)    
+    t.tecla4(x, y4)
+    t.tecla5(x, y5)
     
 #    if y1 > display_height:
 #        y1 = random.randrange(-200,0) 
@@ -237,6 +220,10 @@ while not crashed:
 #    if y5 > display_height:
 #        y5 = random.randrange(-300,0)
     
+    if score == 100:
+        ganhou = True
+    if ganhou == True:
+        crashed = True
     
     pygame.display.update()
     clock.tick(60)
