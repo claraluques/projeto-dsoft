@@ -1,5 +1,6 @@
 import pygame
 import random
+from classe_musicas import musicas as m
 
 def process_key(y, score):
     d1 = y - 550
@@ -8,7 +9,7 @@ def process_key(y, score):
     if d1 < 5:
         print('PERFECT')
         Perfect(650,100)
-        y = random.randrange(-600,0)
+#        y = random.randrange(-600,0)
         score +=3
         print("SCORE: {0}".format(score))
         
@@ -16,13 +17,12 @@ def process_key(y, score):
         print ("VERY GOOD")
         score += 2
         print("SCORE: {0}".format(score))
-        y =random.randrange(-600,0)
+#        y =random.randrange(-600,0)
     elif d1 < 25:
         print ("GOOD")
         score += 1
         print("SCORE: {0}".format(score))
-        y = random.randrange(-600,0)                    
-        
+#        y = random.randrange(-600,0)                    
     else:
         print("MISSED")
         
@@ -103,17 +103,22 @@ def Perfect(x, y):
 
 ganhou = False
     
-
-
+musica1 = m.musica1()
+listay1 = musica1[0]
+listay2 = musica1[1]
+listay3 = musica1[2]
+listay4 = musica1[3]
+listay5 = musica1[4]
+print (listay1)
 
 
 x = (190)
 
-y1 =random.randrange(-600,0)
-y2 =random.randrange(-600,0)
-y3 =random.randrange(-600,0)
-y4 =random.randrange(-600,0)
-y5 =random.randrange(-600,0)
+#y1 =random.randrange(-600,0)
+#y2 =random.randrange(-600,0)
+#y3 =random.randrange(-600,0)
+#y4 =random.randrange(-600,0)
+#y5 =random.randrange(-600,0)
 y_change = 0
 
 
@@ -121,8 +126,8 @@ y_change = 0
 
 area_de_acerto = display_height - 500 
 
-xacerto1 = display_height*0.8
-xacerto2 = display_height
+#xacerto1 = display_height*0.8
+#xacerto2 = display_height
 
 
 score = 0
@@ -130,6 +135,36 @@ score = 0
 frames= 0
 
 while not crashed:
+    
+    gameDisplay.fill(purple)
+    gameDisplay.blit(guitarraImg, (0, 0))
+    pygame.draw.line(gameDisplay, white ,[200,600], [600,600], 1)
+    
+
+    Score(score)
+
+    for i in range (len(listay1)):
+        y1 = listay1[i]
+        bot1(x, y1)        
+        listay1[i] += y_change
+    for i in range (len(listay2)):
+        y2 = listay2[i]
+        bot2(x, y2)
+        listay2[i] += y_change
+    for i in range (len(listay3)):
+        y3 = listay3[i]
+        bot3(x, y3)
+        listay3[i] += y_change
+    for i in range (len(listay4)):
+        y4 = listay4[i]
+        bot4(x, y4)
+        listay4[i] += y_change
+    for i in range (len(listay5)):
+        y5 = listay5[i]
+        bot5(x, y5)
+        listay5[i] += y_change  
+    
+
     
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -161,41 +196,37 @@ while not crashed:
             if event.key == pygame.K_DOWN or event.key == pygame.K_UP:
                 y_change = 0
         
-    y1 += y_change
-    y2 += y_change
-    y3 += y_change
-    y4 += y_change
-    y5 += y_change
+
     
-    gameDisplay.fill(purple)
-    gameDisplay.blit(guitarraImg, (0, 0))
-    pygame.draw.line(gameDisplay, white ,[200,600], [600,600], 1)
+    
+    
     
 
-    Score(score)
-    if frames%20 == 0:
-        print ('tic')
-       
-    bot1(x, y1)
-    bot2(x, y2)
-    bot3(x, y3)    
-    bot4(x, y4)
-    bot5(x, y5)
     
-    if y1 > display_height:
-        y1 = random.randrange(-200,0) 
-        
-    if y2 > display_height:
-        y2 = random.randrange(-100,0)
-        
-    if y3 > display_height:
-        y3 = random.randrange(-400,0)
-        
-    if y4 > display_height:
-        y4 = random.randrange(-250,0)
-        
-    if y5 > display_height:
-        y5 = random.randrange(-300,0)
+    
+
+#    bot1(x, y1)
+#    bot2(x, y2)
+#    bot3(x, y3)    
+#    bot4(x, y4)
+#    bot5(x, y5)
+       
+       
+    
+#    if y1 > display_height:
+#        y1 = random.randrange(-200,0) 
+#        
+#    if y2 > display_height:
+#        y2 = random.randrange(-100,0)
+#        
+#    if y3 > display_height:
+#        y3 = random.randrange(-400,0)
+#        
+#    if y4 > display_height:
+#        y4 = random.randrange(-250,0)
+#        
+#    if y5 > display_height:
+#        y5 = random.randrange(-300,0)
     
     if score == 100:
         ganhou = True

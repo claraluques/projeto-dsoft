@@ -21,7 +21,6 @@ class teclas:
         text = font.render("Score: "+str(count), True, black)
         gameDisplay.blit(text,(700,0))
         
-        
     def tecla1(x, y1):
         tecla1Img = pygame.image.load('botao1.png')
         tecla1Img = pygame.transform.scale(tecla1Img, (100,100))
