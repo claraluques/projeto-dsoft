@@ -23,5 +23,4 @@ class musicas:
                 y4.append(-100*i)
             elif musica1[i] == 4:
                 y5.append(-100*i)
-        return y1, y2, y3, y4, y5
-        
+        return y1, y2, y3, y4, y5       

@@ -23,10 +23,10 @@ def process_key(y, score):
         score += 1
         print("SCORE: {0}".format(score))
 #        y = random.randrange(-600,0)                    
-    else:
+    elif d1 < 100:
         print("MISSED")
         
-    return (y, score)
+    return (score)
 
 pygame.init()
 
@@ -109,7 +109,6 @@ listay2 = musica1[1]
 listay3 = musica1[2]
 listay4 = musica1[3]
 listay5 = musica1[4]
-print (listay1)
 
 
 x = (190)
@@ -170,40 +169,42 @@ while not crashed:
         if event.type == pygame.QUIT:
             crashed = True
             
-        if event.type == pygame.KEYDOWN:
+        if event.type == pygame.KEYDOWN:        
             if event.key == pygame.K_s:
                 y_change = 5
                 
             elif event.key == pygame.K_UP:
-                y_change = -5
-               
+                y_change = -5                
+                           
             elif event.key == pygame.K_q:
-                y1, score = process_key(y1, score)
-                    
+                for i in range (len(listay1)):
+                    y1 = listay1[i]
+                    score = process_key(y1, score)
+                        
             elif event.key == pygame.K_w:
-                y2, score = process_key(y2, score)
+                for i in range (len(listay2)):
+                    y2 = listay2[i]
+                    score = process_key(y2, score)
                     
             elif event.key == pygame.K_e:
-                y3, score = process_key(y3, score)
+                for i in range (len(listay3)):
+                    y3 = listay3[i]
+                    score = process_key(y3, score)
                     
-            elif event.key == pygame.K_r:
-                y4, score = process_key(y4, score)
-                                        
             elif event.key == pygame.K_t:
-                y5, score = process_key(y5, score)
+                for i in range (len(listay4)):
+                    y4 = listay4[i]
+                    score = process_key(y4, score)
+                                        
+            elif event.key == pygame.K_y:
+                for i in range (len(listay5)):
+                    y5 = listay5[i]
+                    score = process_key(y5, score)
             
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_DOWN or event.key == pygame.K_UP:
                 y_change = 0
-        
 
-    
-    
-    
-    
-
-    
-    
 
 #    bot1(x, y1)
 #    bot2(x, y2)
