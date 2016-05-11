@@ -39,6 +39,17 @@ purple = (151,65,239)
 
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption(('Bolinha descendo!'))
+
+fundo = pygame.movie.Movie('fundo.mpg')
+resol = fundo.get_size()
+duracao = fundo.get_length()
+
+superf = pygame.Surface(resol)
+superf.fill([0, 0, 0])
+
+fundo.set_display(superf)
+fundo.play()
+
 clock = pygame.time.Clock()
 crashed = False
 
@@ -128,13 +139,6 @@ area_de_acerto = display_height - 500
 #xacerto1 = display_height*0.8
 #xacerto2 = display_height
 
-fundo1 = 'fundo.mp4'
-
-def fundo(video, display):
-    movie = pygame.movie.Movie(video)
-    movie.play()
-    
-fundo(fundo1, gameDisplay)
 
 score = 0
 
