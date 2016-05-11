@@ -127,6 +127,8 @@ xacerto2 = display_height
 
 score = 0
 
+frames= 0
+
 while not crashed:
     
     for event in pygame.event.get():
@@ -170,10 +172,10 @@ while not crashed:
     pygame.draw.line(gameDisplay, white ,[200,600], [600,600], 1)
     
 
-#    bolinha1 = Bolinha(y)
-#    bolinha1.posx(0,y)
-
-    Score(score)   
+    Score(score)
+    if frames%20 == 0:
+        print ('tic')
+       
     bot1(x, y1)
     bot2(x, y2)
     bot3(x, y3)    
@@ -202,6 +204,7 @@ while not crashed:
     
     pygame.display.update()
     clock.tick(60)
+    frames += 1
     
 pygame.quit()
 quit()

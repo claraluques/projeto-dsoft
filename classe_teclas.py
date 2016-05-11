@@ -1,11 +1,27 @@
 import pygame
 
 class teclas:  
-    def __init__(self):
-    self.gameDisplay.fill(purple)
-    self.gameDisplay.blit(guitarraImg, (0, 0))
-    self.pygame.draw.line(gameDisplay, white ,[200,600], [600,600], 1)
-    
+    def display():
+        display_width = 800
+        display_height = 650        
+        black = (0,0,0)
+        white = (255,255,255)
+        purple = (151,65,239)
+        gameDisplay = pygame.display.set_mode((display_width, display_height))
+        guitarraImg = pygame.image.load('guitarra.png')
+        guitarraImg = pygame.transform.scale(guitarraImg, (800,650))
+        gameDisplay.fill(purple)
+        gameDisplay.blit(guitarraImg, (0, 0))
+        pygame.draw.line(gameDisplay, white ,[200,600], [600,600], 1)
+        
+        pygame.display.set_caption(('Bolinha descendo!'))
+        
+    def Score(count):
+        font = pygame.font.SysFont(None, 25)
+        text = font.render("Score: "+str(count), True, black)
+        gameDisplay.blit(text,(700,0))
+        
+        
     def tecla1(x, y1):
         tecla1Img = pygame.image.load('botao1.png')
         tecla1Img = pygame.transform.scale(tecla1Img, (100,100))
