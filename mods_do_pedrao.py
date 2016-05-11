@@ -165,11 +165,8 @@ def game_intro():
         
         pygame.display.update()
         clock.tick(15)
-        
-        print(intro, escolha)
 
     if escolha == "Go":
-        print("iniciando loop_jogo2")
         loop_jogo2()
     else:
         sair_jogo2()
