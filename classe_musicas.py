@@ -1,6 +1,6 @@
 class musicas:
     def musica1():
-        oimusica1 = open('doremifa.txt', 'r')
+        oimusica1 = open('baile.txt', 'r')
         musica1txt = oimusica1.readlines()
         oimusica1.close()
         musica1str = list(musica1txt[0])
@@ -23,4 +23,8 @@ class musicas:
                 y4.append(-100*i)
             elif musica1[i] == 4:
                 y5.append(-100*i)
-        return y1, y2, y3, y4, y5       
+        return y1, y2, y3, y4, y5    
+        
+    def audio2():
+        audio = 'asa_branca.mp3'
+        return audio
