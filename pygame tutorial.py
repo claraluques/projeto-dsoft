@@ -51,6 +51,9 @@ pygame.image.load
 guitarraImg = pygame.image.load('guitarra.png')
 guitarraImg = pygame.transform.scale(guitarraImg, (800,650))
 
+
+pause = False
+
 #botoes = []
 #for i in range(5):
 #    filename = 'botao{0}.png'.format(i+1)
@@ -169,6 +172,36 @@ def game_intro():
         sair_jogo2()
 
 
+def unpause():
+        global pause
+        pause = False
+        
+    
+def paused():
+    while pause:
+        for event in pygame.event.get():
+            
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+                
+        gameDisplay.fill(white)
+        largeText = pygame.font.Font('freesansbold.ttf',100)
+        TextSurf, TextRect = text_objects("Paused", largeText)
+        TextRect.center = ((display_width/2),(display_height/2))
+        gameDisplay.blit(TextSurf, TextRect)
+        
+        button("Continue",150,450,100,50,green,bright_green,unpause)
+        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)        
+        
+        pygame.display.update()
+        clock.tick(15)
+
+    if escolha == "Go":
+        loop_jogo2()
+    else:
+        sair_jogo2()
+
 
 def loop_jogo():
     global intro, escolha
@@ -212,6 +245,7 @@ def loop_jogo2():
     crashed = False    
     
     while not crashed:
+        global pause        
         
         gameDisplay.fill(purple)
         gameDisplay.blit(guitarraImg, (0, 0))
@@ -278,7 +312,11 @@ def loop_jogo2():
                     for i in range (len(listay5)):
                         y5 = listay5[i]
                         score = process_key(y5, score)
-                
+                elif event.key == pygame.K_ESCAPE:
+                    pause = True
+                    paused()
+                                        
+                    
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_DOWN or event.key == pygame.K_UP:
                     y_change = 0
