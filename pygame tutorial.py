@@ -24,7 +24,9 @@ def process_key(y, score):
         print("SCORE: {0}".format(score))
 #        y = random.randrange(-600,0)                    
     elif d1 < 100:
+        m.erro(pygame)
         print("MISSED")
+    elif y > 550:
         
     return (score)
 
@@ -35,7 +37,6 @@ pygame.mixer.init(44100, -16,2,2048)
 
 display_width = 800
 display_height = 650
-
 
 blue = (0,0,255)
 bright_blue = (0,0,200)
@@ -57,7 +58,6 @@ pygame.image.load
 guitarraImg = pygame.image.load('guitarra.png')
 guitarraImg = pygame.transform.scale(guitarraImg, (800,650))
 
-
 pause = False
 
 #botoes = []
@@ -67,11 +67,9 @@ pause = False
 #    botaoImg = pygame.transform.scale(botaoImg, (100,100))
 #    
 #    botoes.append(botaoImg)
- 
 
 PerfectImg = pygame.image.load('Perfect.sprite.png')
 PerfectImg = pygame.transform.scale(PerfectImg, (100,100))
-
    
 #bot1Img = pygame.image.load('botao1.png')
 #bot1Img = pygame.transform.scale(bot1Img, (100,100))
@@ -107,13 +105,16 @@ def Score(count):
     font = pygame.font.SysFont(None,40)
     text = font.render("Score: "+str(count), True, black)
     gameDisplay.blit(text,(650,0))    
+    
 
 def Perfect(x, y):
     gameDisplay.blit(PerfectImg ,(650, 200))
+    
 
 def text_objects(text, font):
     textSurface = font.render(text, True, black)
     return textSurface, textSurface.get_rect()
+    
 
 def button(msg,x,y,w,h,ic,ac,action):
     mouse = pygame.mouse.get_pos()
@@ -127,8 +128,6 @@ def button(msg,x,y,w,h,ic,ac,action):
     else:
         pygame.draw.rect(gameDisplay, ic,(x,y,w,h))
 
-    
-
     smallText = pygame.font.Font("freesansbold.ttf",20)
     textSurf, textRect = text_objects(msg, smallText)
     textRect.center = ( (x+(w/2)), (y+(h/2)) )
@@ -138,6 +137,7 @@ def sair_jogo():
     global intro, escolha
     escolha = "Sair"
     intro = False
+    
 
 def sair_jogo2():
     pygame.quit()
@@ -173,7 +173,7 @@ def game_intro():
         loop_jogo2()
     else:
         sair_jogo2()
-
+        
 
 def unpause():
         global pause
@@ -201,30 +201,23 @@ def paused():
         pygame.display.update()
         clock.tick(15)
 
-    
-
 
 def loop_jogo():
     global intro, escolha
     escolha = "Go"
     intro = False
     
-def loop_jogo2():
     
+def loop_jogo2():    
     ganhou = False
-    
-#    pygame.mixer.music.play(0)
-#    pygame.mixer.music.set_volume(0.3)
-#        
-#    m.audio1(pygame)
+
     musica1 = m.musica1(pygame)
     listay1 = musica1[0]
     listay2 = musica1[1]
     listay3 = musica1[2]
     listay4 = musica1[3]
     listay5 = musica1[4]
-    
-    
+        
     x = (190)
     
     #y1 =random.randrange(-600,0)
@@ -232,16 +225,11 @@ def loop_jogo2():
     #y3 =random.randrange(-600,0)
     #y4 =random.randrange(-600,0)
     #y5 =random.randrange(-600,0)
+    
     y_change = 5
     
-    
-    
-    
-
-    
     #xacerto1 = display_height*0.8
-    #xacerto2 = display_height
-    
+    #xacerto2 = display_height    
     
     score = 0
     
@@ -254,8 +242,7 @@ def loop_jogo2():
         
         gameDisplay.fill(purple)
         gameDisplay.blit(guitarraImg, (0, 0))
-        pygame.draw.line(gameDisplay, white ,[200,600], [600,600], 1)
-        
+        pygame.draw.line(gameDisplay, white ,[200,600], [600,600], 1)        
     
         Score(score)
     
@@ -278,20 +265,16 @@ def loop_jogo2():
         for i in range (len(listay5)):
             y5 = listay5[i]
             t.tecla5(x, y5, gameDisplay)
-            listay5[i] += y_change  
-        
-    
+            listay5[i] += y_change    
         
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                crashed = True
-                
+                crashed = True                
             if event.type == pygame.KEYDOWN:        
                 if event.key == pygame.K_s:
-                    y_change = 5
-                    
+                    y_change = 5                    
                 elif event.key == pygame.K_UP:
-                    y_change = -5                
+                    y_change = -5              
                                
                 elif event.key == pygame.K_q:
                     for i in range (len(listay1)):
@@ -308,32 +291,28 @@ def loop_jogo2():
                         y3 = listay3[i]
                         score = process_key(y3, score)
                         
-                elif event.key == pygame.K_t:
+                elif event.key == pygame.K_r:
                     for i in range (len(listay4)):
                         y4 = listay4[i]
                         score = process_key(y4, score)
                                             
-                elif event.key == pygame.K_y:
+                elif event.key == pygame.K_t:
                     for i in range (len(listay5)):
                         y5 = listay5[i]
                         score = process_key(y5, score)
                 elif event.key == pygame.K_ESCAPE:
                     pause = True
-                    paused()
-                                        
+                    paused()                                        
                     
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_DOWN or event.key == pygame.K_UP:
                     y_change = 0
-    
     
     #    bot1(x, y1)
     #    bot2(x, y2)
     #    bot3(x, y3)    
     #    bot4(x, y4)
     #    bot5(x, y5)
-           
-           
         
     #    if y1 > display_height:
     #        y1 = random.randrange(-200,0) 
@@ -358,6 +337,7 @@ def loop_jogo2():
         pygame.display.update()
         clock.tick(60)
         frames += 1
+        
 game_intro()
 pygame.quit()
 quit()

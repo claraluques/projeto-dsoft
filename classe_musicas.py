@@ -1,4 +1,9 @@
 class musicas:
+    def erro(pygame):
+        sound = pygame.mixer.Sound("erro.ogg")
+        sound.set_volume(0.4)
+        sound.play(loops = 0)
+                
     def musica1(pygame):
         pygame.mixer.music.load('baile.mp3')
         pygame.mixer.music.play(0)
@@ -27,4 +32,4 @@ class musicas:
                 y4.append(-100*i)
             elif musica1[i] == 4:
                 y5.append(-100*i)
-        return y1, y2, y3, y4, y5    
+        return y1, y2, y3, y4, y5

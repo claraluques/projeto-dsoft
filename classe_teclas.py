@@ -21,7 +21,8 @@ class teclas:
         tecla4Img = pygame.transform.scale(tecla4Img, (100,100))
         gameDisplay.blit(tecla4Img,(x+236 , y4))
     
-    def tecla5(x, y5, gameDisplay):
+    def tecla5(x, y5, gameDisplay
+    ):
         tecla5Img = pygame.image.load('botao5.png')
         tecla5Img = pygame.transform.scale(tecla5Img, (100,100))
         gameDisplay.blit(tecla5Img,(x+316 , y5))
