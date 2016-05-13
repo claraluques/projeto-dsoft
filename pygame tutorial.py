@@ -1,5 +1,4 @@
 import pygame
-import random
 from classe_musicas import musicas as m
 
 def process_key(y, score):
@@ -33,6 +32,9 @@ pygame.init()
 display_width = 800
 display_height = 650
 
+
+blue = (0,0,255)
+bright_blue = (0,0,200)
 black = (0,0,0)
 white = (255,255,255)
 purple = (151,65,239)
@@ -192,6 +194,7 @@ def paused():
         gameDisplay.blit(TextSurf, TextRect)
         
         button("Continue",150,450,100,50,green,bright_green,unpause)
+        button("Menu",350,450,100,50,blue,bright_blue,game_intro)
         button("Quit",550,450,100,50,red,bright_red,sair_jogo2)        
         
         pygame.display.update()
@@ -224,12 +227,12 @@ def loop_jogo2():
     #y3 =random.randrange(-600,0)
     #y4 =random.randrange(-600,0)
     #y5 =random.randrange(-600,0)
-    y_change = 0
+    y_change = 5
     
     
     
     
-    area_de_acerto = display_height - 500 
+
     
     #xacerto1 = display_height*0.8
     #xacerto2 = display_height
