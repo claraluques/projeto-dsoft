@@ -1,5 +1,6 @@
 import pygame
 from classe_musicas import musicas as m
+from classe_teclas import teclas as t
 
 def process_key(y, score):
     d1 = y - 550
@@ -29,6 +30,9 @@ def process_key(y, score):
 
 pygame.init()
 
+pygame.mixer.init(44100, -16,2,2048)
+pygame.mixer.music.load('baile.mp3')
+
 display_width = 800
 display_height = 650
 
@@ -44,7 +48,7 @@ green = (0,255,0)
 bright_green = (0,200,0)
 
 gameDisplay = pygame.display.set_mode((display_width, display_height))
-pygame.display.set_caption(('Bolinha descendo!'))
+pygame.display.set_caption(('Guitar Student!'))
 clock = pygame.time.Clock()
 crashed = False
 
@@ -69,38 +73,35 @@ PerfectImg = pygame.image.load('Perfect.sprite.png')
 PerfectImg = pygame.transform.scale(PerfectImg, (100,100))
 
    
-bot1Img = pygame.image.load('botao1.png')
-bot1Img = pygame.transform.scale(bot1Img, (100,100))
-
-bot2Img = pygame.image.load('botao2.png')
-bot2Img = pygame.transform.scale(bot2Img, (100,100))
-
-bot3Img = pygame.image.load('botao3.png')
-bot3Img = pygame.transform.scale(bot3Img, (100,100))
-
-bot4Img = pygame.image.load('botao4.png')
-bot4Img = pygame.transform.scale(bot4Img, (100,100))
-
-bot5Img = pygame.image.load('botao5.png')
-bot5Img = pygame.transform.scale(bot5Img, (100,100))
-
-#def bot(i, x, y):
-#    gameDisplay.blit(botoes[i], (x,y))
-
-def bot1(x, y1):
-    gameDisplay.blit(bot1Img,(x,y1))
-
-def bot2(x, y2):
-    gameDisplay.blit(bot2Img,( x+79 , y2))
- 
-def bot3(x, y3):
-    gameDisplay.blit(bot3Img,(x+158 , y3))
-    
-def bot4(x, y4):
-    gameDisplay.blit(bot4Img,(x+236 , y4))
-
-def bot5(x, y5):
-    gameDisplay.blit(bot5Img,(x+316 , y5))
+#bot1Img = pygame.image.load('botao1.png')
+#bot1Img = pygame.transform.scale(bot1Img, (100,100))
+#
+#bot2Img = pygame.image.load('botao2.png')
+#bot2Img = pygame.transform.scale(bot2Img, (100,100))
+#
+#bot3Img = pygame.image.load('botao3.png')
+#bot3Img = pygame.transform.scale(bot3Img, (100,100))
+#
+#bot4Img = pygame.image.load('botao4.png')
+#bot4Img = pygame.transform.scale(bot4Img, (100,100))
+#
+#bot5Img = pygame.image.load('botao5.png')
+#bot5Img = pygame.transform.scale(bot5Img, (100,100))
+#
+#def bot1(x, y1):
+#    gameDisplay.blit(bot1Img,(x,y1))
+#
+#def bot2(x, y2):
+#    gameDisplay.blit(bot2Img,( x+79 , y2))
+# 
+#def bot3(x, y3):
+#    gameDisplay.blit(bot3Img,(x+158 , y3))
+#    
+#def bot4(x, y4):
+#    gameDisplay.blit(bot4Img,(x+236 , y4))
+#
+#def bot5(x, y5):
+#    gameDisplay.blit(bot5Img,(x+316 , y5))
 
 def Score(count):
     font = pygame.font.SysFont(None,40)
@@ -211,6 +212,9 @@ def loop_jogo():
 def loop_jogo2():
     
     ganhou = False
+    
+    pygame.mixer.music.play(0)
+    pygame.mixer.music.set_volume(0.3)
         
     musica1 = m.musica1()
     listay1 = musica1[0]
@@ -256,23 +260,23 @@ def loop_jogo2():
     
         for i in range (len(listay1)):
             y1 = listay1[i]
-            bot1(x, y1)        
+            t.tecla1(x, y1, gameDisplay)        
             listay1[i] += y_change
         for i in range (len(listay2)):
             y2 = listay2[i]
-            bot2(x, y2)
+            t.tecla2(x, y2, gameDisplay)
             listay2[i] += y_change
         for i in range (len(listay3)):
             y3 = listay3[i]
-            bot3(x, y3)
+            t.tecla3(x, y3, gameDisplay)
             listay3[i] += y_change
         for i in range (len(listay4)):
             y4 = listay4[i]
-            bot4(x, y4)
+            t.tecla4(x, y4, gameDisplay)
             listay4[i] += y_change
         for i in range (len(listay5)):
             y5 = listay5[i]
-            bot5(x, y5)
+            t.tecla5(x, y5, gameDisplay)
             listay5[i] += y_change  
         
     

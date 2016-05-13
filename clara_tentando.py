@@ -1,5 +1,6 @@
 import pygame
 from classe_musicas import musicas as m
+from classe_teclas import teclas as t
 
 def process_key(y, score):
     d1 = y - 550
@@ -8,20 +9,16 @@ def process_key(y, score):
     if d1 < 5:
         print('PERFECT')
         Perfect(650,100)
-#        y = random.randrange(-600,0)
         score +=3
         print("SCORE: {0}".format(score))
-        
     elif d1 < 15:
         print ("VERY GOOD")
         score += 2
         print("SCORE: {0}".format(score))
-#        y =random.randrange(-600,0)
     elif d1 < 25:
         print ("GOOD")
         score += 1
-        print("SCORE: {0}".format(score))
-#        y = random.randrange(-600,0)                    
+        print("SCORE: {0}".format(score))                 
     elif d1 < 100:
         print("MISSED")
         
@@ -219,7 +216,7 @@ def loop_jogo2():
     ganhou = False
     
     pygame.mixer.music.play(0)
-    pygame.mixer.music.set_volume(0.5)
+    pygame.mixer.music.set_volume(0.2)
         
     musica1 = m.musica1()
     listay1 = musica1[0]
@@ -265,7 +262,7 @@ def loop_jogo2():
     
         for i in range (len(listay1)):
             y1 = listay1[i]
-            bot1(x, y1)        
+            t.tecla1(x, y1, gameDisplay)        
             listay1[i] += y_change
         for i in range (len(listay2)):
             y2 = listay2[i]

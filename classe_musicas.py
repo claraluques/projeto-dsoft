@@ -24,7 +24,3 @@ class musicas:
             elif musica1[i] == 4:
                 y5.append(-100*i)
         return y1, y2, y3, y4, y5    
-        
-    def audio2():
-        audio = 'asa_branca.mp3'
-        return audio
