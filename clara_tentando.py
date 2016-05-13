@@ -31,7 +31,7 @@ pygame.init()
 pygame.mixer.init(44100, -16,2,2048)
 
 
-pygame.mixer.music.load('baile.mp3')
+#pygame.mixer.music.load('baile.mp3')
 display_width = 800
 display_height = 650
 
@@ -72,38 +72,38 @@ PerfectImg = pygame.image.load('Perfect.sprite.png')
 PerfectImg = pygame.transform.scale(PerfectImg, (100,100))
 
    
-bot1Img = pygame.image.load('botao1.png')
-bot1Img = pygame.transform.scale(bot1Img, (100,100))
-
-bot2Img = pygame.image.load('botao2.png')
-bot2Img = pygame.transform.scale(bot2Img, (100,100))
-
-bot3Img = pygame.image.load('botao3.png')
-bot3Img = pygame.transform.scale(bot3Img, (100,100))
-
-bot4Img = pygame.image.load('botao4.png')
-bot4Img = pygame.transform.scale(bot4Img, (100,100))
-
-bot5Img = pygame.image.load('botao5.png')
-bot5Img = pygame.transform.scale(bot5Img, (100,100))
-
-#def bot(i, x, y):
-#    gameDisplay.blit(botoes[i], (x,y))
-
-def bot1(x, y1):
-    gameDisplay.blit(bot1Img,(x,y1))
-
-def bot2(x, y2):
-    gameDisplay.blit(bot2Img,( x+79 , y2))
- 
-def bot3(x, y3):
-    gameDisplay.blit(bot3Img,(x+158 , y3))
-    
-def bot4(x, y4):
-    gameDisplay.blit(bot4Img,(x+236 , y4))
-
-def bot5(x, y5):
-    gameDisplay.blit(bot5Img,(x+316 , y5))
+#bot1Img = pygame.image.load('botao1.png')
+#bot1Img = pygame.transform.scale(bot1Img, (100,100))
+#
+#bot2Img = pygame.image.load('botao2.png')
+#bot2Img = pygame.transform.scale(bot2Img, (100,100))
+#
+#bot3Img = pygame.image.load('botao3.png')
+#bot3Img = pygame.transform.scale(bot3Img, (100,100))
+#
+#bot4Img = pygame.image.load('botao4.png')
+#bot4Img = pygame.transform.scale(bot4Img, (100,100))
+#
+#bot5Img = pygame.image.load('botao5.png')
+#bot5Img = pygame.transform.scale(bot5Img, (100,100))
+#
+##def bot(i, x, y):
+##    gameDisplay.blit(botoes[i], (x,y))
+#
+#def bot1(x, y1):
+#    gameDisplay.blit(bot1Img,(x,y1))
+#
+#def bot2(x, y2):
+#    gameDisplay.blit(bot2Img,( x+79 , y2))
+# 
+#def bot3(x, y3):
+#    gameDisplay.blit(bot3Img,(x+158 , y3))
+#    
+#def bot4(x, y4):
+#    gameDisplay.blit(bot4Img,(x+236 , y4))
+#
+#def bot5(x, y5):
+#    gameDisplay.blit(bot5Img,(x+316 , y5))
 
 def Score(count):
     font = pygame.font.SysFont(None,40)
@@ -215,8 +215,10 @@ def loop_jogo2():
     
     ganhou = False
     
-    pygame.mixer.music.play(0)
-    pygame.mixer.music.set_volume(0.2)
+#    pygame.mixer.music.play(0)
+#    pygame.mixer.music.set_volume(0.2)
+    
+    m.audio1(pygame)
         
     musica1 = m.musica1()
     listay1 = musica1[0]

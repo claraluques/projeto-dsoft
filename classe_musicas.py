@@ -1,5 +1,9 @@
 class musicas:
-    def musica1():
+    def musica1(pygame):
+        pygame.mixer.music.load('baile.mp3')
+        pygame.mixer.music.play(0)
+        pygame.mixer.music.set_volume(0.2)
+        
         oimusica1 = open('baile.txt', 'r')
         musica1txt = oimusica1.readlines()
         oimusica1.close()

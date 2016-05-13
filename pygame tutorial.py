@@ -31,7 +31,7 @@ def process_key(y, score):
 pygame.init()
 
 pygame.mixer.init(44100, -16,2,2048)
-pygame.mixer.music.load('baile.mp3')
+#pygame.mixer.music.load(m.audio1())
 
 display_width = 800
 display_height = 650
@@ -213,10 +213,11 @@ def loop_jogo2():
     
     ganhou = False
     
-    pygame.mixer.music.play(0)
-    pygame.mixer.music.set_volume(0.3)
-        
-    musica1 = m.musica1()
+#    pygame.mixer.music.play(0)
+#    pygame.mixer.music.set_volume(0.3)
+#        
+#    m.audio1(pygame)
+    musica1 = m.musica1(pygame)
     listay1 = musica1[0]
     listay2 = musica1[1]
     listay3 = musica1[2]
