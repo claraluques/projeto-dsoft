@@ -197,10 +197,7 @@ def paused():
         pygame.display.update()
         clock.tick(15)
 
-    if escolha == "Go":
-        loop_jogo2()
-    else:
-        sair_jogo2()
+    
 
 
 def loop_jogo():
