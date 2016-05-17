@@ -189,7 +189,7 @@ def game_intro():
         TextRect.center = ((display_width/2),(display_height/2))
         gameDisplay.blit(TextSurf, TextRect)
         
-        button("GO!",150,450,100,50,green,bright_green,loop_jogo)
+#        button("GO!",150,450,100,50,green,bright_green,loop_jogo)
         button("Quit",550,450,100,50,red,bright_red,sair_jogo)
         button("Baile",150,550,100,50,green,bright_green,escolha_modo1)        
         button("Aleatoria",450,550,100,50,green,bright_green,escolha_modo2)
