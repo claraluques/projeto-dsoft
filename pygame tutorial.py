@@ -26,9 +26,9 @@ def process_key(y, score):
     elif d1 < 100:
         m.erro(pygame)
         print("MISSED")
-    elif y > 550:
+#   elif y > 550: 
         
-    return (score)
+    return(score)
 
 pygame.init()
 
