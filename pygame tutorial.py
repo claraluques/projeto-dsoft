@@ -209,7 +209,6 @@ def escolha_jogo():
     
     
 def loop_jogo():    
-    ganhou = False
 
     musica1 = m.musica1(pygame)
     listay1 = musica1[0]
@@ -218,7 +217,7 @@ def loop_jogo():
     listay4 = musica1[3]
     listay5 = musica1[4]
         
-    x = (190)
+    x = 190
     
     #y1 =random.randrange(-600,0)
     #y2 =random.randrange(-600,0)
@@ -330,8 +329,6 @@ def loop_jogo():
     #        y5 = random.randrange(-300,0)
         
         if score == 100:
-            ganhou = True
-        if ganhou == True:
             crashed = True
         
         pygame.display.update()
