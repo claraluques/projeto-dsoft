@@ -133,13 +133,13 @@ def button(msg,x,y,w,h,ic,ac,action):
     textRect.center = ( (x+(w/2)), (y+(h/2)) )
     gameDisplay.blit(textSurf, textRect)
 
-def sair_jogo():
+def escolha_sair():
     global intro, escolha
     escolha = "Sair"
     intro = False
     
 
-def sair_jogo2():
+def sair_jogo():
     pygame.quit()
     quit()
 
@@ -163,16 +163,16 @@ def game_intro():
         TextRect.center = ((display_width/2),(display_height/2))
         gameDisplay.blit(TextSurf, TextRect)
         
-        button("GO!",150,450,100,50,green,bright_green,loop_jogo)
-        button("Quit",550,450,100,50,red,bright_red,sair_jogo)        
+        button("GO!",150,450,100,50,green,bright_green,escolha_jogo)
+        button("Quit",550,450,100,50,red,bright_red,escolha_sair)        
         
         pygame.display.update()
         clock.tick(15)
 
     if escolha == "Go":
-        loop_jogo2()
+        loop_jogo()
     else:
-        sair_jogo2()
+        sair_jogo()
         
 
 def unpause():
@@ -196,19 +196,19 @@ def paused():
         
         button("Continue",150,450,100,50,green,bright_green,unpause)
         button("Menu",350,450,100,50,blue,bright_blue,game_intro)
-        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)        
+        button("Quit",550,450,100,50,red,bright_red,sair_jogo)        
         
         pygame.display.update()
         clock.tick(15)
 
 
-def loop_jogo():
+def escolha_jogo():
     global intro, escolha
     escolha = "Go"
     intro = False
     
     
-def loop_jogo2():    
+def loop_jogo():    
     ganhou = False
 
     musica1 = m.musica1(pygame)
