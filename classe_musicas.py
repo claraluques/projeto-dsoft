@@ -36,6 +36,37 @@ def musica1():
             y5.append(-100*i)
     return y1, y2, y3, y4, y5
     
+    
+def musica2():
+    pygame.mixer.music.load('cliffs.mp3')
+    pygame.mixer.music.play(0)
+    pygame.mixer.music.set_volume(0.2)
+    
+    oimusica2 = open('cliffs_of_dover.txt', 'r')
+    musica2txt = oimusica2.readlines()
+    oimusica2.close()
+    musica2str = list(musica2txt[0])
+    musica2 = []
+    for i in range (len(musica2str)):
+        musica2.append(int(musica2str[i]))
+    y1=[]
+    y2=[]
+    y3=[]
+    y4=[]
+    y5=[]
+    for i in range (len(musica2)):
+        if musica2[i] == 0:
+            y1.append(-100*i)
+        elif musica2[i] == 1:
+            y2.append(-100*i)
+        elif musica2[i] == 2:
+            y3.append(-100*i)
+        elif musica2[i] == 3:
+            y4.append(-100*i)
+        elif musica2[i] == 4:
+            y5.append(-100*i)
+    return y1, y2, y3, y4, y5
+    
 def musicaale():
     nbolinhas = 5
     y1=[]
@@ -60,5 +91,7 @@ def musicaale():
 def musica(modo):
     if modo == 0:
         return musica1()
-    else:
+    elif modo == 1:
         return musicaale()
+    else:
+        return musica2()
