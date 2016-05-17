@@ -1,6 +1,6 @@
 import pygame
 from classe_musicas import musicas as m
-from classe_teclas import teclas as t
+import classe_teclas as t
 
 def process_key(y, score):
     d1 = y - 550
