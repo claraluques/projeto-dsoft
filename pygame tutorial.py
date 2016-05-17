@@ -24,7 +24,7 @@ def process_key(y, score):
         print("SCORE: {0}".format(score))
 #        y = random.randrange(-600,0)                    
     elif d1 < 100:
-        m.erro(pygame)
+        m.erro()
         print("MISSED")
 #   elif y > 550: 
         
@@ -320,7 +320,7 @@ def loop_jogo2():
             listay5[i] += y_change
             if y5 < miny:
                 miny = y5
-        print (miny)
+      #  print (miny)
         
         if miny >= display_height:
             musica1 = m.musica(modo)

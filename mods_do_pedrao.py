@@ -1,6 +1,6 @@
 import pygame
 import random
-from classe_musicas import musicas as m
+import classe_musicas as m
 
 def process_key(y, score):
     d1 = y - 550
@@ -198,7 +198,7 @@ def loop_jogo2():
     #y3 =random.randrange(-600,0)
     #y4 =random.randrange(-600,0)
     #y5 =random.randrange(-600,0)
-    y_change = 0
+    y_change = 5
     
     
     
