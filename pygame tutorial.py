@@ -21,6 +21,10 @@ bright_green = (0,200,0)
 
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption(('Guitar Student!'))
+
+gameIcon = pygame.image.load('icone.png') #mudar icone
+pygame.display.set_icon(gameIcon)
+
 clock = pygame.time.Clock()
 crashed = False
 
