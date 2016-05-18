@@ -11,7 +11,7 @@ def musica1():
     pygame.mixer.music.load('baile.mp3')
     pygame.mixer.music.play(0)
     pygame.mixer.music.set_volume(0.2)
-    ychange = 5
+    
     oimusica1 = open('baile.txt', 'r')
     musica1txt = oimusica1.readlines()
     oimusica1.close()
@@ -35,14 +35,14 @@ def musica1():
             y4.append(-100*i)
         elif musica1[i] == 4:
             y5.append(-100*i)
-    return y1, y2, y3, y4, y5, ychange
+    return y1, y2, y3, y4, y5
     
     
 def musica2():
     pygame.mixer.music.load('cliffs.mp3')
     pygame.mixer.music.play(0)
     pygame.mixer.music.set_volume(0.3)
-    ychange = 5
+
     oimusica2 = open('cliffs_of_dover.txt', 'r')
     musica2txt = oimusica2.readlines()
     oimusica2.close()
@@ -70,7 +70,7 @@ def musica2():
             y1.append(-100*i)
             y3.append(-100*i)
             
-    return y1, y2, y3, y4, y5, ychange
+    return y1, y2, y3, y4, y5
     
 def musicaale():
     nbolinhas = 5
