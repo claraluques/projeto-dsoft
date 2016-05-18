@@ -53,7 +53,7 @@ pygame.display.set_caption(('Guitar Student!'))
 clock = pygame.time.Clock()
 crashed = False
 
-
+gerente_imagens = t.GerenciadorImagens()
 
 guitarraImg = pygame.image.load('guitarra.png')
 guitarraImg = pygame.transform.scale(guitarraImg, (800,650))
@@ -197,7 +197,7 @@ def game_intro():
 #        button("GO!",150,450,100,50,green,bright_green,loop_jogo)
         button("Quit",550,450,100,50,red,bright_red,sair_jogo)
         button("Baile",150,550,100,50,green,bright_green,escolha_modo1)        
-        button("Aleatoria",450,550,100,50,green,bright_green,escolha_modo2)
+        button("Aleatoria",450,550,100,50,green,bright_green,escolha_modo3)
         
         
         pygame.display.update()
@@ -287,7 +287,7 @@ def loop_jogo2():
         
         for i in range (len(listay1)):
             y1 = listay1[i]
-            t.tecla1(x, y1, gameDisplay)        
+            gerente_imagens.tecla1(x, y1, gameDisplay)       
             listay1[i] += y_change
             if y1 < miny:
                 miny = y1
@@ -295,32 +295,31 @@ def loop_jogo2():
                 
         for i in range (len(listay2)):
             y2 = listay2[i]
-            t.tecla2(x, y2, gameDisplay)
+            gerente_imagens.tecla2(x, y2, gameDisplay)
             listay2[i] += y_change
             if y2 < miny:
                 miny = y2
 
         for i in range (len(listay3)):
             y3 = listay3[i]
-            t.tecla3(x, y3, gameDisplay)
+            gerente_imagens.tecla3(x, y3, gameDisplay)
             listay3[i] += y_change
             if y3 < miny:
                 miny = y3
             
         for i in range (len(listay4)):
             y4 = listay4[i]
-            t.tecla4(x, y4, gameDisplay)
+            gerente_imagens.tecla4(x, y4, gameDisplay)
             listay4[i] += y_change
             if y4 < miny:
                 miny = y4
             
         for i in range (len(listay5)):
             y5 = listay5[i]
-            t.tecla5(x, y5, gameDisplay)
+            gerente_imagens.tecla5(x, y5, gameDisplay)
             listay5[i] += y_change
             if y5 < miny:
                 miny = y5
-        print (miny)
         
         if miny >= display_height:
             musica1 = m.musica(modo)

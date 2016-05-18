@@ -1,6 +1,6 @@
 import pygame
-from classe_musicas import musicas as m
-from classe_teclas import teclas as t
+import classe_musicas as m
+import classe_teclas as t
 
 def process_key(y, score):
     d1 = y - 550
@@ -24,19 +24,15 @@ def process_key(y, score):
         print("SCORE: {0}".format(score))
 #        y = random.randrange(-600,0)                    
     elif d1 < 100:
-        m.erro(pygame)
+        m.erro()
         print("MISSED")
+#   elif y > 550: 
         
-        
-    return (score)
+    return(score)
 
 pygame.init()
 
 pygame.mixer.init(44100, -16,2,2048)
-chan1 = pygame.mixer.find_channel()
-
-chan2 = pygame.mixer.find_channel()
-
 #pygame.mixer.music.load(m.audio1())
 
 display_width = 800
@@ -57,12 +53,14 @@ pygame.display.set_caption(('Guitar Student!'))
 clock = pygame.time.Clock()
 crashed = False
 
-pygame.image.load
+
 
 guitarraImg = pygame.image.load('guitarra.png')
 guitarraImg = pygame.transform.scale(guitarraImg, (800,650))
 
 pause = False
+
+modo = 0 #0: modo normal 1: modo aleatorio
 
 #botoes = []
 #for i in range(5):
@@ -146,29 +144,61 @@ def sair_jogo():
 def sair_jogo2():
     pygame.quit()
     quit()
+    
+def escolha_modo1():
+    global modo
+    modo = 0
+    loop_jogo()
 
-
+def escolha_modo2():
+    global modo
+    modo = 1
+    loop_jogo()
+    
+def escolha_modo3():
+    global modo
+    modo = 2
+    loop_jogo()
+    
 def game_intro():
     global intro, escolha
 
     intro = True
     escolha = ""
+    
+#    clock = pygame.time.Clock()
+#    videointro = pygame.movie.Movie('.MPG')
+#    screen = pygame.display.set_mode(videointro.get_size())
+#    movie_screen = pygame.Surface(videointro.get_size()).convert()
 
+#    videointro.set_display(movie_screen)
+#    videointro.play()    
+#    
+    
+    pygame.mixer.music.load('musicaintro.mp3')
+    pygame.mixer.music.play(0)
+    pygame.mixer.music.set_volume(0.2) 
+    
     while intro:
         for event in pygame.event.get():
             
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
-                
+        
+      
+        
         gameDisplay.fill(white)
         largeText = pygame.font.Font('freesansbold.ttf',100)
         TextSurf, TextRect = text_objects("Guitar Student", largeText)
         TextRect.center = ((display_width/2),(display_height/2))
         gameDisplay.blit(TextSurf, TextRect)
         
-        button("GO!",150,450,100,50,green,bright_green,loop_jogo)
-        button("Quit",550,450,100,50,red,bright_red,sair_jogo)        
+#        button("GO!",150,450,100,50,green,bright_green,loop_jogo)
+        button("Quit",550,450,100,50,red,bright_red,sair_jogo)
+        button("Baile",150,550,100,50,green,bright_green,escolha_modo1)        
+        button("Aleatoria",450,550,100,50,green,bright_green,escolha_modo2)
+        
         
         pygame.display.update()
         clock.tick(15)
@@ -215,13 +245,14 @@ def loop_jogo():
 def loop_jogo2():    
     ganhou = False
 
-    musica1 = m.musica1(pygame)
-
+#    musica1 = m.musica(modo)
+    musica1 = m.musica(modo, gameDisplay)
     listay1 = musica1[0]
     listay2 = musica1[1]
     listay3 = musica1[2]
     listay4 = musica1[3]
     listay5 = musica1[4]
+
         
     x = (190)
     
@@ -242,6 +273,8 @@ def loop_jogo2():
     
     crashed = False    
     
+#    videointro.stop()
+    
     while not crashed:
         global pause        
         
@@ -250,38 +283,55 @@ def loop_jogo2():
         pygame.draw.line(gameDisplay, white ,[200,600], [600,600], 1)        
     
         Score(score)
-    
-        for i in range (len(listay1)):
-            y1 = listay1[i]
-            t.tecla1(x, y1, gameDisplay)        
-            listay1[i] += y_change
-        for i in range (len(listay2)):
-            y2 = listay2[i]
-            t.tecla2(x, y2, gameDisplay)
-            listay2[i] += y_change
-        for i in range (len(listay3)):
-            y3 = listay3[i]
-            t.tecla3(x, y3, gameDisplay)
-            listay3[i] += y_change
-        for i in range (len(listay4)):
-            y4 = listay4[i]
-            t.tecla4(x, y4, gameDisplay)
-            listay4[i] += y_change
-        for i in range (len(listay5)):
-            y5 = listay5[i]
-            t.tecla5(x, y5, gameDisplay)
-            listay5[i] += y_change    
         
+        miny = display_height+50
+        
+#        for i in range (y1):
+#            y1 = y1[i]
+#            t.tecla1(x, y1, gameDisplay)        
+#            y1[i] += y_change
+#            
+#                
+#        for i in range (y2):
+#            y2 = y2[i]
+#            t.tecla2(x, y2, gameDisplay)
+#            y2[i] += y_change
+#
+#
+#        for i in range (y3):
+#            y3 = y3[i]
+#            t.tecla3(x, y3, gameDisplay)
+#            y3[i] += y_change
+#
+#            
+#        for i in range (y4):
+#            y4 = y4[i]
+#            t.tecla4(x, y4, gameDisplay)
+#            y4[i] += y_change
+#
+#            
+#        for i in range (y5):
+#            y5 = y5[i]
+#            t.tecla5(x, y5, gameDisplay)
+#            y5[i] += y_change
+
+        
+        
+#        if miny >= display_height:
+#            musica1 = m.musica(modo)
+#            listay1 = musica1[0]
+#            listay2 = musica1[1]
+#            listay3 = musica1[2]
+#            listay4 = musica1[3]
+#            listay5 = musica1[4]
+
+     
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 crashed = True                
-            if event.type == pygame.KEYDOWN:        
-                if event.key == pygame.K_s:
-                    y_change = 5                    
-                elif event.key == pygame.K_UP:
-                    y_change = -5              
-                               
-                elif event.key == pygame.K_q:
+            if event.type == pygame.KEYDOWN:         
+            
+                if event.key == pygame.K_q:
                     for i in range (len(listay1)):
                         y1 = listay1[i]
                         score = process_key(y1, score)
@@ -333,6 +383,7 @@ def loop_jogo2():
     #        
     #    if y5 > display_height:
     #        y5 = random.randrange(-300,0)
+        
         
         if score == 100:
             ganhou = True
