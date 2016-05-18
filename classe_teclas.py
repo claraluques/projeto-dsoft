@@ -1,4 +1,5 @@
 import pygame
+import classe_musicas as m
 
 class GerenciadorImagens:
     def __init__(self):
@@ -31,3 +32,101 @@ class GerenciadorImagens:
     
     def tecla5(self, x, y5, gameDisplay):
         gameDisplay.blit(self.tecla5Img,(x+316 , y5))
+        
+        
+#Definindo funções para verificar o acerto dos botões de cada coluna
+
+def process_key1(y1, score):
+    d1 = y1 - 550
+    if d1 < 5:
+        print('PERFECT')
+        score +=3
+        print("SCORE: {0}".format(score))
+    elif d1 < 15:
+        print ("VERY GOOD")
+        score += 2
+        print("SCORE: {0}".format(score))
+    elif d1 < 25:
+        print ("GOOD")
+        score += 1
+        print("SCORE: {0}".format(score))                   
+    elif d1 < 100:
+        m.erro()
+        print("MISSED")
+    return score
+    
+def process_key2(y2, score):
+    d2 = y2 - 550
+    if d2 < 5:
+        print('PERFECT')
+        score +=3
+        print("SCORE: {0}".format(score))
+    elif d2 < 15:
+        print ("VERY GOOD")
+        score += 2
+        print("SCORE: {0}".format(score))
+    elif d2 < 25:
+        print ("GOOD")
+        score += 1
+        print("SCORE: {0}".format(score))                   
+    elif d2 < 100:
+        m.erro()
+        print("MISSED")
+    return score
+    
+def process_key3(y3, score):
+    d3 = y3 - 550
+    if d3 < 5:
+        print('PERFECT')
+        score +=3
+        print("SCORE: {0}".format(score))
+    elif d3 < 15:
+        print ("VERY GOOD")
+        score += 2
+        print("SCORE: {0}".format(score))
+    elif d3 < 25:
+        print ("GOOD")
+        score += 1
+        print("SCORE: {0}".format(score))                   
+    elif d3 < 100:
+        m.erro()
+        print("MISSED")
+    return score
+    
+def process_key4(y4, score):
+    d4 = y4 - 550
+    if d4 < 5:
+        print('PERFECT')
+        score +=3
+        print("SCORE: {0}".format(score))
+    elif d4 < 15:
+        print ("VERY GOOD")
+        score += 2
+        print("SCORE: {0}".format(score))
+    elif d4 < 25:
+        print ("GOOD")
+        score += 1
+        print("SCORE: {0}".format(score))                   
+    elif d4 < 100:
+        m.erro()
+        print("MISSED")
+    return score
+    
+def process_key5(y5, score):
+    d5 = y5 - 550
+    if d5 < 5:
+        print('PERFECT')
+        score +=3
+        print("SCORE: {0}".format(score))
+    elif d5 < 15:
+        print ("VERY GOOD")
+        score += 2
+        print("SCORE: {0}".format(score))
+    elif d5 < 25:
+        print ("GOOD")
+        score += 1
+        print("SCORE: {0}".format(score))                   
+    elif d5 < 100:
+        m.erro()
+        print("MISSED")
+    return score

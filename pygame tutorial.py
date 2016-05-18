@@ -2,38 +2,9 @@ import pygame
 import classe_musicas as m
 import classe_teclas as t
 
-def process_key(y, score):
-    d1 = y - 550
-    if d1 < 0:
-        d1 = -d1
-    if d1 < 5:
-        print('PERFECT')
-        Perfect(650,100)
-#        y = random.randrange(-600,0)
-        score +=3
-        print("SCORE: {0}".format(score))
-        
-    elif d1 < 15:
-        print ("VERY GOOD")
-        score += 2
-        print("SCORE: {0}".format(score))
-#        y =random.randrange(-600,0)
-    elif d1 < 25:
-        print ("GOOD")
-        score += 1
-        print("SCORE: {0}".format(score))
-#        y = random.randrange(-600,0)                    
-    elif d1 < 100:
-        m.erro()
-        print("MISSED")
-#   elif y > 550: 
-        
-    return(score)
-
 pygame.init()
 
 pygame.mixer.init(44100, -16,2,2048)
-#pygame.mixer.music.load(m.audio1())
 
 display_width = 800
 display_height = 650
@@ -60,48 +31,11 @@ guitarraImg = pygame.transform.scale(guitarraImg, (800,650))
 
 pause = False
 
-modo = 0 #0: modo normal 1: modo aleatorio
-
-#botoes = []
-#for i in range(5):
-#    filename = 'botao{0}.png'.format(i+1)
-#    botaoImg = pygame.image.load(filename)
-#    botaoImg = pygame.transform.scale(botaoImg, (100,100))
-#    
-#    botoes.append(botaoImg)
+modo = -1 
 
 PerfectImg = pygame.image.load('Perfect.sprite.png')
 PerfectImg = pygame.transform.scale(PerfectImg, (100,100))
    
-#bot1Img = pygame.image.load('botao1.png')
-#bot1Img = pygame.transform.scale(bot1Img, (100,100))
-#
-#bot2Img = pygame.image.load('botao2.png')
-#bot2Img = pygame.transform.scale(bot2Img, (100,100))
-#
-#bot3Img = pygame.image.load('botao3.png')
-#bot3Img = pygame.transform.scale(bot3Img, (100,100))
-#
-#bot4Img = pygame.image.load('botao4.png')
-#bot4Img = pygame.transform.scale(bot4Img, (100,100))
-#
-#bot5Img = pygame.image.load('botao5.png')
-#bot5Img = pygame.transform.scale(bot5Img, (100,100))
-#
-#def bot1(x, y1):
-#    gameDisplay.blit(bot1Img,(x,y1))
-#
-#def bot2(x, y2):
-#    gameDisplay.blit(bot2Img,( x+79 , y2))
-# 
-#def bot3(x, y3):
-#    gameDisplay.blit(bot3Img,(x+158 , y3))
-#    
-#def bot4(x, y4):
-#    gameDisplay.blit(bot4Img,(x+236 , y4))
-#
-#def bot5(x, y5):
-#    gameDisplay.blit(bot5Img,(x+316 , y5))
 def bot(x,y,Img):
     botImg = pygame.image.load(Img)
     botImg = pygame.transform.scale(botImg, (100,100))
@@ -111,16 +45,13 @@ def Score(count):
     font = pygame.font.SysFont(None,40)
     text = font.render("Score: "+str(count), True, black)
     gameDisplay.blit(text,(650,0))    
-    
 
 def Perfect(x, y):
     gameDisplay.blit(PerfectImg ,(650, 200))
-    
 
 def text_objects(text, font):
     textSurface = font.render(text, True, black)
     return textSurface, textSurface.get_rect()
-    
 
 def button(msg,x,y,w,h,ic,ac,action):
     mouse = pygame.mouse.get_pos()
@@ -143,7 +74,6 @@ def sair_jogo():
     global intro, escolha
     escolha = "Sair"
     intro = False
-    
 
 def sair_jogo2():
     pygame.quit()
@@ -190,19 +120,15 @@ def game_intro():
                 pygame.quit()
                 quit()
         
-      
-        
         gameDisplay.fill(white)
         largeText = pygame.font.Font('freesansbold.ttf',100)
         TextSurf, TextRect = text_objects("Guitar Student", largeText)
         TextRect.center = ((display_width/2),(display_height/2))
         gameDisplay.blit(TextSurf, TextRect)
         
-#        button("GO!",150,450,100,50,green,bright_green,loop_jogo)
         button("Quit",550,450,100,50,red,bright_red,sair_jogo)
         button("Baile",150,550,100,50,green,bright_green,escolha_modo1)        
         button("Aleatoria",450,550,100,50,green,bright_green,escolha_modo3)
-        
         
         pygame.display.update()
         clock.tick(15)
@@ -212,7 +138,6 @@ def game_intro():
     else:
         sair_jogo2()
         
-
 def unpause():
         global pause
         pause = False
@@ -240,44 +165,30 @@ def paused():
         pygame.display.update()
         clock.tick(15)
 
-
 def loop_jogo():
     global intro, escolha
     escolha = "Go"
     intro = False
     
-    
 def loop_jogo2():    
     ganhou = False
 
-    musica1 = m.musica(modo)
-    listay1 = musica1[0]
-    listay2 = musica1[1]
-    listay3 = musica1[2]
-    listay4 = musica1[3]
-    listay5 = musica1[4]
-
+    musica = m.musica(modo)
+    listay1 = musica[0]
+    listay2 = musica[1]
+    listay3 = musica[2]
+    listay4 = musica[3]
+    listay5 = musica[4]
         
     x = (190)
-    
-    #y1 =random.randrange(-600,0)
-    #y2 =random.randrange(-600,0)
-    #y3 =random.randrange(-600,0)
-    #y4 =random.randrange(-600,0)
-    #y5 =random.randrange(-600,0)
-    
+
     y_change = 5
-    
-    #xacerto1 = display_height*0.8
-    #xacerto2 = display_height    
     
     score = 0
     
     frames= 0
     
     crashed = False    
-    
-#    videointro.stop()
     
     while not crashed:
         global pause        
@@ -301,7 +212,6 @@ def loop_jogo2():
             listay1[i] += y_change
             if y1 < miny:
                 miny = y1
-            
                 
         for i in range (len(listay2)):
             y2 = listay2[i]
@@ -332,13 +242,12 @@ def loop_jogo2():
                 miny = y5
         
         if miny >= display_height:
-            musica1 = m.musica(modo)
-            listay1 = musica1[0]
-            listay2 = musica1[1]
-            listay3 = musica1[2]
-            listay4 = musica1[3]
-            listay5 = musica1[4]
-
+            musica = m.musica(modo)
+            listay1 = musica[0]
+            listay2 = musica[1]
+            listay3 = musica[2]
+            listay4 = musica[3]
+            listay5 = musica[4]
      
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -348,27 +257,28 @@ def loop_jogo2():
                 if event.key == pygame.K_q:
                     for i in range (len(listay1)):
                         y1 = listay1[i]
-                        score = process_key(y1, score)
+                        score = t.process_key1(y1, score)
                             
                 elif event.key == pygame.K_w:
                     for i in range (len(listay2)):
                         y2 = listay2[i]
-                        score = process_key(y2, score)
+                        score = t.process_key2(y2, score)
                         
                 elif event.key == pygame.K_e:
                     for i in range (len(listay3)):
                         y3 = listay3[i]
-                        score = process_key(y3, score)
+                        score = t.process_key3(y3, score)
                         
                 elif event.key == pygame.K_r:
                     for i in range (len(listay4)):
                         y4 = listay4[i]
-                        score = process_key(y4, score)
+                        score = t.process_key4(y4, score)
                                             
                 elif event.key == pygame.K_t:
                     for i in range (len(listay5)):
                         y5 = listay5[i]
-                        score = process_key(y5, score)
+                        score = t.process_key5(y5, score)
+                        
                 elif event.key == pygame.K_ESCAPE:
                     pause = True
                     paused()                                        

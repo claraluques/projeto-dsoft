@@ -2,7 +2,6 @@ import pygame
 import random
 
 def erro():
-
     sound = pygame.mixer.Sound("erro.ogg")
     sound.set_volume(2.0)
     sound.play(loops = 0)
