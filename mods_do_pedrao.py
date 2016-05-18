@@ -245,7 +245,7 @@ def Menu_musica():
                 quit()
               
         gameDisplay.fill(white)
-        largeText = pygame.font.Font('freesansbold.ttf',10)
+        largeText = pygame.font.Font('freesansbold.ttf',80)
         TextSurf, TextRect = text_objects("Escolha sua musica", largeText)
         TextRect.center = ((display_width/2),(display_height/2))
         gameDisplay.blit(TextSurf, TextRect)
