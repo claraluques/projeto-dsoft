@@ -102,6 +102,10 @@ PerfectImg = pygame.transform.scale(PerfectImg, (100,100))
 #
 #def bot5(x, y5):
 #    gameDisplay.blit(bot5Img,(x+316 , y5))
+def bot(x,y,Img):
+    botImg = pygame.image.load(Img)
+    botImg = pygame.transform.scale(botImg, (100,100))
+    gameDisplay.blit(botImg,(x , y))
 
 def Score(count):
     font = pygame.font.SysFont(None,40)
@@ -279,8 +283,13 @@ def loop_jogo2():
         
         gameDisplay.fill(purple)
         gameDisplay.blit(guitarraImg, (0, 0))
-        pygame.draw.line(gameDisplay, white ,[200,600], [600,600], 1)        
-    
+        pygame.draw.line(gameDisplay, white ,[200,600], [600,600], 1)
+        bot1 = bot(x,543,'buraco1.png')
+        bot2 = bot(x+79,543,'buraco2.png')
+        bot3 = bot(x+158,543,'buraco3.png')        
+        bot4 = bot(x+236,543,'buraco4.png')
+        bot5 = bot(x+316,543,'buraco5.png')
+        
         Score(score)
         
         miny = display_height+50
