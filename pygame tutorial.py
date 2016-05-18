@@ -287,28 +287,6 @@ def loop_jogo2():
                 if event.key == pygame.K_DOWN or event.key == pygame.K_UP:
                     y_change = 0
     
-    #    bot1(x, y1)
-    #    bot2(x, y2)
-    #    bot3(x, y3)    
-    #    bot4(x, y4)
-    #    bot5(x, y5)
-        
-    #    if y1 > display_height:
-    #        y1 = random.randrange(-200,0) 
-    #        
-    #    if y2 > display_height:
-    #        y2 = random.randrange(-100,0)
-    #        
-    #    if y3 > display_height:
-    #        y3 = random.randrange(-400,0)
-    #        
-    #    if y4 > display_height:
-    #        y4 = random.randrange(-250,0)
-    #        
-    #    if y5 > display_height:
-    #        y5 = random.randrange(-300,0)
-        
-        
         if score == 100:
             ganhou = True
         if ganhou == True:
