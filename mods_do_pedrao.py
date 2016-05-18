@@ -59,6 +59,7 @@ guitarraImg = pygame.image.load('guitarra.png')
 guitarraImg = pygame.transform.scale(guitarraImg, (800,650))
 
 pause = False
+Menu = True
 
 modo = 0 #0: modo normal 1: modo aleatorio
 
@@ -196,8 +197,8 @@ def game_intro():
         
 #        button("GO!",150,450,100,50,green,bright_green,loop_jogo)
         button("Quit",550,450,100,50,red,bright_red,sair_jogo)
-        button("Baile",150,550,100,50,green,bright_green,escolha_modo1)        
-        button("Aleatoria",450,550,100,50,green,bright_green,escolha_modo2)
+        button("Rock!",150,450,100,50,green,bright_green,Menu_musicas)        
+        
         
         
         pygame.display.update()
@@ -232,6 +233,30 @@ def paused():
         button("Continue",150,450,100,50,green,bright_green,unpause)
         button("Menu",350,450,100,50,blue,bright_blue,game_intro)
         button("Quit",550,450,100,50,red,bright_red,sair_jogo2)        
+        
+        pygame.display.update()
+        clock.tick(15)
+
+def Menu_musicas():
+    global intro, Menu    
+    intro = False    
+    while Menu:
+        for event in pygame.event.get():
+            
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+        intro = False       
+        gameDisplay.fill(white)
+        largeText = pygame.font.Font('freesansbold.ttf',100)
+        TextSurf, TextRect = text_objects("Escolha sua musica", largeText)
+        TextRect.center = ((display_width/2),(display_height/2))
+        gameDisplay.blit(TextSurf, TextRect)
+              
+        
+        button("Baile",150,450,100,50,green,bright_green,escolha_modo1)
+        button("Cliffs",350,450,100,50,blue,bright_blue,escolha_modo2)
+        button("Voltar",550,450,100,50,red,bright_red,game_intro)        
         
         pygame.display.update()
         clock.tick(15)

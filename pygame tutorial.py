@@ -216,7 +216,7 @@ def game_intro():
 def unpause():
         global pause
         pause = False
-        
+        pygame.mixer.music.unpause()
     
 def paused():
     while pause:
@@ -231,6 +231,7 @@ def paused():
         TextSurf, TextRect = text_objects("Paused", largeText)
         TextRect.center = ((display_width/2),(display_height/2))
         gameDisplay.blit(TextSurf, TextRect)
+        pygame.mixer.music.pause()        
         
         button("Continue",150,450,100,50,green,bright_green,unpause)
         button("Menu",350,450,100,50,blue,bright_blue,game_intro)
