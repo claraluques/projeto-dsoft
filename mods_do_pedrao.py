@@ -194,8 +194,6 @@ def game_intro():
         button("Quit",550,450,100,50,red,bright_red,sair_jogo)
         button("Jogar",150,450,100,50,green,bright_green,Menu_musica)        
         
-        
-        
         pygame.display.update()
         clock.tick(15)
 
@@ -245,13 +243,14 @@ def Menu_musica():
                 quit()
               
         gameDisplay.fill(white)
+
         largeText = pygame.font.Font('freesansbold.ttf',80)
         TextSurf, TextRect = text_objects("Escolha sua musica", largeText)
         TextRect.center = ((display_width/2),(display_height/2))
         gameDisplay.blit(TextSurf, TextRect)
         
 #        button("GO!",150,450,100,50,green,bright_green,loop_jogo)
-        button("Voltar",550,450,100,50,red,bright_red,game_intro)
+        button("Voltar",450,450,100,50,red,bright_red,game_intro)
         button("Baile",150,550,100,50,green,bright_green,escolha_modo1)        
         button("Aleatoria",450,550,100,50,green,bright_green,escolha_modo3)
         

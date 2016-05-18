@@ -99,19 +99,11 @@ def escolha_modo3():
     loop_jogo()
     
 def game_intro():
-    global intro, escolha
+    global intro,Menu
 
     intro = True
-    escolha = ""
-    
-#    clock = pygame.time.Clock()
-#    videointro = pygame.movie.Movie('.MPG')
-#    screen = pygame.display.set_mode(videointro.get_size())
-#    movie_screen = pygame.Surface(videointro.get_size()).convert()
 
-#    videointro.set_display(movie_screen)
-#    videointro.play()    
-#    
+    
     
     pygame.mixer.music.load('musicaintro.mp3')
     pygame.mixer.music.play(0)
@@ -130,17 +122,15 @@ def game_intro():
         TextRect.center = ((display_width/2),(display_height/2))
         gameDisplay.blit(TextSurf, TextRect)
         
+        #button("Quit",550,450,100,50,red,bright_red,sair_jogo)
         button("Quit",550,450,100,50,red,bright_red,sair_jogo)
-        button("Baile",150,550,100,50,green,bright_green,escolha_modo1)        
-        button("Aleatoria",450,550,100,50,green,bright_green,escolha_modo3)
+        button("Jogar",150,450,100,50,green,bright_green,Menu_musica)        
+        
         
         pygame.display.update()
         clock.tick(15)
 
-    if escolha == "Go":
-        loop_jogo2()
-    else:
-        sair_jogo2()
+    
         
 def unpause():
         global pause
@@ -169,10 +159,46 @@ def paused():
         pygame.display.update()
         clock.tick(15)
 
+def Menu_musica():
+    global Menu,escolha
+
+    escolha = ""
+    Menu = True    
+    
+    while Menu:
+        for event in pygame.event.get():
+            
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+              
+        gameDisplay.fill(white)
+
+        largeText = pygame.font.Font('freesansbold.ttf',80)
+        TextSurf, TextRect = text_objects("Escolha sua musica", largeText)
+        TextRect.center = ((display_width/2),(display_height/2))
+        gameDisplay.blit(TextSurf, TextRect)
+        
+#        button("GO!",150,450,100,50,green,bright_green,loop_jogo)
+        button("Voltar",450,450,100,50,red,bright_red,game_intro)
+        button("Baile",150,550,100,50,green,bright_green,escolha_modo1)        
+        button("Aleatoria",450,550,100,50,green,bright_green,escolha_modo3)
+        
+        
+        pygame.display.update()
+        clock.tick(15)
+
+    if escolha == "Go":
+        loop_jogo2()
+    elif escolha == "Sair":
+        sair_jogo2()
+
+
 def loop_jogo():
-    global intro, escolha
+    global intro, escolha,Menu
     escolha = "Go"
     intro = False
+    Menu = False
     
 def loop_jogo2():    
     ganhou = False
