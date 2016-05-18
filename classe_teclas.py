@@ -37,7 +37,7 @@ class GerenciadorImagens:
 #Definindo funções para verificar o acerto dos botões de cada coluna
 
 def process_key1(y1, score):
-    d1 = y1 - 550
+    d1 = y1 - 543
     if d1 < 0:
         d1 = -d1
     elif d1 < 5:
@@ -52,7 +52,7 @@ def process_key1(y1, score):
         print ("GOOD")
         score += 1
         print("SCORE: {0}".format(score))                   
-    elif d1 < 100:
+    elif d1 < 200:
         m.erro()
         print("MISSED")
     return score
@@ -73,7 +73,7 @@ def process_key2(y2, score):
         print ("GOOD")
         score += 1
         print("SCORE: {0}".format(score))                   
-    elif d2 < 100:
+    elif d2 < 200:
         m.erro()
         print("MISSED")
     return score
@@ -94,7 +94,7 @@ def process_key3(y3, score):
         print ("GOOD")
         score += 1
         print("SCORE: {0}".format(score))                   
-    elif d3 < 100:
+    elif d3 < 200:
         m.erro()
         print("MISSED")
     return score
@@ -115,7 +115,7 @@ def process_key4(y4, score):
         print ("GOOD")
         score += 1
         print("SCORE: {0}".format(score))                   
-    elif d4 < 100:
+    elif d4 < 200:
         m.erro()
         print("MISSED")
     return score
@@ -136,7 +136,7 @@ def process_key5(y5, score):
         print ("GOOD")
         score += 1
         print("SCORE: {0}".format(score))                   
-    elif d5 < 100:
+    elif d5 < 200:
         m.erro()
         print("MISSED")
     return score
