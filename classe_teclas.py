@@ -38,7 +38,9 @@ class GerenciadorImagens:
 
 def process_key1(y1, score):
     d1 = y1 - 550
-    if d1 < 5:
+    if d1 < 0:
+        d1 = -d1
+    elif d1 < 5:
         print('PERFECT')
         score +=3
         print("SCORE: {0}".format(score))
@@ -57,7 +59,9 @@ def process_key1(y1, score):
     
 def process_key2(y2, score):
     d2 = y2 - 550
-    if d2 < 5:
+    if d2 < 0:
+        d2 = -d2
+    elif d2 < 5:
         print('PERFECT')
         score +=3
         print("SCORE: {0}".format(score))
@@ -76,7 +80,9 @@ def process_key2(y2, score):
     
 def process_key3(y3, score):
     d3 = y3 - 550
-    if d3 < 5:
+    if d3 < 0:
+        d3 = -d3
+    elif d3 < 5:
         print('PERFECT')
         score +=3
         print("SCORE: {0}".format(score))
@@ -95,7 +101,9 @@ def process_key3(y3, score):
     
 def process_key4(y4, score):
     d4 = y4 - 550
-    if d4 < 5:
+    if d4 < 0:
+        d4 = -d4
+    elif d4 < 5:
         print('PERFECT')
         score +=3
         print("SCORE: {0}".format(score))
@@ -114,7 +122,9 @@ def process_key4(y4, score):
     
 def process_key5(y5, score):
     d5 = y5 - 550
-    if d5 < 5:
+    if d5 < 0:
+        d5 = -d5
+    elif d5 < 5:
         print('PERFECT')
         score +=3
         print("SCORE: {0}".format(score))
