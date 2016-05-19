@@ -74,6 +74,29 @@ def button(msg,x,y,w,h,ic,ac,action):
     textRect.center = ( (x+(w/2)), (y+(h/2)) )
     gameDisplay.blit(textSurf, textRect)
 
+def imagebutton(msg,x,y,w,h,imagem1,imagem2,action):
+    mouse = pygame.mouse.get_pos()
+    click = pygame.mouse.get_pressed()
+
+    if x+w > mouse[0] > x and y+h > mouse[1] > y:
+        Imgbotao = pygame.image.load(imagem1)
+        Imgbotao = pygame.transform.scale(Imgbotao, (w,h))
+        gameDisplay.blit(Imgbotao,(x , y))
+        
+        if click[0] == 1 and action != None:
+           action()      
+    else:
+       Img2botao = pygame.image.load(imagem2)
+       Img2botao = pygame.transform.scale(Img2botao, (w,h))
+       
+    smallText = pygame.font.Font("freesansbold.ttf",20)
+    textSurf, textRect = text_objects(msg, smallText)
+    textRect.center = ( (x+(w/2)), (y+(h/2)) )
+    gameDisplay.blit(textSurf, textRect)    
+    
+
+
+        
 def sair_jogo():
     global intro, escolha
     escolha = "Sair"
@@ -133,6 +156,7 @@ def game_intro():
         button("Quit",550,450,100,50,red,bright_red,sair_jogo)
         button("Baile",150,550,100,50,green,bright_green,escolha_modo1)        
         button("Aleatoria",450,550,100,50,green,bright_green,escolha_modo3)
+        imagebutton("Foooooi!",150,200,45,100,"tentativabotao.png","tentativabotao2.png",escolha_modo1)        
         
         pygame.display.update()
         clock.tick(15)
