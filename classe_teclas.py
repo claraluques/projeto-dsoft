@@ -50,10 +50,12 @@ def process_key(y, score):
     elif d < 15:
         print ("VERY GOOD")
         score += 2
+        status = "VERY GOOD"
         print("SCORE: {0}".format(score))
     elif d < 25:
         print ("GOOD")
         score += 1
+        status = "GOOD"
         print("SCORE: {0}".format(score))                   
     elif d < 200:
         m.erro()

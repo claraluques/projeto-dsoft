@@ -50,6 +50,13 @@ modo = -1
 
 PerfectImg = pygame.image.load('PERFECT.png')
 PerfectImg = pygame.transform.scale(PerfectImg, (500,500))
+
+VerygoodImg = pygame.image.load('VERY.GOOD.png')
+VerygoodImg = pygame.transform.scale(VerygoodImg, (500,500))
+
+GoodImg = pygame.image.load('GOOD.png')
+GoodImg = pygame.transform.scale(GoodImg, (500,500))
+
    
 def bot(x,y,Img):
     botImg = pygame.image.load(Img)
@@ -271,6 +278,8 @@ def loop_jogo2():
     x = 190
     
     count_perfect = -1
+    count_verygood = -1
+    count_good = -1
 
     y_change = 5
     
@@ -390,14 +399,34 @@ def loop_jogo2():
         
         if status == "PERFECT":
             count_perfect = 0
+        
+        if status == "VERY GOOD":
+            count_verygood = 0
             
+        if status == "GOOD":
+            count_good = 0
+        
         if count_perfect >= 0:
             gameDisplay.blit(PerfectImg,(550,100))
             count_perfect += 1
-            if count_perfect > 50:
+            if count_perfect > 20:
                 print("parei")
                 count_perfect = -1
-                
+        
+        if count_verygood >= 0:
+                    gameDisplay.blit(VerygoodImg,(480,150))
+                    count_verygood += 1
+                    if count_verygood > 20:
+                        print("parei")
+                        count_verygood = -1
+        if count_good >= 0:
+                    gameDisplay.blit(GoodImg,(450,175))
+                    count_good += 1
+                    if count_good > 20:
+                        print("parei")
+                        count_good = -1
+
+        
         pygame.display.update()
         clock.tick(FPS)
         frames += 1
