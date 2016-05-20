@@ -94,6 +94,49 @@ def musica2():
             
     return y1, y2, y3, y4, y5
     
+    
+def musica3():
+    pygame.mixer.music.load('House.mp3')
+    pygame.mixer.music.play(0)
+    pygame.mixer.music.set_volume(1)
+
+    oimusica = open('house_of_gold.txt', 'r')
+    musicatxt = oimusica.readlines()
+    oimusica.close()
+    musicastr = list(musicatxt[0])
+    musica = []
+    for i in range (len(musicastr)):
+        musica.append(int(musicastr[i]))
+    y1=[]
+    y2=[]
+    y3=[]
+    y4=[]
+    y5=[]
+    for i in range (len(musica)):
+        if musica[i] == 0:
+            y1.append(-100*i)
+        elif musica[i] == 1:
+            y2.append(-100*i)
+        elif musica[i] == 2:
+            y3.append(-100*i)
+        elif musica[i] == 3:
+            y4.append(-100*i)
+        elif musica[i] == 4:
+            y5.append(-100*i)
+        elif musica[i] == 5:
+            y1.append(-100*i)
+            y3.append(-100*i)
+        elif musica[i] == 6:
+            y2.append(-100*i)
+            y4.append(-100*i)
+        elif musica[i] == 7:
+            y4.append(-100*i)
+            y3.append(-100*i)
+            y5.append(-100*i)
+        elif musica[i] == 9:
+            y1.append(-100*i)
+            y2.append(-100*i)
+    
 def musicaale():
     nbolinhas = 5
     y1=[]
