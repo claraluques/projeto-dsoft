@@ -142,8 +142,7 @@ def game_intro():
         TextRect.center = ((display_width/2),(display_height/2))
         gameDisplay.blit(TextSurf, TextRect)
         
-        #button("Quit",550,450,100,50,red,bright_red,sair_jogo)
-        button("Quit",550,450,100,50,red,bright_red,sair_jogo)
+        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)
         button("Jogar",150,450,100,50,green,bright_green,Menu_musica)        
         
         
@@ -199,10 +198,10 @@ def Menu_musica():
         TextRect.center = ((display_width/2),(display_height/2))
         gameDisplay.blit(TextSurf, TextRect)
         
-#        button("GO!",150,450,100,50,green,bright_green,loop_jogo)
-        button("Voltar",450,450,100,50,red,bright_red,game_intro)
+
+        button("Voltar",700,0,100,50,red,bright_red,game_intro)
         button("Baile",150,550,100,50,green,bright_green,escolha_modo1)        
-        button("Aleatoria",450,550,100,50,green,bright_green,escolha_modo3)
+        button("Cliffs",450,550,100,50,green,bright_green,escolha_modo3)
         
         
         pygame.display.update()
@@ -230,7 +229,9 @@ def loop_jogo2():
     listay4 = musica[3]
     listay5 = musica[4]
         
-    x = (190)
+    x = 190
+    
+    count_perfect = -1
 
     y_change = 5
     
@@ -298,7 +299,7 @@ def loop_jogo2():
             listay3 = musica[2]
             listay4 = musica[3]
             listay5 = musica[4]
-     
+        status = None
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 crashed = True                
@@ -307,27 +308,27 @@ def loop_jogo2():
                 if event.key == pygame.K_q:
                     for i in range (len(listay1)):
                         y1 = listay1[i]
-                        score = t.process_key1(y1, score)
+                        score,status = t.process_key1(y1, score)
                             
                 elif event.key == pygame.K_w:
                     for i in range (len(listay2)):
                         y2 = listay2[i]
-                        score = t.process_key2(y2, score)
+                        score,status = t.process_key2(y2, score)
                         
                 elif event.key == pygame.K_e:
                     for i in range (len(listay3)):
                         y3 = listay3[i]
-                        score = t.process_key3(y3, score)
+                        score,status = t.process_key3(y3, score)
                         
                 elif event.key == pygame.K_r:
                     for i in range (len(listay4)):
                         y4 = listay4[i]
-                        score = t.process_key4(y4, score)
+                        score,status = t.process_key4(y4, score)
                                             
                 elif event.key == pygame.K_t:
                     for i in range (len(listay5)):
                         y5 = listay5[i]
-                        score = t.process_key5(y5, score)
+                        score,status = t.process_key5(y5, score)
                         
                 elif event.key == pygame.K_ESCAPE:
                     pause = True
@@ -342,6 +343,14 @@ def loop_jogo2():
         if ganhou == True:
             crashed = True
         
+        if status == "PERFECT":
+            count_perfect = 0
+            
+        if count_perfect >= 0:
+            print("funcionou")
+            count_perfect += 1
+            if count_perfect > 100:
+                count_perfect = -1
         pygame.display.update()
         clock.tick(60)
         frames += 1
