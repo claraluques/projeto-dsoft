@@ -1,5 +1,5 @@
-import os
-os.environ['SDL_VIDEODRIVER'] = 'windib'
+#import os
+#os.environ['SDL_VIDEODRIVER'] = 'windib'
 import pygame
 import classe_musicas as m
 import classe_teclas as t
@@ -32,9 +32,9 @@ pygame.display.set_icon(gameIcon)
 clock = pygame.time.Clock()
 crashed = False
 
-movie = pygame.movie.Movie('fogoqueimando.mpeg')
-screen = pygame.display.set_mode(movie.get_size())
-movie_screen = pygame.Surface(movie.get_size()).convert()
+#movie = pygame.movie.Movie('fogoqueimando.mpeg')
+#screen = pygame.display.set_mode(movie.get_size())
+#movie_screen = pygame.Surface(movie.get_size()).convert()
 
 
 
@@ -131,8 +131,8 @@ def game_intro():
     global intro, Menu, FPS, movie, movie_screen, screen
 
     intro = True
-    movie.set_display(movie_screen)
-    movie.play()
+#    movie.set_display(movie_screen)
+#    movie.play()
     
     
     pygame.mixer.music.load('musicaintro.mp3')
@@ -143,25 +143,27 @@ def game_intro():
         for event in pygame.event.get():
             
             if event.type == pygame.QUIT:
-                movie.stop()
-                pygame.quit()
+#                movie.stop()
+#                pygame.quit()
                 quit()
 
         
 
 
         
-        screen.blit(movie_screen,(0,0))
-#        gameDisplay.fill(white)
+#        screen.blit(movie_screen,(0,0))
+        gameDisplay.fill(white)
 #        gameDisplay.blit(bg, (0, 0))
         largeText = pygame.font.Font('freesansbold.ttf',100)
+
         TextSurf, TextRect = text_objects("Guitar Student", largeText)
         TextRect.center = ((display_width/2),(display_height/2))
         gameDisplay.blit(TextSurf, TextRect)
         
         #button("Quit",550,450,100,50,red,bright_red,sair_jogo)
-        button("Quit",550,450,100,50,red,bright_red,sair_jogo)
-        imagebutton(150,450,200,100,'jogar1.png','jogar2.png',Menu_musica)
+#        button("Quit",550,450,100,50,red,bright_red,sair_jogo)
+        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo)
+        imagebutton(100,450,200,100,'jogar2.png','jogar1.png',Menu_musica)
 #        button("Jogar",150,450,100,50,green,bright_green,Menu_musica)        
         
         
@@ -193,7 +195,9 @@ def paused():
         pygame.mixer.music.pause()        
         
         button("Continuar",150,450,100,50,green,bright_green,unpause)
-        button("Menu",350,450,100,50,blue,bright_blue,game_intro)
+#        button("Menu",350,450,100,50,blue,bright_blue,game_intro)
+        imagebutton(350,450,200,100,'menu1.png','menu2.png', game_intro)
+
         button("Quit",550,450,100,50,red,bright_red,sair_jogo2)        
         
         pygame.display.update()
@@ -220,7 +224,8 @@ def Menu_musica():
         gameDisplay.blit(TextSurf, TextRect)
         
 #        button("GO!",150,450,100,50,green,bright_green,loop_jogo)
-        button("Voltar",450,450,100,50,red,bright_red,game_intro)
+#        button("Voltar",450,450,100,50,red,bright_red,game_intro)
+        imagebutton(display_width-200,0,200,100,'voltar1.png','voltar2.png', game_intro)
         button("Baile",150,550,100,50,green,bright_green,escolha_modo1)        
         button("Aleatoria",450,550,100,50,green,bright_green,escolha_modo3)
         
