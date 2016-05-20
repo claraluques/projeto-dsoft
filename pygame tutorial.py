@@ -163,7 +163,7 @@ def game_intro():
 
         #button("Quit",550,450,100,50,red,bright_red,sair_jogo)
 #        button("Quit",550,450,100,50,red,bright_red,sair_jogo)
-        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo)
+        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
         imagebutton(100,450,200,100,'jogar2.png','jogar1.png',Menu_musica)
 #        button("Jogar",150,450,100,50,green,bright_green,Menu_musica)        
         
@@ -202,7 +202,7 @@ def paused():
         imagebutton(350,450,200,100,'menu1.png','menu2.png', game_intro)
 
 #        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)        
-        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo)
+        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
         
         pygame.display.update()
         clock.tick(15)
@@ -343,26 +343,36 @@ def loop_jogo2():
                     for i in range (len(listay1)):
                         y1 = listay1[i]
                         score,status = t.process_key1(y1, score)
+                        if status != None:
+                            break
                             
                 elif event.key == pygame.K_w:
                     for i in range (len(listay2)):
                         y2 = listay2[i]
                         score,status = t.process_key2(y2, score)
+                        if status != None:
+                            break
                         
                 elif event.key == pygame.K_e:
                     for i in range (len(listay3)):
                         y3 = listay3[i]
                         score,status = t.process_key3(y3, score)
+                        if status != None:
+                            break
                         
                 elif event.key == pygame.K_r:
                     for i in range (len(listay4)):
                         y4 = listay4[i]
                         score,status = t.process_key4(y4, score)
+                        if status != None:
+                            break
                                             
                 elif event.key == pygame.K_t:
                     for i in range (len(listay5)):
                         y5 = listay5[i]
                         score,status = t.process_key5(y5, score)
+                        if status != None:
+                            break
                         
                 elif event.key == pygame.K_ESCAPE:
                     pause = True
@@ -371,7 +381,7 @@ def loop_jogo2():
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_DOWN or event.key == pygame.K_UP:
                     y_change = 0
-    
+        
         if score == 100:
             ganhou = True
         if ganhou == True:
@@ -384,7 +394,9 @@ def loop_jogo2():
             print("funcionou")
             count_perfect += 1
             if count_perfect > 100:
+                print("parei")
                 count_perfect = -1
+                
         pygame.display.update()
         clock.tick(FPS)
         frames += 1

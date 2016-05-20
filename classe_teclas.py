@@ -42,7 +42,7 @@ def process_key(y, score):
         d = -d
         
     status = None
-    if d < 10:
+    if d < 100:
         print('PERFECT')
         score +=3
         status = "PERFECT"
