@@ -1,5 +1,3 @@
-#import os
-#os.environ['SDL_VIDEODRIVER'] = 'windib'
 import pygame
 import classe_musicas as m
 import classe_teclas as t
@@ -30,6 +28,7 @@ gameIcon = pygame.image.load('icone.png') #mudar icone
 pygame.display.set_icon(gameIcon)
 
 clock = pygame.time.Clock()
+
 crashed = False
 
 #movie = pygame.movie.Movie('fogoqueimando.mpeg')
@@ -45,12 +44,15 @@ bg = pygame.image.load("fundofogo.png")
 guitarraImg = pygame.image.load('guitarra.png')
 guitarraImg = pygame.transform.scale(guitarraImg, (800,650))
 
+escolhaImg = pygame.image.load('escolhamusica1.png')
+escolhaImg = pygame.transform.scale(escolhaImg, (800,650))
+
+#PerfectImg = pygame.image.load('Perfect.sprite.png')
+#PerfectImg = pygame.transform.scale(PerfectImg, (100,100))
+
 pause = False
 
 modo = -1 
-
-PerfectImg = pygame.image.load('Perfect.sprite.png')
-PerfectImg = pygame.transform.scale(PerfectImg, (100,100))
    
 def bot(x,y,Img):
     botImg = pygame.image.load(Img)
@@ -146,10 +148,6 @@ def game_intro():
 #                movie.stop()
 #                pygame.quit()
                 quit()
-
-        
-
-
         
 #        screen.blit(movie_screen,(0,0))
         gameDisplay.fill(white)
@@ -194,11 +192,14 @@ def paused():
         gameDisplay.blit(TextSurf, TextRect)
         pygame.mixer.music.pause()        
         
-        button("Continuar",150,450,100,50,green,bright_green,unpause)
+#        button("Continuar",150,450,100,50,green,bright_green,unpause)
+        imagebutton(80,424,300,150,'continuar1.png', 'continuar2.png', unpause)
 #        button("Menu",350,450,100,50,blue,bright_blue,game_intro)
-        imagebutton(350,450,200,100,'menu1.png','menu2.png', game_intro)
+        imagebutton(350,450,200,100,'menu2.png','menu1.png', game_intro)
 
-        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)        
+#        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)
+        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo)
+
         
         pygame.display.update()
         clock.tick(15)
@@ -216,12 +217,13 @@ def Menu_musica():
                 pygame.quit()
                 quit()
               
-        gameDisplay.fill(white)
+#        gameDisplay.fill(white)
 
-        largeText = pygame.font.Font('freesansbold.ttf',80)
-        TextSurf, TextRect = text_objects("Escolha sua musica", largeText)
-        TextRect.center = ((display_width/2),(display_height/2))
-        gameDisplay.blit(TextSurf, TextRect)
+#        largeText = pygame.font.Font('freesansbold.ttf',80)
+#        TextSurf, TextRect = text_objects("Escolha sua musica", largeText)
+#        TextRect.center = ((display_width/2),(display_height/2))
+#        gameDisplay.blit(TextSurf, TextRect)
+        gameDisplay.blit(escolhaImg, (0, 0))
         
 #        button("GO!",150,450,100,50,green,bright_green,loop_jogo)
 #        button("Voltar",450,450,100,50,red,bright_red,game_intro)

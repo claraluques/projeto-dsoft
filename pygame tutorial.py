@@ -1,5 +1,3 @@
-#import os
-#os.environ['SDL_VIDEODRIVER'] = 'windib'
 import pygame
 import classe_musicas as m
 import classe_teclas as t
@@ -36,14 +34,15 @@ crashed = False
 #screen = pygame.display.set_mode(movie.get_size())
 #movie_screen = pygame.Surface(movie.get_size()).convert()
 
-
-
 gerente_imagens = t.GerenciadorImagens()
 
 bg = pygame.image.load("fundofogo.png")
 
 guitarraImg = pygame.image.load('guitarra.png')
 guitarraImg = pygame.transform.scale(guitarraImg, (800,650))
+
+escolhaImg = pygame.image.load('escolhamusica1.png')
+escolhaImg = pygame.transform.scale(escolhaImg, (800,650))
 
 pause = False
 
@@ -155,21 +154,18 @@ def game_intro():
         gameDisplay.fill(white)
 #        gameDisplay.blit(bg, (0, 0))
         largeText = pygame.font.Font('freesansbold.ttf',100)
-
         TextSurf, TextRect = text_objects("Guitar Student", largeText)
         TextRect.center = ((display_width/2),(display_height/2))
         gameDisplay.blit(TextSurf, TextRect)
         
-<<<<<<< HEAD
-        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)
-        button("Jogar",150,450,100,50,green,bright_green,Menu_musica)        
-=======
+#        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)
+#        button("Jogar",150,450,100,50,green,bright_green,Menu_musica)        
+
         #button("Quit",550,450,100,50,red,bright_red,sair_jogo)
 #        button("Quit",550,450,100,50,red,bright_red,sair_jogo)
         imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo)
         imagebutton(100,450,200,100,'jogar2.png','jogar1.png',Menu_musica)
 #        button("Jogar",150,450,100,50,green,bright_green,Menu_musica)        
->>>>>>> 2e04245d7183683dfe44cfd2445a4a28ca80ba6c
         
         
         pygame.display.update()
@@ -199,21 +195,25 @@ def paused():
         gameDisplay.blit(TextSurf, TextRect)
         pygame.mixer.music.pause()        
         
-        button("Continuar",150,450,100,50,green,bright_green,unpause)
+#        button("Continuar",150,450,100,50,green,bright_green,unpause)
+        imagebutton(80,424,300,150,'continuar1.png', 'continuar2.png', unpause)
+
 #        button("Menu",350,450,100,50,blue,bright_blue,game_intro)
         imagebutton(350,450,200,100,'menu1.png','menu2.png', game_intro)
 
-        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)        
+#        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)        
+        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo)
         
         pygame.display.update()
         clock.tick(15)
 
 def Menu_musica():
-    global Menu,escolha
+    global Menu,escolha, intro
 
     escolha = ""
     Menu = True    
-    
+    intro = False
+
     while Menu:
         for event in pygame.event.get():
             
@@ -221,21 +221,19 @@ def Menu_musica():
                 pygame.quit()
                 quit()
               
-        gameDisplay.fill(white)
+#        gameDisplay.fill(white)
 
-        largeText = pygame.font.Font('freesansbold.ttf',80)
-        TextSurf, TextRect = text_objects("Escolha sua musica", largeText)
-        TextRect.center = ((display_width/2),(display_height/2))
-        gameDisplay.blit(TextSurf, TextRect)
+#        largeText = pygame.font.Font('freesansbold.ttf',80)
+#        TextSurf, TextRect = text_objects("Escolha sua musica", largeText)
+#        TextRect.center = ((display_width/2),(display_height/2))
+#        gameDisplay.blit(TextSurf, TextRect)
         
-<<<<<<< HEAD
+        gameDisplay.blit(escolhaImg, (0, 0))
 
-        button("Voltar",700,0,100,50,red,bright_red,game_intro)
-=======
+#        button("Voltar",700,0,100,50,red,bright_red,game_intro)
 #        button("GO!",150,450,100,50,green,bright_green,loop_jogo)
 #        button("Voltar",450,450,100,50,red,bright_red,game_intro)
         imagebutton(display_width-200,0,200,100,'voltar1.png','voltar2.png', game_intro)
->>>>>>> 2e04245d7183683dfe44cfd2445a4a28ca80ba6c
         button("Baile",150,550,100,50,green,bright_green,escolha_modo1)        
         button("Cliffs",450,550,100,50,green,bright_green,escolha_modo3)
         
