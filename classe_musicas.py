@@ -160,8 +160,10 @@ def musicaale():
     
 def musica(modo):
     if modo == 0:
-        return musica1()
-    elif modo == 1:
         return musicaale()
-    else:
+    elif modo == 1:
+        return musica1()
+    elif modo == 2:
         return musica2()
+    elif modo == 3:
+        return musica3()

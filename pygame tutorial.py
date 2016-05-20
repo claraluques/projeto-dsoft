@@ -111,19 +111,24 @@ def sair_jogo2():
     pygame.quit()
     quit()
     
-def escolha_modo1():
-    global modo
-    modo = 0
-    loop_jogo()
-
-def escolha_modo2():
+def escolha_modo1(): #baile
     global modo
     modo = 1
     loop_jogo()
-    
-def escolha_modo3():
+
+def escolha_modo2(): #cliffs
     global modo
     modo = 2
+    loop_jogo()
+    
+def escolha_modo3(): #house of gold
+    global modo
+    modo = 3
+    loop_jogo()
+    
+def escolha_modo0(): #aleatorio
+    global modo
+    modo = 0
     loop_jogo()
     
 def game_intro():
@@ -235,8 +240,8 @@ def Menu_musica():
 #        button("Voltar",450,450,100,50,red,bright_red,game_intro)
         imagebutton(display_width-200,0,200,100,'voltar1.png','voltar2.png', game_intro)
         button("Baile",150,550,100,50,green,bright_green,escolha_modo1)        
-        button("Cliffs",450,550,100,50,green,bright_green,escolha_modo3)
-        
+        button("Cliffs of Dover",450,550,100,50,green,bright_green,escolha_modo2)
+        button("Gouse of Gold",450,350,100,50,green,bright_green,escolha_modo3)
         
         pygame.display.update()
         clock.tick(15)
