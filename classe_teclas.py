@@ -42,16 +42,16 @@ def process_key(y, score):
         d = -d
         
     status = None
-    if d < 100:
+    if d < 5:
         print('PERFECT')
         score +=3
         status = "PERFECT"
         print("SCORE: {0}".format(score))
-    elif d < 20:
+    elif d < 15:
         print ("VERY GOOD")
         score += 2
         print("SCORE: {0}".format(score))
-    elif d < 30:
+    elif d < 25:
         print ("GOOD")
         score += 1
         print("SCORE: {0}".format(score))                   

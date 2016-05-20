@@ -48,8 +48,8 @@ pause = False
 
 modo = -1 
 
-PerfectImg = pygame.image.load('Perfect.sprite.png')
-PerfectImg = pygame.transform.scale(PerfectImg, (100,100))
+PerfectImg = pygame.image.load('PERFECT.png')
+PerfectImg = pygame.transform.scale(PerfectImg, (500,500))
    
 def bot(x,y,Img):
     botImg = pygame.image.load(Img)
@@ -387,18 +387,14 @@ def loop_jogo2():
                 if event.key == pygame.K_DOWN or event.key == pygame.K_UP:
                     y_change = 0
         
-        if score == 100:
-            ganhou = True
-        if ganhou == True:
-            crashed = True
         
         if status == "PERFECT":
             count_perfect = 0
             
         if count_perfect >= 0:
-            print("funcionou")
+            gameDisplay.blit(PerfectImg,(550,100))
             count_perfect += 1
-            if count_perfect > 100:
+            if count_perfect > 50:
                 print("parei")
                 count_perfect = -1
                 
