@@ -245,10 +245,10 @@ def Menu_musica():
 #        button("Voltar",700,0,100,50,red,bright_red,game_intro)
 #        button("GO!",150,450,100,50,green,bright_green,loop_jogo)
 #        button("Voltar",450,450,100,50,red,bright_red,game_intro)
-        imagebutton(display_width-200,0,200,100,'voltar1.png','voltar2.png', game_intro)
+        imagebutton(display_width-200,50,200,100,'voltar1.png','voltar2.png', game_intro)
         button("Baile",150,550,100,50,green,bright_green,escolha_modo1)        
-        button("Cliffs of Dover",450,550,100,50,green,bright_green,escolha_modo2)
-        button("Gouse of Gold",450,350,100,50,green,bright_green,escolha_modo3)
+        button("Cliffs of Dover",450,550,150,50,green,bright_green,escolha_modo2)
+        button("House of Gold",450,350,150,50,green,bright_green,escolha_modo3)
         
         pygame.display.update()
         clock.tick(15)
@@ -419,6 +419,7 @@ def loop_jogo2():
                     if count_verygood > 20:
                         print("parei")
                         count_verygood = -1
+                        
         if count_good >= 0:
                     gameDisplay.blit(GoodImg,(450,175))
                     count_good += 1
