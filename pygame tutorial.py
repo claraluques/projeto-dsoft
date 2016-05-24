@@ -24,7 +24,7 @@ FPS = 60
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption(('Guitar Student!'))
 
-gameIcon = pygame.image.load('icone.png') #mudar icone
+gameIcon = pygame.image.load('guitar_icon.png') #mudar icone
 pygame.display.set_icon(gameIcon)
 
 clock = pygame.time.Clock()
@@ -266,9 +266,8 @@ def loop_jogo():
     Menu = False
     
 def loop_jogo2():    
-    ganhou = False
 
-    musica = m.musica(modo)
+    musica, estados = m.musica(modo)
     listay1 = musica[0]
     listay2 = musica[1]
     listay3 = musica[2]
@@ -339,6 +338,8 @@ def loop_jogo2():
             listay5[i] += y_change
             if y5 < miny:
                 miny = y5
+               
+            
         
         if miny >= display_height:
             musica = m.musica(modo)
@@ -347,7 +348,7 @@ def loop_jogo2():
             listay3 = musica[2]
             listay4 = musica[3]
             listay5 = musica[4]
-        status = None
+       
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 crashed = True                
@@ -358,6 +359,15 @@ def loop_jogo2():
                         y1 = listay1[i]
                         score,status = t.process_key1(y1, score)
                         if status != None:
+                            print(i)
+                            estados[0][i] = 1
+                        print(status,estados[0][i])
+                        if estados[0][i] != 0:
+                            gerente_imagens.tecla1fogo(x,y1,gameDisplay)
+                            print("fogo")
+                            break
+                        else:
+                            gerente_imagens.tecla1(x,y1,gameDisplay)
                             break
                             
                 elif event.key == pygame.K_w:
@@ -365,6 +375,7 @@ def loop_jogo2():
                         y2 = listay2[i]
                         score,status = t.process_key2(y2, score)
                         if status != None:
+                            gerente_imagens.tecla2fogo(x,y2,gameDisplay)
                             break
                         
                 elif event.key == pygame.K_e:
@@ -372,6 +383,7 @@ def loop_jogo2():
                         y3 = listay3[i]
                         score,status = t.process_key3(y3, score)
                         if status != None:
+                            gerente_imagens.tecla3fogo(x,y3,gameDisplay)
                             break
                         
                 elif event.key == pygame.K_r:
@@ -379,6 +391,7 @@ def loop_jogo2():
                         y4 = listay4[i]
                         score,status = t.process_key4(y4, score)
                         if status != None:
+                            gerente_imagens.tecla4fogo(x,y4,gameDisplay)
                             break
                                             
                 elif event.key == pygame.K_t:
@@ -386,6 +399,7 @@ def loop_jogo2():
                         y5 = listay5[i]
                         score,status = t.process_key5(y5, score)
                         if status != None:
+                            gerente_imagens.tecla5fogo(x,y5,gameDisplay)
                             break
                         
                 elif event.key == pygame.K_ESCAPE:
@@ -407,6 +421,7 @@ def loop_jogo2():
             count_good = 0
         
         if count_perfect >= 0:
+            y1 = (900,900   )
             gameDisplay.blit(PerfectImg,(550,100))
             count_perfect += 1
             if count_perfect > 20:

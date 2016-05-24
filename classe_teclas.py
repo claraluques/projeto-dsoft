@@ -18,6 +18,21 @@ class GerenciadorImagens:
         self.tecla5Img = pygame.image.load('botao5.png')
         self.tecla5Img = pygame.transform.scale(self.tecla5Img, (100,100))
         
+        self.tecla1fogoImg = pygame.image.load('bolinha.flamejante1.png')
+        self.tecla1fogoImg = pygame.transform.scale(self.tecla1fogoImg, (100,100))
+        
+        self.tecla2fogoImg = pygame.image.load('bolinha.flamejante2.png')
+        self.tecla2fogoImg = pygame.transform.scale(self.tecla2fogoImg, (100,100))
+        
+        self.tecla3fogoImg = pygame.image.load('bolinha.flamejante3.png')
+        self.tecla3fogoImg = pygame.transform.scale(self.tecla3fogoImg, (100,100))
+
+        self.tecla4fogoImg = pygame.image.load('bolinha.flamejante4.png')
+        self.tecla4fogoImg = pygame.transform.scale(self.tecla4fogoImg, (100,100))
+        
+        self.tecla5fogoImg = pygame.image.load('bolinha.flamejante5.png')
+        self.tecla5fogoImg = pygame.transform.scale(self.tecla5fogoImg, (100,100))
+        
     def tecla1(self, x, y1, gameDisplay):
         gameDisplay.blit(self.tecla1Img,(x,y1))
         
@@ -33,6 +48,20 @@ class GerenciadorImagens:
     def tecla5(self, x, y5, gameDisplay):
         gameDisplay.blit(self.tecla5Img,(x+316 , y5))
         
+    def tecla1fogo(self, x, y1, gameDisplay):
+        gameDisplay.blit(self.tecla1fogoImg,(x , y1))
+        
+    def tecla2fogo(self, x, y2, gameDisplay):
+        gameDisplay.blit(self.tecla2fogoImg,(x+79 , y2))
+
+    def tecla3fogo(self, x, y3, gameDisplay):
+        gameDisplay.blit(self.tecla3fogoImg,(x+158 , y3))
+
+    def tecla4fogo(self, x, y4, gameDisplay):
+        gameDisplay.blit(self.tecla4fogoImg,(x+236 , y4))
+        
+    def tecla5fogo(self, x, y5, gameDisplay):
+        gameDisplay.blit(self.tecla5fogoImg,(x+316 , y5))
         
 #Definindo funções para verificar o acerto dos botões de cada coluna
 
@@ -78,111 +107,3 @@ def process_key4(y4, score):
 def process_key5(y5, score):
     return process_key(y5, score)
     
-
-
-#def process_key1(y1, score):
-#    d1 = y1 - 550
-#    if d1 < 0:
-#        d1 = -d1
-#    if d1 < 20:
-#        print('PERFECT')
-#        score +=3
-#        print("SCORE: {0}".format(score))
-#    elif d1 < 30:
-#        print ("VERY GOOD")
-#        score += 2
-#        print("SCORE: {0}".format(score))
-#    elif d1 < 50:
-#        print ("GOOD")
-#        score += 1
-#        print("SCORE: {0}".format(score))                   
-#    elif d1 < 200:
-#        m.erro()
-#        print("MISSED")
-#    return score
-#    
-#def process_key2(y2, score):
-#    d2 = y2 - 550
-#    if d2 < 0:
-#        d2 = -d2
-#    if d2 < 10:
-#        print('PERFECT')
-#        score +=3
-#        print("SCORE: {0}".format(score))
-#    elif d2 < 20:
-#        print ("VERY GOOD")
-#        score += 2
-#        print("SCORE: {0}".format(score))
-#    elif d2 < 30:
-#        print ("GOOD")
-#        score += 1
-#        print("SCORE: {0}".format(score))                   
-#    elif d2 < 200:
-#        m.erro()
-#        print("MISSED")
-#    return score
-#    
-#def process_key3(y3, score):
-#    d3 = y3 - 550
-#    if d3 < 0:
-#        d3 = -d3
-#    status = None
-#    if d3 < 10:
-#        print('PERFECT')
-#        score +=3
-#        status = "PERFECT"
-#        print("SCORE: {0}".format(score))
-#    elif d3 < 20:
-#        print ("VERY GOOD")
-#        score += 2
-#        print("SCORE: {0}".format(score))
-#    elif d3 < 30:
-#        print ("GOOD")
-#        score += 1
-#        print("SCORE: {0}".format(score))                   
-#    elif d3 < 200:
-#        m.erro()
-#        print("MISSED")
-#    return score,status
-#    
-#def process_key4(y4, score):
-#    d4 = y4 - 550
-#    if d4 < 0:
-#        d4 = -d4
-#    if d4 < 10:
-#        print('PERFECT')
-#        score +=3
-#        print("SCORE: {0}".format(score))
-#    elif d4 < 20:
-#        print ("VERY GOOD")
-#        score += 2
-#        print("SCORE: {0}".format(score))
-#    elif d4 < 30:
-#        print ("GOOD")
-#        score += 1
-#        print("SCORE: {0}".format(score))                   
-#    elif d4 < 200:
-#        m.erro()
-#        print("MISSED")
-#    return score
-#    
-#def process_key5(y5, score):
-#    d5 = y5 - 550
-#    if d5 < 0:
-#        d5 = -d5
-#    if d5 < 10:
-#        print('PERFECT')
-#        score +=3
-#        print("SCORE: {0}".format(score))
-#    elif d5 < 20:
-#        print ("VERY GOOD")
-#        score += 2
-#        print("SCORE: {0}".format(score))
-#    elif d5 < 30:
-#        print ("GOOD")
-#        score += 1
-#        print("SCORE: {0}".format(score))                   
-#    elif d5 < 200:
-#        m.erro()
-#        print("MISSED")
-#    return score

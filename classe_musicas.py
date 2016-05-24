@@ -1,6 +1,7 @@
 import pygame
 import random
 
+
 def erro():
     sound = pygame.mixer.Sound("erro.ogg")
     sound.set_volume(2.0)
@@ -160,10 +161,15 @@ def musicaale():
     
 def musica(modo):
     if modo == 0:
-        return musicaale()
+        m = musicaale()
     elif modo == 1:
-        return musica1()
+        m = musica1()
     elif modo == 2:
-        return musica2()
+        m = musica2()
     elif modo == 3:
-        return musica3()
+        m = musica3()
+        
+    s = []
+    for bolinhas in m:
+        s.append([0]*len(bolinhas))
+    return m, s
