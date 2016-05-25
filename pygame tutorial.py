@@ -1,3 +1,11 @@
+#fazer tela tutorial
+#criar função terminar jogo
+#criar tela score final
+#creditos + gifs?
+#musicas
+#botoes musicas
+#TIRAR BAILE DA MUSICAS
+
 import pygame
 import classe_musicas as m
 import classe_teclas as t
@@ -121,6 +129,11 @@ def sair_jogo2():
     pygame.quit()
     quit()
     
+def escolha_modo0(): #aleatorio
+    global modo
+    modo = 0
+    loop_jogo()
+    
 def escolha_modo1(): #baile
     global modo
     modo = 1
@@ -136,10 +149,35 @@ def escolha_modo3(): #house of gold
     modo = 3
     loop_jogo()
     
-def escolha_modo0(): #aleatorio
-    global modo
-    modo = 0
-    loop_jogo()
+#def escolha_modo4(): 
+#    global modo
+#    modo = 4
+#    loop_jogo()
+#
+#def escolha_modo5(): 
+#    global modo
+#    modo = 5
+#    loop_jogo()
+#    
+#def escolha_modo6(): 
+#    global modo
+#    modo = 6
+#    loop_jogo()
+#    
+#def escolha_modo7(): 
+#    global modo
+#    modo = 7
+#    loop_jogo()
+#    
+#def escolha_modo8():
+#    global modo
+#    modo = 8
+#    loop_jogo()
+#    
+#def escolha_modo9():
+#    global modo
+#    modo = 9
+#    loop_jogo()
     
 def game_intro():
     global intro, Menu, FPS, movie, movie_screen, screen
