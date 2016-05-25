@@ -28,14 +28,11 @@ gameIcon = pygame.image.load('icone.png') #mudar icone
 pygame.display.set_icon(gameIcon)
 
 clock = pygame.time.Clock()
-
 crashed = False
 
 #movie = pygame.movie.Movie('fogoqueimando.mpeg')
 #screen = pygame.display.set_mode(movie.get_size())
 #movie_screen = pygame.Surface(movie.get_size()).convert()
-
-
 
 gerente_imagens = t.GerenciadorImagens()
 
@@ -47,12 +44,12 @@ guitarraImg = pygame.transform.scale(guitarraImg, (800,650))
 escolhaImg = pygame.image.load('escolhamusica1.png')
 escolhaImg = pygame.transform.scale(escolhaImg, (800,650))
 
-#PerfectImg = pygame.image.load('Perfect.sprite.png')
-#PerfectImg = pygame.transform.scale(PerfectImg, (100,100))
-
 pause = False
 
 modo = -1 
+
+PerfectImg = pygame.image.load('Perfect.sprite.png')
+PerfectImg = pygame.transform.scale(PerfectImg, (100,100))
    
 def bot(x,y,Img):
     botImg = pygame.image.load(Img)
@@ -148,16 +145,22 @@ def game_intro():
 #                movie.stop()
 #                pygame.quit()
                 quit()
+
+        
+
+
         
 #        screen.blit(movie_screen,(0,0))
         gameDisplay.fill(white)
 #        gameDisplay.blit(bg, (0, 0))
         largeText = pygame.font.Font('freesansbold.ttf',100)
-
         TextSurf, TextRect = text_objects("Guitar Student", largeText)
         TextRect.center = ((display_width/2),(display_height/2))
         gameDisplay.blit(TextSurf, TextRect)
         
+#        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)
+#        button("Jogar",150,450,100,50,green,bright_green,Menu_musica)        
+
         #button("Quit",550,450,100,50,red,bright_red,sair_jogo)
 #        button("Quit",550,450,100,50,red,bright_red,sair_jogo)
         imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo)
@@ -194,22 +197,23 @@ def paused():
         
 #        button("Continuar",150,450,100,50,green,bright_green,unpause)
         imagebutton(80,424,300,150,'continuar1.png', 'continuar2.png', unpause)
+
 #        button("Menu",350,450,100,50,blue,bright_blue,game_intro)
-        imagebutton(350,450,200,100,'menu2.png','menu1.png', game_intro)
+        imagebutton(350,450,200,100,'menu1.png','menu2.png', game_intro)
 
-#        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)
+#        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)        
         imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo)
-
         
         pygame.display.update()
         clock.tick(15)
 
 def Menu_musica():
-    global Menu,escolha
+    global Menu,escolha, intro
 
     escolha = ""
     Menu = True    
-    
+    intro = False
+
     while Menu:
         for event in pygame.event.get():
             
@@ -223,14 +227,17 @@ def Menu_musica():
 #        TextSurf, TextRect = text_objects("Escolha sua musica", largeText)
 #        TextRect.center = ((display_width/2),(display_height/2))
 #        gameDisplay.blit(TextSurf, TextRect)
-        gameDisplay.blit(escolhaImg, (0, 0))
         
+        gameDisplay.blit(escolhaImg, (0, 0))
+
+#        button("Voltar",700,0,100,50,red,bright_red,game_intro)
 #        button("GO!",150,450,100,50,green,bright_green,loop_jogo)
 #        button("Voltar",450,450,100,50,red,bright_red,game_intro)
         imagebutton(display_width-200,0,200,100,'voltar1.png','voltar2.png', game_intro)
         button("Baile",150,550,100,50,green,bright_green,escolha_modo1)        
-        button("Aleatoria",450,550,100,50,green,bright_green,escolha_modo3)
-        
+        button("Cliffs",450,550,100,50,green,bright_green,escolha_modo3)
+        imagebutton(200,75,150,80,'HoG1.png','HoG2.png', game_intro)
+
         
         pygame.display.update()
         clock.tick(15)
@@ -257,7 +264,9 @@ def loop_jogo2():
     listay4 = musica[3]
     listay5 = musica[4]
         
-    x = (190)
+    x = 190
+    
+    count_perfect = -1
 
     y_change = 5
     
@@ -325,7 +334,7 @@ def loop_jogo2():
             listay3 = musica[2]
             listay4 = musica[3]
             listay5 = musica[4]
-     
+        status = None
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 crashed = True                
@@ -334,27 +343,27 @@ def loop_jogo2():
                 if event.key == pygame.K_q:
                     for i in range (len(listay1)):
                         y1 = listay1[i]
-                        score = t.process_key1(y1, score)
+                        score,status = t.process_key1(y1, score)
                             
                 elif event.key == pygame.K_w:
                     for i in range (len(listay2)):
                         y2 = listay2[i]
-                        score = t.process_key2(y2, score)
+                        score,status = t.process_key2(y2, score)
                         
                 elif event.key == pygame.K_e:
                     for i in range (len(listay3)):
                         y3 = listay3[i]
-                        score = t.process_key3(y3, score)
+                        score,status = t.process_key3(y3, score)
                         
                 elif event.key == pygame.K_r:
                     for i in range (len(listay4)):
                         y4 = listay4[i]
-                        score = t.process_key4(y4, score)
+                        score,status = t.process_key4(y4, score)
                                             
                 elif event.key == pygame.K_t:
                     for i in range (len(listay5)):
                         y5 = listay5[i]
-                        score = t.process_key5(y5, score)
+                        score,status = t.process_key5(y5, score)
                         
                 elif event.key == pygame.K_ESCAPE:
                     pause = True
@@ -369,6 +378,14 @@ def loop_jogo2():
         if ganhou == True:
             crashed = True
         
+        if status == "PERFECT":
+            count_perfect = 0
+            
+        if count_perfect >= 0:
+            print("funcionou")
+            count_perfect += 1
+            if count_perfect > 100:
+                count_perfect = -1
         pygame.display.update()
         clock.tick(FPS)
         frames += 1

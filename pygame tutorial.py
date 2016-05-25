@@ -149,20 +149,20 @@ def escolha_modo3(): #house of gold
     modo = 3
     loop_jogo()
     
-#def escolha_modo4(): 
-#    global modo
-#    modo = 4
-#    loop_jogo()
-#
-#def escolha_modo5(): 
-#    global modo
-#    modo = 5
-#    loop_jogo()
-#    
-#def escolha_modo6(): 
-#    global modo
-#    modo = 6
-#    loop_jogo()
+def escolha_modo4(): #rolling in the deep
+    global modo
+    modo = 4
+    loop_jogo()
+
+def escolha_modo5(): #figure it out
+    global modo
+    modo = 5
+    loop_jogo()
+    
+def escolha_modo6(): #carry on my wayward son
+    global modo
+    modo = 6
+    loop_jogo()
 #    
 #def escolha_modo7(): 
 #    global modo
@@ -264,9 +264,16 @@ def Menu_musica():
     global Menu,escolha, intro
 
     escolha = ""
+    
     Menu = True    
     intro = False
-
+    
+    altbot = 90
+    largbot = 300
+    coluna1 = 50
+    coluna2 = 350
+    espaco = 25
+    
     while Menu:
         for event in pygame.event.get():
             
@@ -286,10 +293,12 @@ def Menu_musica():
 #        button("Voltar",700,0,100,50,red,bright_red,game_intro)
 #        button("GO!",150,450,100,50,green,bright_green,loop_jogo)
 #        button("Voltar",450,450,100,50,red,bright_red,game_intro)
-        imagebutton(display_width-200,50,200,100,'voltar1.png','voltar2.png', game_intro)
-        button("Baile",150,550,100,50,green,bright_green,escolha_modo1)        
-        button("Cliffs of Dover",450,550,150,50,green,bright_green,escolha_modo2)
-        button("House of Gold",450,350,150,50,green,bright_green,escolha_modo3)
+        imagebutton(display_width-170,10,180,90,'voltar1.png','voltar2.png', game_intro)
+        imagebutton(coluna1,100,largbot,altbot,'HoG1.png','HoG2.png', escolha_modo3)
+        imagebutton(coluna1,(100+altbot+espaco),largbot,altbot,'rollinginthedeep2.png', 'rollinginthedeep1.png', escolha_modo4)
+        imagebutton(coluna1,(100+2*(altbot+espaco)),largbot,altbot,'FiO1.png', 'FiO2.png', escolha_modo5)
+        imagebutton(coluna1,(100+3*(altbot+espaco)),largbot,altbot,'ComWS1.png', ' ComWS2.png', escolha_modo6)
+        imagebutton(coluna2,350,largbot,altbot,'CoD2.png', 'CoD1.png', escolha_modo2)
         
         pygame.display.update()
         clock.tick(15)
