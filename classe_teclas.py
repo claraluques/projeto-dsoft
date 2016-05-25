@@ -76,19 +76,20 @@ def process_key(y, score):
         score +=3
         status = "PERFECT"
         print("SCORE: {0}".format(score))
-    elif d < 15:
+    elif d < 25:
         print ("VERY GOOD")
         score += 2
         status = "VERY GOOD"
         print("SCORE: {0}".format(score))
-    elif d < 25:
+    elif d < 45:
         print ("GOOD")
         score += 1
         status = "GOOD"
         print("SCORE: {0}".format(score))                   
-    elif d < 200:
+    elif d < 70:
         m.erro()
         print("MISSED")
+        status = "MISSED"
     return score, status
 
 

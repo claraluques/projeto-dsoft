@@ -57,6 +57,9 @@ VerygoodImg = pygame.transform.scale(VerygoodImg, (500,500))
 GoodImg = pygame.image.load('GOOD.png')
 GoodImg = pygame.transform.scale(GoodImg, (500,500))
 
+MissedImg = pygame.image.load('MISSED.png')
+MissedImg = pygame.transform.scale(MissedImg, (500,500))
+
    
 def bot(x,y,Img):
     botImg = pygame.image.load(Img)
@@ -279,6 +282,7 @@ def loop_jogo2():
     count_perfect = -1
     count_verygood = -1
     count_good = -1
+    count_missed = -1
 
     y_change = 5
     
@@ -348,7 +352,7 @@ def loop_jogo2():
             listay3 = musica[2]
             listay4 = musica[3]
             listay5 = musica[4]
-       
+        status = None
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 crashed = True                
@@ -358,7 +362,7 @@ def loop_jogo2():
                     for i in range (len(listay1)):
                         y1 = listay1[i]
                         score,status = t.process_key1(y1, score)
-                        if status != None:
+                        if status != None and status != "MISSED":
                             print(i)
                             estados[0][i] = 1
                         print(status,estados[0][i])
@@ -420,6 +424,10 @@ def loop_jogo2():
         if status == "GOOD":
             count_good = 0
         
+        if status == "MISSED":
+            count_missed = 0
+        
+        
         if count_perfect >= 0:
             y1 = (900,900   )
             gameDisplay.blit(PerfectImg,(550,100))
@@ -441,6 +449,13 @@ def loop_jogo2():
                     if count_good > 20:
                         print("parei")
                         count_good = -1
+
+        if count_missed >= 0:            
+            gameDisplay.blit(MissedImg,(450,220))
+            count_missed += 1
+            if count_missed > 20:
+                print("parei")
+                count_missed = -1
 
         
         pygame.display.update()
