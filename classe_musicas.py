@@ -92,8 +92,9 @@ def musica2():
         elif musica[i] == 9:
             y1.append(-100*i)
             y2.append(-100*i)
-            
-    return y1, y2, y3, y4, y5
+    final = len(musica)
+    
+    return y1, y2, y3, y4, y5, final
     
     
 def musica3():
@@ -138,6 +139,10 @@ def musica3():
             y1.append(-100*i)
             y2.append(-100*i)
             
+    final = len(musica)
+    
+    return y1, y2, y3, y4, y5, final
+            
 #def musica4():
 #    pygame.mixer.music.load('.mp3')
 #    pygame.mixer.music.play(0)
@@ -180,6 +185,10 @@ def musica3():
 #            y1.append(-100*i)
 #            y2.append(-100*i)
 #
+#    final = len(musica)
+#    
+#    return y1, y2, y3, y4, y5, final
+            
 #def musica5():
 #    pygame.mixer.music.load('.mp3')
 #    pygame.mixer.music.play(0)
@@ -221,6 +230,9 @@ def musica3():
 #        elif musica[i] == 9:
 #            y1.append(-100*i)
 #            y2.append(-100*i)
+#    final = len(musica)
+#    
+#    return y1, y2, y3, y4, y5, final
 #
 #def musica6():
 #    pygame.mixer.music.load('.mp3')
@@ -263,6 +275,9 @@ def musica3():
 #        elif musica[i] == 9:
 #            y1.append(-100*i)
 #            y2.append(-100*i)
+#    final = len(musica)
+#    
+#    return y1, y2, y3, y4, y5, final
 #            
 #def musica7():
 #    pygame.mixer.music.load('.mp3')
@@ -305,6 +320,9 @@ def musica3():
 #        elif musica[i] == 9:
 #            y1.append(-100*i)
 #            y2.append(-100*i)
+#    final = len(musica)
+#    
+#    return y1, y2, y3, y4, y5, final
 #
 #def musica8():
 #    pygame.mixer.music.load('.mp3')
@@ -347,6 +365,9 @@ def musica3():
 #        elif musica[i] == 9:
 #            y1.append(-100*i)
 #            y2.append(-100*i)
+#    final = len(musica)
+#    
+#    return y1, y2, y3, y4, y5, final
 #
 #def musica9():
 #    pygame.mixer.music.load('.mp3')
@@ -389,6 +410,9 @@ def musica3():
 #        elif musica[i] == 9:
 #            y1.append(-100*i)
 #            y2.append(-100*i)
+#    final = len(musica)
+#    
+#    return y1, y2, y3, y4, y5, final      
 
 
 def musicaale():
@@ -423,7 +447,10 @@ def musicaale():
         elif c == 9:
             y1.append(-100*i)
             y2.append(-100*i)
-    return y1, y2, y3, y4, y5
+            
+    final = len(musica)
+    
+    return y1, y2, y3, y4, y5, final
     
 def musica(modo):
     if modo == 0:
@@ -451,3 +478,12 @@ def musica(modo):
     for bolinhas in m:
         s.append([0]*len(bolinhas))
     return m, s
+    
+    
+def terminar_jogo(musica):
+    terminar = musica[5]
+    print (terminar)
+    
+    
+    
+    
