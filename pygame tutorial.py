@@ -260,6 +260,91 @@ def paused():
         pygame.display.update()
         clock.tick(15)
 
+def tela_final_muito_bom():
+    while tela_final_muito_bom:
+        for event in pygame.event.get():
+            
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+                
+                
+      
+        gameDisplay.fill(white)
+        largeText = pygame.font.Font('freesansbold.ttf',100)
+        TextSurf, TextRect = text_objects("YOU ROCK", largeText)
+        TextRect.center = ((display_width/2),(display_height/2))
+        gameDisplay.blit(TextSurf, TextRect)
+        pygame.mixer.music.pause()        
+        
+
+#        button("Menu",350,450,100,50,blue,bright_blue,game_intro)
+        imagebutton(350,450,200,100,'menu1.png','menu2.png', game_intro)
+
+#        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)        
+        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
+        
+        pygame.display.update()
+        clock.tick(15)
+
+
+def tela_final_bom():
+    while tela_final_bom:
+        for event in pygame.event.get():
+            
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+                
+                
+      
+        gameDisplay.fill(white)
+        largeText = pygame.font.Font('freesansbold.ttf',100)
+        pequenotexto = pygame.font.Font('freesansbold.ttf',25)
+        TextSurf, TextRect = text_objects("YOU ROCK", largeText)
+        TextSurf, TextRect = text_objects("a little", pequenotexto)
+        TextRect.center = ((display_width/2),(display_height/2))
+        gameDisplay.blit(TextSurf, TextRect)
+        pygame.mixer.music.pause()        
+        
+
+#        button("Menu",350,450,100,50,blue,bright_blue,game_intro)
+        imagebutton(350,450,200,100,'menu1.png','menu2.png', game_intro)
+
+#        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)        
+        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
+        
+        pygame.display.update()
+        clock.tick(15)
+def tela_fail():
+    while tela_fail:
+        for event in pygame.event.get():
+            
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+                
+                
+      
+        gameDisplay.fill(white)
+        largeText = pygame.font.Font('freesansbold.ttf',100)
+        pequenotexto = pygame.font.Font('freesansbold.ttf',25)
+        TextSurf, TextRect = text_objects("Você falhou! " , largeText)
+        TextSurf, TextRect = text_objects("seu ruim", pequenotexto)
+        TextRect.center = ((display_width/2),(display_height/2))
+        gameDisplay.blit(TextSurf, TextRect)
+        pygame.mixer.music.pause()        
+        
+
+#        button("Menu",350,450,100,50,blue,bright_blue,game_intro)
+        imagebutton(350,450,200,100,'menu1.png','menu2.png', game_intro)
+
+#        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)        
+        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
+        
+        pygame.display.update()
+        clock.tick(15)
+
 def Menu_musica():
     global Menu,escolha, intro
 
