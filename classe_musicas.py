@@ -403,7 +403,7 @@ def musica(modo):
         m = musica1()
     elif modo == 2:
         m = musica2()
-    elif modo == 3:
+    else:
         m = musica3()
 #    elif modo == 4:
 #        m = musica4()
