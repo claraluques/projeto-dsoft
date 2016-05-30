@@ -52,7 +52,7 @@ def musica2():
     pygame.mixer.music.load('cliffs.mp3')
     pygame.mixer.music.play(0)
     pygame.mixer.music.set_volume(1)
-
+    
     oimusica = open('cliffs_of_dover.txt', 'r')
     musicatxt = oimusica.readlines()
     oimusica.close()
