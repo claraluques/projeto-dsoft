@@ -294,7 +294,7 @@ def Menu_musica():
 #        button("GO!",150,450,100,50,green,bright_green,loop_jogo)
 #        button("Voltar",450,450,100,50,red,bright_red,game_intro)
         imagebutton(display_width-170,10,180,90,'voltar1.png','voltar2.png', game_intro)
-        imagebutton(coluna1,100,largbot,altbot,'HoG1.png','HoG2.png', escolha_modo3)
+        button(blablabla,coluna1,100,largbot,altbot,green,bright_green, escolha_modo3)
         imagebutton(coluna1,(100+altbot+espaco),largbot,altbot,'rollinginthedeep2.png', 'rollinginthedeep1.png', escolha_modo4)
         imagebutton(coluna1,(100+2*(altbot+espaco)),largbot,altbot,'FiO1.png', 'FiO2.png', escolha_modo5)
         imagebutton(coluna1,(100+3*(altbot+espaco)),largbot,altbot,'ComWS1.png', ' ComWS2.png', escolha_modo6)
@@ -409,16 +409,8 @@ def loop_jogo2():
                     for i in range (len(listay1)):
                         y1 = listay1[i]
                         score,status = t.process_key1(y1, score)
-                        if status != None and status != "MISSED":
-                            print(i)
-                            estados[0][i] = 1
-                        print(status,estados[0][i])
-                        if estados[0][i] != 0:
+                        if status != None:
                             gerente_imagens.tecla1fogo(x,y1,gameDisplay)
-                            print("fogo")
-                            break
-                        else:
-                            gerente_imagens.tecla1(x,y1,gameDisplay)
                             break
                             
                 elif event.key == pygame.K_w:
