@@ -323,6 +323,7 @@ def loop_jogo2():
     listay3 = musica[2]
     listay4 = musica[3]
     listay5 = musica[4]
+    final = musica[5]
         
     x = 190
     

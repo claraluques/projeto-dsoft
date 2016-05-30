@@ -379,7 +379,7 @@ def Menu_musica():
 #        button("GO!",150,450,100,50,green,bright_green,loop_jogo)
 #        button("Voltar",450,450,100,50,red,bright_red,game_intro)
         imagebutton(display_width-170,10,180,90,'voltar1.png','voltar2.png', game_intro)
-        button(blablabla,coluna1,100,largbot,altbot,green,bright_green, escolha_modo3)
+#        button(blablabla,coluna1,100,largbot,altbot,green,bright_green, escolha_modo3)
         imagebutton(coluna1,(100+altbot+espaco),largbot,altbot,'rollinginthedeep2.png', 'rollinginthedeep1.png', escolha_modo4)
         imagebutton(coluna1,(100+2*(altbot+espaco)),largbot,altbot,'FiO1.png', 'FiO2.png', escolha_modo5)
         imagebutton(coluna1,(100+3*(altbot+espaco)),largbot,altbot,'ComWS1.png', ' ComWS2.png', escolha_modo6)
@@ -402,7 +402,7 @@ def loop_jogo():
     
 def loop_jogo2():    
 
-    musica, estados = m.musica(modo)
+    musica = m.musica(modo)
     listay1 = musica[0]
     listay2 = musica[1]
     listay3 = musica[2]
