@@ -1,10 +1,6 @@
-#fazer tela tutorial
-#criar função terminar jogo
-#criar tela score final
 #creditos + gifs?
-#musicas
-#botoes musicas
-#TIRAR BAILE DA MUSICAS
+#as frases e palavras do jogo esta metade em ingles e metade em portugues!!
+
 
 import pygame
 import classe_musicas as m
@@ -13,8 +9,6 @@ import classe_teclas as t
 pygame.init()
 
 pygame.mixer.init(44100, -16,2,2048)
-SONG_END = pygame.USEREVENT + 1
-pygame.mixer.music.set_endevent(SONG_END)
 
 display_width = 800
 display_height = 650
@@ -32,17 +26,13 @@ bright_green = (0,200,0)
 FPS = 60
 
 gameDisplay = pygame.display.set_mode((display_width, display_height))
-pygame.display.set_caption(('PixelGuitar!'))
+pygame.display.set_caption(('GUITARPIXEL!'))
 
 gameIcon = pygame.image.load('guitar_icon.png') #mudar icone
 pygame.display.set_icon(gameIcon)
 
 clock = pygame.time.Clock()
 crashed = False
-
-#movie = pygame.movie.Movie('fogoqueimando.mpeg')
-#screen = pygame.display.set_mode(movie.get_size())
-#movie_screen = pygame.Surface(movie.get_size()).convert()
 
 gerente_imagens = t.GerenciadorImagens()
 
@@ -51,7 +41,7 @@ bg = pygame.image.load("fundofogo.png")
 guitarraImg = pygame.image.load('guitarra2.png')
 guitarraImg = pygame.transform.scale(guitarraImg, (800,650))
 
-escolhaImg = pygame.image.load('escolhamusica1.png')
+escolhaImg = pygame.image.load('escolhamusica.png')
 escolhaImg = pygame.transform.scale(escolhaImg, (800,650))
 
 tutorialImg = pygame.image.load('tutorial.png')
@@ -60,8 +50,24 @@ tutorialImg = pygame.transform.scale(tutorialImg, (800,650))
 introImg = pygame.image.load('pressioneespaco.png')
 introImg = pygame.transform.scale(introImg, (800,650))
 
+creditoImg = pygame.image.load('creditos.png')
+creditoImg = pygame.transform.scale(creditoImg, (800,650))
+
+pausadoImg = pygame.image.load('pausado.png')
+pausadoImg = pygame.transform.scale(pausadoImg,(800,650))
+
+yourockImg = pygame.image.load('yourock.png')
+yourockImg = pygame.transform.scale(yourockImg,(800,650))
+
+yourockalittleImg = pygame.image.load('yourockalittle.png')
+yourockalittleImg = pygame.transform.scale(yourockalittleImg,(800,650))
+
+seulixoImg = pygame.image.load('seulixo.png')
+seulixoImg = pygame.transform.scale(seulixoImg,(800,650))
+
 pause = False
 tutorial = False
+credito = False
 
 modo = -1 
 
@@ -77,7 +83,6 @@ GoodImg = pygame.transform.scale(GoodImg, (500,500))
 MissedImg = pygame.image.load('MISSED.png')
 MissedImg = pygame.transform.scale(MissedImg, (500,500))
 
-   
 def bot(x,y,Img):
     botImg = pygame.image.load(Img)
     botImg = pygame.transform.scale(botImg, (100,100))
@@ -127,10 +132,8 @@ def imagebutton(x,y,w,h,imagem1,imagem2,action):
        Img2botao = pygame.image.load(imagem2)
        Img2botao = pygame.transform.scale(Img2botao, (w,h))
        gameDisplay.blit(Img2botao,(x , y))
-     
-         
-          
-
+             
+             
 def sair_jogo():
     global intro, escolha
     escolha = "Sair"
@@ -150,7 +153,7 @@ def escolha_modo1(): #carry on my wayward
     modo = 1
     loop_jogo()
 
-def escolha_modo2(): #cliffs
+def escolha_modo2(): #cliffs of dover
     global modo
     modo = 2
     loop_jogo()
@@ -170,37 +173,61 @@ def escolha_modo5(): #figure it out
     modo = 5
     loop_jogo()
     
-#def escolha_modo6(): 
-#    global modo
-#    modo = 6
-#    loop_jogo()
-#    
+def escolha_modo6(): #bohemian rhapsody
+    global modo
+    modo = 6
+    loop_jogo()
+    
+#FUNÇÕES PARA FUTURAS IMPLEMENTAÇÕES DE MÚSICAS    
+
 #def escolha_modo7(): 
 #    global modo
 #    modo = 7
 #    loop_jogo()
-#    
+    
 #def escolha_modo8():
 #    global modo
 #    modo = 8
 #    loop_jogo()
-#    
+   
 #def escolha_modo9():
 #    global modo
 #    modo = 9
 #    loop_jogo()
-    
+   
 def game_tutorial():
     global tutorial, Menu, FPS, tutorialImg
 
     tutorial = True
-
     
     while tutorial:
         
-
         gameDisplay.blit(tutorialImg,(0 , 0))
-                    
+             
+        for event in pygame.event.get():
+            
+            if event.type == pygame.QUIT:
+                quit()
+
+            if event.type == pygame.KEYDOWN:
+                
+                if event.key == pygame.K_z:
+                    game_intro()
+
+                if event.key == pygame.K_ESCAPE:
+                    quit()
+
+        pygame.display.update()
+        
+def game_creditos():
+    global tutorial, Menu, FPS, creditolImg
+
+    credito = True
+    
+    while credito:
+        
+        gameDisplay.blit(creditoImg,(0 , 0))
+             
         for event in pygame.event.get():
             
             if event.type == pygame.QUIT:
@@ -218,10 +245,11 @@ def game_tutorial():
     
 def game_intro():
     global intro, Menu, FPS, tutorial, introImg
-
-    intro = True
-    tutorial = False    
     
+    intro = True
+    tutorial = False
+    credito = False
+      
     pygame.mixer.music.load('musicaintro.mp3')
     pygame.mixer.music.play(0)
     pygame.mixer.music.set_volume(0.2) 
@@ -239,35 +267,19 @@ def game_intro():
 
                 if event.key == pygame.K_a:
                     game_tutorial()
-                       
+                    
+                if event.key == pygame.K_s:
+                    game_creditos()
+                    
                 if event.key == pygame.K_ESCAPE:
                     quit()
 
         gameDisplay.blit(introImg,(0 , 0))
-
-#        gameDisplay.fill(white)
-#        blink('pressioneespaco.png')
-#        largeText = pygame.font.Font('freesansbold.ttf',100)
-#        TextSurf, TextRect = text_objects("Guitar Student", largeText)
-#        TextRect.center = ((display_width/2),(display_height/2))
-#        gameDisplay.blit(TextSurf, TextRect)
         
-#        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)
-#        button("Jogar",150,450,100,50,green,bright_green,Menu_musica)        
 
-        #button("Quit",550,450,100,50,red,bright_red,sair_jogo)
-#        button("Quit",550,450,100,50,red,bright_red,sair_jogo)
-#        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
-#        imagebutton(100,450,200,100,'jogar2.png','jogar1.png',Menu_musica)
-#        button("Jogar",150,450,100,50,green,bright_green,Menu_musica)        
-
-#        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
-#        imagebutton(100,450,200,100,'jogar2.png','jogar1.png',Menu_musica)
         
         pygame.display.update()
-        clock.tick(FPS)
-
-    
+        clock.tick(FPS)    
         
 def unpause():
         global pause
@@ -280,21 +292,14 @@ def paused():
             
             if event.type == pygame.QUIT:
                 pygame.quit()
-                quit()
-                
-                
+                quit()                    
       
-        gameDisplay.fill(white)
-        largeText = pygame.font.Font('freesansbold.ttf',100)
-        TextSurf, TextRect = text_objects("Paused", largeText)
-        TextRect.center = ((display_width/2),(display_height/2))
-        gameDisplay.blit(TextSurf, TextRect)
+        gameDisplay.blit(pausadoImg,(0 , 0))
+           
         pygame.mixer.music.pause()        
         
         imagebutton(80,424,300,150,'continuar1.png', 'continuar2.png', unpause)
-
         imagebutton(350,450,200,100,'menu1.png','menu2.png', game_intro)
-
         imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
         
         pygame.display.update()
@@ -306,22 +311,19 @@ def tela_final_muito_bom():
             
             if event.type == pygame.QUIT:
                 pygame.quit()
-                quit()
-                
-                
-      
-        gameDisplay.fill(white)
-        largeText = pygame.font.Font('freesansbold.ttf',100)
-        TextSurf, TextRect = text_objects("YOU ROCK", largeText)
-        TextRect.center = ((display_width/2),(display_height/2))
-        gameDisplay.blit(TextSurf, TextRect)
-        pygame.mixer.music.pause()        
+                quit()          
         
+        gameDisplay.blit(yourockImg,(0 , 0))
+        
+#        gameDisplay.fill(white)
+#        largeText = pygame.font.Font('freesansbold.ttf',100)
+#        TextSurf, TextRect = text_objects("YOU ROCK", largeText)
+#        TextRect.center = ((display_width/2),(display_height/2))
+#        gameDisplay.blit(TextSurf, TextRect)
+        
+        pygame.mixer.music.pause()        
 
-#        button("Menu",350,450,100,50,blue,bright_blue,game_intro)
         imagebutton(350,450,200,100,'menu1.png','menu2.png', game_intro)
-
-#        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)        
         imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
         
         pygame.display.update()
@@ -335,23 +337,18 @@ def tela_final_bom():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
-                
-                
-      
-        gameDisplay.fill(white)
-        largeText = pygame.font.Font('freesansbold.ttf',100)
-        pequenotexto = pygame.font.Font('freesansbold.ttf',25)
-        TextSurf, TextRect = text_objects("YOU ROCK", largeText)
-        TextSurf, TextRect = text_objects("a little", pequenotexto)
-        TextRect.center = ((display_width/2),(display_height/2))
-        gameDisplay.blit(TextSurf, TextRect)
+        
+        gameDisplay(yourockalittleImg,(0,0))
+        
+#        gameDisplay.fill(white)
+#        largeText = pygame.font.Font('freesansbold.ttf',80)
+#        TextSurf, TextRect = text_objects("YOU ROCK...a little", largeText)
+#        TextRect.center = ((display_width/2),(display_height/2))
+#        gameDisplay.blit(TextSurf, TextRect)
+        
         pygame.mixer.music.pause()        
         
-
-#        button("Menu",350,450,100,50,blue,bright_blue,game_intro)
         imagebutton(350,450,200,100,'menu1.png','menu2.png', game_intro)
-
-#        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)        
         imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
         
         pygame.display.update()
@@ -364,30 +361,81 @@ def tela_fail():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
-                
-                
-      
-        gameDisplay.fill(white)
-        largeText = pygame.font.Font('freesansbold.ttf',100)
-        pequenotexto = pygame.font.Font('freesansbold.ttf',25)
-        TextSurf, TextRect = text_objects("Você falhou! " , largeText)
-        TextSurf, TextRect = text_objects("seu ruim", pequenotexto)
-        TextRect.center = ((display_width/2),(display_height/2))
-        gameDisplay.blit(TextSurf, TextRect)
+
+        gameDisplay.blit(seulixoImg,(0,0))
+
+#        gameDisplay.fill(white)
+#        largeText = pygame.font.Font('freesansbold.ttf',100)
+#        pequenotexto = pygame.font.Font('freesansbold.ttf',25)
+#        TextSurf, TextRect = text_objects("Você falhou! " , largeText)
+#        TextSurf, TextRect = text_objects("seu ruim", pequenotexto)
+#        TextRect.center = ((display_width/2),(display_height/2))
+#        gameDisplay.blit(TextSurf, TextRect)
+       
         pygame.mixer.music.pause()        
-        
 
-#        button("Menu",350,450,100,50,blue,bright_blue,game_intro)
         imagebutton(350,450,200,100,'menu1.png','menu2.png', game_intro)
-
-#        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)        
+   
         imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
         
         pygame.display.update()
         clock.tick(15)
 
+def get_high_score():
+    # Default high score
+    high_score = 0
+ 
+    # Try to read the high score from a file
+    try:
+        high_score_file = open("high_score.txt", "r")
+        high_score = int(high_score_file.read())
+        high_score_file.close()
+        print("The high score is", high_score)
+    except IOError:
+        # Error reading file, no high score
+        print("There is no high score yet.")
+    except ValueError:
+        # There's a file there, but we don't understand the number.
+        print("I'm confused. Starting with no high score.")
+ 
+    return high_score
+ 
+ 
+def save_high_score(new_high_score):
+    try:
+        # Write the file to disk
+        high_score_file = open("high_score.txt", "w")
+        high_score_file.write(str(new_high_score))
+        high_score_file.close()
+    except IOError:
+        # Hm, can't write it.
+        print("Unable to save the high score.")
+ 
+ 
+def main():
+    """ Main program is here. """
+    # Get the high score
+    high_score = get_high_score()
+ 
+    # Get the score from the current game
+    score1 = 0
+    try:
+        # Ask the user for his/her score
+        score1 = score
+    except ValueError:
+        # Error, can't turn what they typed into a number
+        print("I don't understand what you typed.")
+ 
+    # See if we have a new high score
+    if score1 > high_score:
+        # We do! Save to disk
+        print("Yea! New high score!")
+        save_high_score(score1)
+    else:
+        print("Better luck next time.")        
+
 def Menu_musica():
-    global Menu,escolha, intro
+    global Menu,escolha, intro, score
 
     escolha = ""
     
@@ -399,6 +447,7 @@ def Menu_musica():
     coluna1 = 75
     coluna2 = 425
     espaco = 25
+    score = 0
     
     while Menu:
         for event in pygame.event.get():
@@ -412,8 +461,10 @@ def Menu_musica():
         imagebutton(display_width-190,570,180,90,'sair1.png','sair2.png', sair_jogo2)
         imagebutton(coluna1,(100+altbot+espaco),largbot,altbot,'rollinginthedeep2.png', 'rollinginthedeep1.png', escolha_modo4)
         imagebutton(coluna1,(100+2*(altbot+espaco)),largbot,altbot,'FiO1.png', 'FiO2.png', escolha_modo5)
-        imagebutton(coluna1,(100+3*(altbot+espaco)),largbot,altbot,'ComWS1.png', 'ComWS2.png', escolha_modo1)
-        imagebutton(coluna2,350,largbot,altbot,'CoD2.png', 'CoD1.png', escolha_modo2)
+        imagebutton(coluna1,(100+3*(altbot+espaco)),largbot,altbot,'HoG1.png', 'HoG2.png', escolha_modo2)        
+        imagebutton(coluna2,(100+1*(altbot+espaco)),largbot,altbot,'ComWS1.png', 'ComWS2.png', escolha_modo1)
+        imagebutton(coluna2,(100+2*(altbot+espaco)),largbot,altbot,'CoD2.png', 'CoD1.png', escolha_modo2)
+        imagebutton(coluna2,(100+3*(altbot+espaco)),largbot,altbot,'BR2.png', 'BR1.png', escolha_modo6)
         
         pygame.display.update()
         clock.tick(15)
@@ -467,7 +518,7 @@ def loop_jogo2():
         bot(x+316,543,'buraco5.png')
         
         Score(score)
-        
+
         miny = display_height+50
         
         for i in range (len(listay1)):
@@ -504,23 +555,19 @@ def loop_jogo2():
             listay5[i] += y_change
             if y5 < miny:
                 miny = y5
-               
             
-        
         if miny >= display_height:
-            musica = m.musica(modo)
-            listay1 = musica[0]
-            listay2 = musica[1]
-            listay3 = musica[2]
-            listay4 = musica[3]
-            listay5 = musica[4]
-            
+            if score > 500:
+                tela_final_muito_bom()
+            elif score > 300:
+                tela_final_bom()
+            else:
+                tela_fail()
+
         status = None
         
         
         for event in pygame.event.get():            
-            if event.type == SONG_END:
-                crashed = True
             if event.type == pygame.QUIT:
                 crashed = True                
             if event.type == pygame.KEYDOWN:         
