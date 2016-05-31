@@ -48,7 +48,7 @@ gerente_imagens = t.GerenciadorImagens()
 
 bg = pygame.image.load("fundofogo.png")
 
-guitarraImg = pygame.image.load('guitarra.png')
+guitarraImg = pygame.image.load('guitarra2.png')
 guitarraImg = pygame.transform.scale(guitarraImg, (800,650))
 
 escolhaImg = pygame.image.load('escolhamusica1.png')
@@ -230,7 +230,7 @@ def game_intro():
                     quit()
 
 #        gameDisplay.fill(white)
-        blink('pressioneespaco.png')
+#        blink('pressioneespaco.png')
         largeText = pygame.font.Font('freesansbold.ttf',100)
         TextSurf, TextRect = text_objects("Guitar Student", largeText)
         TextRect.center = ((display_width/2),(display_height/2))
@@ -396,7 +396,7 @@ def Menu_musica():
         imagebutton(display_width-190,570,180,90,'sair1.png','sair2.png', sair_jogo2)
         imagebutton(coluna1,(100+altbot+espaco),largbot,altbot,'rollinginthedeep2.png', 'rollinginthedeep1.png', escolha_modo4)
         imagebutton(coluna1,(100+2*(altbot+espaco)),largbot,altbot,'FiO1.png', 'FiO2.png', escolha_modo5)
-        imagebutton(coluna1,(100+3*(altbot+espaco)),largbot,altbot,'ComWS1.png', ' ComWS2.png', escolha_modo1)
+        imagebutton(coluna1,(100+3*(altbot+espaco)),largbot,altbot,'ComWS1.png', 'ComWS2.png', escolha_modo1)
         imagebutton(coluna2,350,largbot,altbot,'CoD2.png', 'CoD1.png', escolha_modo2)
         
         pygame.display.update()
