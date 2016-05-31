@@ -507,37 +507,53 @@ def loop_jogo2():
         bot(x+316,543,'buraco5.png')
         
         Score(score)
+
+        miny = display_height+50
         
         for i in range (len(listay1)):
             y1 = listay1[i]
             gerente_imagens.tecla1(x, y1, gameDisplay)       
             listay1[i] += y_change
-
+            if y1 < miny:
+                miny = y1
                 
         for i in range (len(listay2)):
             y2 = listay2[i]
             gerente_imagens.tecla2(x, y2, gameDisplay)
             listay2[i] += y_change
-
+            if y2 < miny:
+                miny = y2
 
         for i in range (len(listay3)):
             y3 = listay3[i]
             gerente_imagens.tecla3(x, y3, gameDisplay)
             listay3[i] += y_change
-
+            if y3 < miny:
+                miny = y3
             
         for i in range (len(listay4)):
             y4 = listay4[i]
             gerente_imagens.tecla4(x, y4, gameDisplay)
             listay4[i] += y_change
-
+            if y4 < miny:
+                miny = y4
             
         for i in range (len(listay5)):
             y5 = listay5[i]
             gerente_imagens.tecla5(x, y5, gameDisplay)
             listay5[i] += y_change
-
+            if y5 < miny:
+                miny = y5
             
+        # detecta se a ultima bolinha ja passou pela tela
+        if miny >= display_height:
+            if score > 300:
+                tela_final_muito_bom()
+            elif score > 150:
+                tela_final_bom()
+            else:
+                tela_fail()
+
         status = None
         
         
