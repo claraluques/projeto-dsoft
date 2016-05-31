@@ -50,8 +50,12 @@ tutorialImg = pygame.transform.scale(tutorialImg, (800,650))
 introImg = pygame.image.load('pressioneespaco.png')
 introImg = pygame.transform.scale(introImg, (800,650))
 
+creditoImg = pygame.image.load('creditos.png')
+creditoImg = pygame.transform.scale(creditoImg, (800,650))
+
 pause = False
 tutorial = False
+credito = False
 
 modo = -1 
 
@@ -202,12 +206,37 @@ def game_tutorial():
                     quit()
 
         pygame.display.update()
+        
+def game_creditos():
+    global tutorial, Menu, FPS, creditolImg
+
+    credito = True
+    
+    while credito:
+        
+        gameDisplay.blit(creditoImg,(0 , 0))
+             
+        for event in pygame.event.get():
+            
+            if event.type == pygame.QUIT:
+                quit()
+
+            if event.type == pygame.KEYDOWN:
+                
+                if event.key == pygame.K_z:
+                    game_intro()
+
+                if event.key == pygame.K_ESCAPE:
+                    quit()
+
+        pygame.display.update()
     
 def game_intro():
     global intro, Menu, FPS, tutorial, introImg
     
     intro = True
     tutorial = False
+    credito = False
       
     pygame.mixer.music.load('musicaintro.mp3')
     pygame.mixer.music.play(0)
@@ -226,7 +255,10 @@ def game_intro():
 
                 if event.key == pygame.K_a:
                     game_tutorial()
-                       
+                    
+                if event.key == pygame.K_s:
+                    game_creditos()
+                    
                 if event.key == pygame.K_ESCAPE:
                     quit()
 
