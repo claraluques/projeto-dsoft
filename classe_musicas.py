@@ -245,7 +245,7 @@ def musica6():
             y1.append(-100*i)
             y2.append(-100*i)
     return y1, y2, y3, y4, y5
-#            
+    
 #def musica7():
 #    pygame.mixer.music.load('.mp3')
 #    pygame.mixer.music.play(0)
@@ -284,7 +284,7 @@ def musica6():
 #            y1.append(-100*i)
 #            y2.append(-100*i)
 #    return y1, y2, y3, y4, y5
-#
+
 #def musica8():
 #    pygame.mixer.music.load('.mp3')
 #    pygame.mixer.music.play(0)
@@ -323,7 +323,7 @@ def musica6():
 #            y1.append(-100*i)
 #            y2.append(-100*i)
 #    return y1, y2, y3, y4, y5
-#
+
 #def musica9():
 #    pygame.mixer.music.load('.mp3')
 #    pygame.mixer.music.play(0)
@@ -402,18 +402,20 @@ def musica(modo):
         m = musica1()
     elif modo == 2:
         m = musica2()
-    else:
+    elif modo == 3:
         m = musica3()
-#    elif modo == 4:
-#        m = musica4()
-#    elif modo == 5:
-#        m = musica5()
-#    elif modo == 6:
-#        m = musica6()
+    elif modo == 4:
+        m = musica4()
+    elif modo == 5:
+        m = musica5()
+    elif modo == 6:
+        m = musica6()
 #    elif modo == 7:
 #        m = musica7()
 #    elif modo == 8:
 #        m = musica8()
 #    elif modo == 9:
 #        m = musica9()
+    else:
+        continue
     return m
