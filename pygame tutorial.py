@@ -537,28 +537,6 @@ def loop_jogo2():
             gerente_imagens.tecla5(x, y5, gameDisplay)
             listay5[i] += y_change
 
-               
-<<<<<<< HEAD
-
-#        if miny >= display_height:
-#            musica = m.musica(modo)
-#            listay1 = musica[0]
-#            listay2 = musica[1]
-#            listay3 = musica[2]
-#            listay4 = musica[3]
-#            listay5 = musica[4]
-=======
-            
-        # detecta se a ultima bolinha ja passou pela tela
-        if miny >= display_height:
-            if score > 300:
-                tela_final_muito_bom()
-            elif score > 150:
-                tela_final_bom()
-            else:
-                tela_fail()
-
->>>>>>> ae31a702fa965374fb62717232c372327409ab38
             
         status = None
         
