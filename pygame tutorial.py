@@ -326,10 +326,10 @@ def tela_final_bom():
                 
       
         gameDisplay.fill(white)
-        largeText = pygame.font.Font('freesansbold.ttf',100)
-        pequenotexto = pygame.font.Font('freesansbold.ttf',25)
-        TextSurf, TextRect = text_objects("YOU ROCK", largeText)
-        TextSurf, TextRect = text_objects("a little", pequenotexto)
+        largeText = pygame.font.Font('freesansbold.ttf',80)
+       
+        TextSurf, TextRect = text_objects("YOU ROCK...a little", largeText)
+       
         TextRect.center = ((display_width/2),(display_height/2))
         gameDisplay.blit(TextSurf, TextRect)
         pygame.mixer.music.pause()        
@@ -410,19 +410,19 @@ def main():
     high_score = get_high_score()
  
     # Get the score from the current game
-    score = 0
+    score1 = 0
     try:
         # Ask the user for his/her score
-        score = Score()
+        score1 = score
     except ValueError:
         # Error, can't turn what they typed into a number
         print("I don't understand what you typed.")
  
     # See if we have a new high score
-    if score > high_score:
+    if score1 > high_score:
         # We do! Save to disk
         print("Yea! New high score!")
-        save_high_score(score)
+        save_high_score(score1)
     else:
         print("Better luck next time.")        
 
@@ -538,6 +538,7 @@ def loop_jogo2():
             listay5[i] += y_change
 
                
+<<<<<<< HEAD
 
 #        if miny >= display_height:
 #            musica = m.musica(modo)
@@ -546,6 +547,18 @@ def loop_jogo2():
 #            listay3 = musica[2]
 #            listay4 = musica[3]
 #            listay5 = musica[4]
+=======
+            
+        # detecta se a ultima bolinha ja passou pela tela
+        if miny >= display_height:
+            if score > 300:
+                tela_final_muito_bom()
+            elif score > 150:
+                tela_final_bom()
+            else:
+                tela_fail()
+
+>>>>>>> ae31a702fa965374fb62717232c372327409ab38
             
         status = None
         
