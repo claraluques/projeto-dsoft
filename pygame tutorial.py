@@ -13,6 +13,8 @@ import classe_teclas as t
 pygame.init()
 
 pygame.mixer.init(44100, -16,2,2048)
+SONG_END = pygame.USEREVENT + 1
+pygame.mixer.music.set_endevent(SONG_END)
 
 display_width = 800
 display_height = 650
@@ -242,6 +244,91 @@ def paused():
         pygame.display.update()
         clock.tick(15)
 
+def tela_final_muito_bom():
+    while tela_final_muito_bom:
+        for event in pygame.event.get():
+            
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+                
+                
+      
+        gameDisplay.fill(white)
+        largeText = pygame.font.Font('freesansbold.ttf',100)
+        TextSurf, TextRect = text_objects("YOU ROCK", largeText)
+        TextRect.center = ((display_width/2),(display_height/2))
+        gameDisplay.blit(TextSurf, TextRect)
+        pygame.mixer.music.pause()        
+        
+
+#        button("Menu",350,450,100,50,blue,bright_blue,game_intro)
+        imagebutton(350,450,200,100,'menu1.png','menu2.png', game_intro)
+
+#        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)        
+        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
+        
+        pygame.display.update()
+        clock.tick(15)
+
+
+def tela_final_bom():
+    while tela_final_bom:
+        for event in pygame.event.get():
+            
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+                
+                
+      
+        gameDisplay.fill(white)
+        largeText = pygame.font.Font('freesansbold.ttf',100)
+        pequenotexto = pygame.font.Font('freesansbold.ttf',25)
+        TextSurf, TextRect = text_objects("YOU ROCK", largeText)
+        TextSurf, TextRect = text_objects("a little", pequenotexto)
+        TextRect.center = ((display_width/2),(display_height/2))
+        gameDisplay.blit(TextSurf, TextRect)
+        pygame.mixer.music.pause()        
+        
+
+#        button("Menu",350,450,100,50,blue,bright_blue,game_intro)
+        imagebutton(350,450,200,100,'menu1.png','menu2.png', game_intro)
+
+#        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)        
+        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
+        
+        pygame.display.update()
+        clock.tick(15)
+def tela_fail():
+    while tela_fail:
+        for event in pygame.event.get():
+            
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+                
+                
+      
+        gameDisplay.fill(white)
+        largeText = pygame.font.Font('freesansbold.ttf',100)
+        pequenotexto = pygame.font.Font('freesansbold.ttf',25)
+        TextSurf, TextRect = text_objects("Você falhou! " , largeText)
+        TextSurf, TextRect = text_objects("seu ruim", pequenotexto)
+        TextRect.center = ((display_width/2),(display_height/2))
+        gameDisplay.blit(TextSurf, TextRect)
+        pygame.mixer.music.pause()        
+        
+
+#        button("Menu",350,450,100,50,blue,bright_blue,game_intro)
+        imagebutton(350,450,200,100,'menu1.png','menu2.png', game_intro)
+
+#        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)        
+        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
+        
+        pygame.display.update()
+        clock.tick(15)
+
 def Menu_musica():
     global Menu,escolha, intro
 
@@ -268,10 +355,10 @@ def Menu_musica():
         gameDisplay.blit(escolhaImg, (0, 0))
 
         imagebutton(display_width-170,10,180,90,'voltar1.png','voltar2.png', game_intro)
-        imagebutton(coluna1,100,largbot,altbot,'HoG1.png','HoG2.png', escolha_modo3)
+#        button(blablabla,coluna1,100,largbot,altbot,green,bright_green, escolha_modo3)
         imagebutton(coluna1,(100+altbot+espaco),largbot,altbot,'rollinginthedeep2.png', 'rollinginthedeep1.png', escolha_modo4)
         imagebutton(coluna1,(100+2*(altbot+espaco)),largbot,altbot,'FiO1.png', 'FiO2.png', escolha_modo5)
-        imagebutton(coluna1,(100+3*(altbot+espaco)),largbot,altbot,'ComWS1.png', ' ComWS2.png', escolha_modo6)
+#        imagebutton(coluna1,(100+3*(altbot+espaco)),largbot,altbot,'ComWS1.png', ' ComWS2.png', escolha_modo6)
         imagebutton(coluna2,350,largbot,altbot,'CoD2.png', 'CoD1.png', escolha_modo2)
         
         pygame.display.update()
@@ -291,7 +378,7 @@ def loop_jogo():
     
 def loop_jogo2():    
 
-    musica, estados = m.musica(modo)
+    musica = m.musica(modo)
     listay1 = musica[0]
     listay2 = musica[1]
     listay3 = musica[2]
@@ -374,7 +461,9 @@ def loop_jogo2():
             listay4 = musica[3]
             listay5 = musica[4]
         status = None
-        for event in pygame.event.get():
+        for event in pygame.event.get():            
+            if event.type == SONG_END:
+                crashed = True
             if event.type == pygame.QUIT:
                 crashed = True                
             if event.type == pygame.KEYDOWN:         
@@ -383,16 +472,8 @@ def loop_jogo2():
                     for i in range (len(listay1)):
                         y1 = listay1[i]
                         score,status = t.process_key1(y1, score)
-                        if status != None and status != "MISSED":
-                            print(i)
-                            estados[0][i] = 1
-                        print(status,estados[0][i])
-                        if estados[0][i] != 0:
+                        if status != None:
                             gerente_imagens.tecla1fogo(x,y1,gameDisplay)
-                            print("fogo")
-                            break
-                        else:
-                            gerente_imagens.tecla1(x,y1,gameDisplay)
                             break
                             
                 elif event.key == pygame.K_w:
