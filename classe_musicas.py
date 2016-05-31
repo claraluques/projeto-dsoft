@@ -1,7 +1,10 @@
 import pygame
 import random
 
-
+def terminar(mus):
+    SONG_END = pygame.USEREVENT + 1
+    pygame.mixer.music.set_endevent(SONG_END)
+    
 def erro():
     sound = pygame.mixer.Sound("erro.ogg")
     sound.set_volume(2.0)
@@ -49,9 +52,11 @@ def musica1():
     
     
 def musica2():
+    SONG_END = pygame.USEREVENT + 1
     pygame.mixer.music.load('cliffs.mp3')
     pygame.mixer.music.play(0)
     pygame.mixer.music.set_volume(1)
+    pygame.mixer.music.set_endevent(SONG_END)
     
     oimusica = open('cliffs_of_dover.txt', 'r')
     musicatxt = oimusica.readlines()

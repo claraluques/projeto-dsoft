@@ -13,8 +13,8 @@ import classe_teclas as t
 pygame.init()
 
 pygame.mixer.init(44100, -16,2,2048)
-SONG_END = pygame.USEREVENT + 1
-pygame.mixer.music.set_endevent(SONG_END)
+#SONG_END = pygame.USEREVENT + 1
+#pygame.mixer.music.set_endevent(SONG_END)
 
 display_width = 800
 display_height = 650
@@ -551,8 +551,8 @@ def loop_jogo2():
         
         
         for event in pygame.event.get():            
-            if event.type == SONG_END:
-                crashed = True
+#            if event.type == SONG_END:
+#                crashed = True
             if event.type == pygame.QUIT:
                 crashed = True                
             if event.type == pygame.KEYDOWN:         
