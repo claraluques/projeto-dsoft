@@ -32,7 +32,7 @@ bright_green = (0,200,0)
 FPS = 60
 
 gameDisplay = pygame.display.set_mode((display_width, display_height))
-pygame.display.set_caption(('Pixel Guitar!'))
+pygame.display.set_caption(('PixelGuitar!'))
 
 gameIcon = pygame.image.load('guitar_icon.png') #mudar icone
 pygame.display.set_icon(gameIcon)
@@ -128,28 +128,6 @@ def imagebutton(x,y,w,h,imagem1,imagem2,action):
        Img2botao = pygame.transform.scale(Img2botao, (w,h))
        gameDisplay.blit(Img2botao,(x , y))
      
-def blink(img):
-    global intro, gameDisplay
-    
-    Image = pygame.image.load(img)
-    blank = pygame.image.load('blank.png')
-    
-    show_image = False
-    
-    while intro == True:
-    
-        clock.tick(10) 
-    
-        if show_image:    
-            gameDisplay.blit(Image, (0, 0))    
-            show_image = False
-    
-        else:    
-            gameDisplay.blit(blank, (0, 0))    
-            show_image = True
-    
-        pygame.display.flip()
-
          
           
 
