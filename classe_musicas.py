@@ -131,7 +131,7 @@ def musica3():
 def musica4():
     pygame.mixer.music.load('ritd.mp3')
     pygame.mixer.music.play(0)
-    pygame.mixer.music.set_volume(1)
+    pygame.mixer.music.set_volume(0.7)
 
     oimusica = open('ritd.txt', 'r')
     musicatxt = oimusica.readlines()
