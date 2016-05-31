@@ -505,9 +505,9 @@ def loop_jogo2():
                 miny = y5
             
         if miny >= display_height:
-            if score > 300:
+            if score > 500:
                 tela_final_muito_bom()
-            elif score > 150:
+            elif score > 300:
                 tela_final_bom()
             else:
                 tela_fail()
