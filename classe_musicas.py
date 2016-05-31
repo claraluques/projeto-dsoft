@@ -1,9 +1,5 @@
 import pygame
 import random
-
-def terminar(mus):
-    SONG_END = pygame.USEREVENT + 1
-    pygame.mixer.music.set_endevent(SONG_END)
     
 def erro():
     sound = pygame.mixer.Sound("erro.ogg")
@@ -52,11 +48,9 @@ def musica1():
     
     
 def musica2():
-    SONG_END = pygame.USEREVENT + 1
     pygame.mixer.music.load('cliffs.mp3')
     pygame.mixer.music.play(0)
     pygame.mixer.music.set_volume(1)
-    pygame.mixer.music.set_endevent(SONG_END)
     
     oimusica = open('cliffs_of_dover.txt', 'r')
     musicatxt = oimusica.readlines()
@@ -134,123 +128,123 @@ def musica3():
     
     return y1, y2, y3, y4, y5
             
-#def musica4():
-#    pygame.mixer.music.load('.mp3')
-#    pygame.mixer.music.play(0)
-#    pygame.mixer.music.set_volume(1)
-#
-#    oimusica = open('.txt', 'r')
-#    musicatxt = oimusica.readlines()
-#    oimusica.close()
-#    musicastr = list(musicatxt[0])
-#    musica = []
-#    for i in range (len(musicastr)):
-#        musica.append(int(musicastr[i]))
-#    y1=[]
-#    y2=[]
-#    y3=[]
-#    y4=[]
-#    y5=[]
-#    for i in range (len(musica)):
-#        if musica[i] == 0:
-#            y1.append(-100*i)
-#        elif musica[i] == 1:
-#            y2.append(-100*i)
-#        elif musica[i] == 2:
-#            y3.append(-100*i)
-#        elif musica[i] == 3:
-#            y4.append(-100*i)
-#        elif musica[i] == 4:
-#            y5.append(-100*i)
-#        elif musica[i] == 5:
-#            y1.append(-100*i)
-#            y3.append(-100*i)
-#        elif musica[i] == 6:
-#            y2.append(-100*i)
-#            y4.append(-100*i)
-#        elif musica[i] == 9:
-#            y1.append(-100*i)
-#            y2.append(-100*i)
-#
-#    return y1, y2, y3, y4, y5
+def musica4():
+    pygame.mixer.music.load('ritd.mp3')
+    pygame.mixer.music.play(0)
+    pygame.mixer.music.set_volume(1)
+
+    oimusica = open('ritd.txt', 'r')
+    musicatxt = oimusica.readlines()
+    oimusica.close()
+    musicastr = list(musicatxt[0])
+    musica = []
+    for i in range (len(musicastr)):
+        musica.append(int(musicastr[i]))
+    y1=[]
+    y2=[]
+    y3=[]
+    y4=[]
+    y5=[]
+    for i in range (len(musica)):
+        if musica[i] == 0:
+            y1.append(-100*i)
+        elif musica[i] == 1:
+            y2.append(-100*i)
+        elif musica[i] == 2:
+            y3.append(-100*i)
+        elif musica[i] == 3:
+            y4.append(-100*i)
+        elif musica[i] == 4:
+            y5.append(-100*i)
+        elif musica[i] == 5:
+            y1.append(-100*i)
+            y3.append(-100*i)
+        elif musica[i] == 6:
+            y2.append(-100*i)
+            y4.append(-100*i)
+        elif musica[i] == 9:
+            y1.append(-100*i)
+            y2.append(-100*i)
+
+    return y1, y2, y3, y4, y5
             
-#def musica5():
-#    pygame.mixer.music.load('.mp3')
-#    pygame.mixer.music.play(0)
-#    pygame.mixer.music.set_volume(1)
-#
-#    oimusica = open('.txt', 'r')
-#    musicatxt = oimusica.readlines()
-#    oimusica.close()
-#    musicastr = list(musicatxt[0])
-#    musica = []
-#    for i in range (len(musicastr)):
-#        musica.append(int(musicastr[i]))
-#    y1=[]
-#    y2=[]
-#    y3=[]
-#    y4=[]
-#    y5=[]
-#    for i in range (len(musica)):
-#        if musica[i] == 0:
-#            y1.append(-100*i)
-#        elif musica[i] == 1:
-#            y2.append(-100*i)
-#        elif musica[i] == 2:
-#            y3.append(-100*i)
-#        elif musica[i] == 3:
-#            y4.append(-100*i)
-#        elif musica[i] == 4:
-#            y5.append(-100*i)
-#        elif musica[i] == 5:
-#            y1.append(-100*i)
-#            y3.append(-100*i)
-#        elif musica[i] == 6:
-#            y2.append(-100*i)
-#            y4.append(-100*i)
-#        elif musica[i] == 9:
-#            y1.append(-100*i)
-#            y2.append(-100*i)
-#    return y1, y2, y3, y4, y5
-#
-#def musica6():
-#    pygame.mixer.music.load('.mp3')
-#    pygame.mixer.music.play(0)
-#    pygame.mixer.music.set_volume(1)
-#
-#    oimusica = open('.txt', 'r')
-#    musicatxt = oimusica.readlines()
-#    oimusica.close()
-#    musicastr = list(musicatxt[0])
-#    musica = []
-#    for i in range (len(musicastr)):
-#        musica.append(int(musicastr[i]))
-#    y1=[]
-#    y2=[]
-#    y3=[]
-#    y4=[]
-#    y5=[]
-#    for i in range (len(musica)):
-#        if musica[i] == 0:
-#            y1.append(-100*i)
-#        elif musica[i] == 1:
-#            y2.append(-100*i)
-#        elif musica[i] == 2:
-#            y3.append(-100*i)
-#        elif musica[i] == 3:
-#            y4.append(-100*i)
-#        elif musica[i] == 4:
-#            y5.append(-100*i)
-#        elif musica[i] == 5:
-#            y1.append(-100*i)
-#            y3.append(-100*i)
-#        elif musica[i] == 6:
-#            y2.append(-100*i)
-#            y4.append(-100*i)
-#        elif musica[i] == 9:
-#            y1.append(-100*i)
-#            y2.append(-100*i)
-#    return y1, y2, y3, y4, y5
+def musica5():
+    pygame.mixer.music.load('fio.mp3')
+    pygame.mixer.music.play(0)
+    pygame.mixer.music.set_volume(1)
+
+    oimusica = open('fio.txt', 'r')
+    musicatxt = oimusica.readlines()
+    oimusica.close()
+    musicastr = list(musicatxt[0])
+    musica = []
+    for i in range (len(musicastr)):
+        musica.append(int(musicastr[i]))
+    y1=[]
+    y2=[]
+    y3=[]
+    y4=[]
+    y5=[]
+    for i in range (len(musica)):
+        if musica[i] == 0:
+            y1.append(-100*i)
+        elif musica[i] == 1:
+            y2.append(-100*i)
+        elif musica[i] == 2:
+            y3.append(-100*i)
+        elif musica[i] == 3:
+            y4.append(-100*i)
+        elif musica[i] == 4:
+            y5.append(-100*i)
+        elif musica[i] == 5:
+            y1.append(-100*i)
+            y3.append(-100*i)
+        elif musica[i] == 6:
+            y2.append(-100*i)
+            y4.append(-100*i)
+        elif musica[i] == 9:
+            y1.append(-100*i)
+            y2.append(-100*i)
+    return y1, y2, y3, y4, y5
+
+def musica6():
+    pygame.mixer.music.load('br.mp3')
+    pygame.mixer.music.play(0)
+    pygame.mixer.music.set_volume(1)
+
+    oimusica = open('br.txt', 'r')
+    musicatxt = oimusica.readlines()
+    oimusica.close()
+    musicastr = list(musicatxt[0])
+    musica = []
+    for i in range (len(musicastr)):
+        musica.append(int(musicastr[i]))
+    y1=[]
+    y2=[]
+    y3=[]
+    y4=[]
+    y5=[]
+    for i in range (len(musica)):
+        if musica[i] == 0:
+            y1.append(-100*i)
+        elif musica[i] == 1:
+            y2.append(-100*i)
+        elif musica[i] == 2:
+            y3.append(-100*i)
+        elif musica[i] == 3:
+            y4.append(-100*i)
+        elif musica[i] == 4:
+            y5.append(-100*i)
+        elif musica[i] == 5:
+            y1.append(-100*i)
+            y3.append(-100*i)
+        elif musica[i] == 6:
+            y2.append(-100*i)
+            y4.append(-100*i)
+        elif musica[i] == 9:
+            y1.append(-100*i)
+            y2.append(-100*i)
+    return y1, y2, y3, y4, y5
 #            
 #def musica7():
 #    pygame.mixer.music.load('.mp3')

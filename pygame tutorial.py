@@ -1,10 +1,4 @@
-#fazer tela tutorial
-#criar função terminar jogo
-#criar tela score final
 #creditos + gifs?
-#musicas
-#botoes musicas
-#TIRAR BAILE DA MUSICAS
 
 import pygame
 import classe_musicas as m
@@ -13,8 +7,6 @@ import classe_teclas as t
 pygame.init()
 
 pygame.mixer.init(44100, -16,2,2048)
-#SONG_END = pygame.USEREVENT + 1
-#pygame.mixer.music.set_endevent(SONG_END)
 
 display_width = 800
 display_height = 650
@@ -39,10 +31,6 @@ pygame.display.set_icon(gameIcon)
 
 clock = pygame.time.Clock()
 crashed = False
-
-#movie = pygame.movie.Movie('fogoqueimando.mpeg')
-#screen = pygame.display.set_mode(movie.get_size())
-#movie_screen = pygame.Surface(movie.get_size()).convert()
 
 gerente_imagens = t.GerenciadorImagens()
 
@@ -70,7 +58,6 @@ GoodImg = pygame.transform.scale(GoodImg, (500,500))
 MissedImg = pygame.image.load('MISSED.png')
 MissedImg = pygame.transform.scale(MissedImg, (500,500))
 
-   
 def bot(x,y,Img):
     botImg = pygame.image.load(Img)
     botImg = pygame.transform.scale(botImg, (100,100))
@@ -165,7 +152,7 @@ def escolha_modo1(): #carry on my wayward
     modo = 1
     loop_jogo()
 
-def escolha_modo2(): #cliffs
+def escolha_modo2(): #cliffs of dover
     global modo
     modo = 2
     loop_jogo()
@@ -185,21 +172,23 @@ def escolha_modo5(): #figure it out
     modo = 5
     loop_jogo()
     
-#def escolha_modo6(): 
-#    global modo
-#    modo = 6
-#    loop_jogo()
-#    
+def escolha_modo6(): #bohemian rhapsody
+    global modo
+    modo = 6
+    loop_jogo()
+    
+#FUNÇÕES PARA FUTURAS IMPLEMENTAÇÕES DE MÚSICAS    
+
 #def escolha_modo7(): 
 #    global modo
 #    modo = 7
 #    loop_jogo()
-#    
+    
 #def escolha_modo8():
 #    global modo
 #    modo = 8
 #    loop_jogo()
-#    
+   
 #def escolha_modo9():
 #    global modo
 #    modo = 9
@@ -209,7 +198,6 @@ def game_intro():
     global intro, Menu, FPS, movie, movie_screen, screen
 
     intro = True
-
       
     pygame.mixer.music.load('musicaintro.mp3')
     pygame.mixer.music.play(0)
@@ -233,28 +221,13 @@ def game_intro():
                     print('tutorial')
 
         gameDisplay.fill(white)
-#        blink('pressioneespaco.png')
         largeText = pygame.font.Font('freesansbold.ttf',100)
         TextSurf, TextRect = text_objects("Guitar Student", largeText)
         TextRect.center = ((display_width/2),(display_height/2))
         gameDisplay.blit(TextSurf, TextRect)
         
-#        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)
-#        button("Jogar",150,450,100,50,green,bright_green,Menu_musica)        
-
-        #button("Quit",550,450,100,50,red,bright_red,sair_jogo)
-#        button("Quit",550,450,100,50,red,bright_red,sair_jogo)
-#        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
-#        imagebutton(100,450,200,100,'jogar2.png','jogar1.png',Menu_musica)
-#        button("Jogar",150,450,100,50,green,bright_green,Menu_musica)        
-
-#        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
-#        imagebutton(100,450,200,100,'jogar2.png','jogar1.png',Menu_musica)
-        
         pygame.display.update()
-        clock.tick(FPS)
-
-    
+        clock.tick(FPS)    
         
 def unpause():
         global pause
@@ -267,9 +240,7 @@ def paused():
             
             if event.type == pygame.QUIT:
                 pygame.quit()
-                quit()
-                
-                
+                quit()                    
       
         gameDisplay.fill(white)
         largeText = pygame.font.Font('freesansbold.ttf',100)
@@ -293,9 +264,7 @@ def tela_final_muito_bom():
             
             if event.type == pygame.QUIT:
                 pygame.quit()
-                quit()
-                
-                
+                quit()          
       
         gameDisplay.fill(white)
         largeText = pygame.font.Font('freesansbold.ttf',100)
@@ -303,12 +272,9 @@ def tela_final_muito_bom():
         TextRect.center = ((display_width/2),(display_height/2))
         gameDisplay.blit(TextSurf, TextRect)
         pygame.mixer.music.pause()        
-        
 
-#        button("Menu",350,450,100,50,blue,bright_blue,game_intro)
         imagebutton(350,450,200,100,'menu1.png','menu2.png', game_intro)
-
-#        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)        
+      
         imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
         
         pygame.display.update()
@@ -323,8 +289,6 @@ def tela_final_bom():
                 pygame.quit()
                 quit()
                 
-                
-      
         gameDisplay.fill(white)
         largeText = pygame.font.Font('freesansbold.ttf',80)
        
@@ -334,11 +298,8 @@ def tela_final_bom():
         gameDisplay.blit(TextSurf, TextRect)
         pygame.mixer.music.pause()        
         
-
-#        button("Menu",350,450,100,50,blue,bright_blue,game_intro)
         imagebutton(350,450,200,100,'menu1.png','menu2.png', game_intro)
-
-#        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)        
+      
         imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
         
         pygame.display.update()
@@ -350,9 +311,7 @@ def tela_fail():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
-                
-                
-      
+
         gameDisplay.fill(white)
         largeText = pygame.font.Font('freesansbold.ttf',100)
         pequenotexto = pygame.font.Font('freesansbold.ttf',25)
@@ -361,17 +320,13 @@ def tela_fail():
         TextRect.center = ((display_width/2),(display_height/2))
         gameDisplay.blit(TextSurf, TextRect)
         pygame.mixer.music.pause()        
-        
 
-#        button("Menu",350,450,100,50,blue,bright_blue,game_intro)
         imagebutton(350,450,200,100,'menu1.png','menu2.png', game_intro)
-
-#        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)        
+   
         imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
         
         pygame.display.update()
         clock.tick(15)
-
 
 def get_high_score():
     # Default high score
@@ -545,7 +500,6 @@ def loop_jogo2():
             if y5 < miny:
                 miny = y5
             
-        # detecta se a ultima bolinha ja passou pela tela
         if miny >= display_height:
             if score > 300:
                 tela_final_muito_bom()
@@ -558,8 +512,6 @@ def loop_jogo2():
         
         
         for event in pygame.event.get():            
-#            if event.type == SONG_END:
-#                crashed = True
             if event.type == pygame.QUIT:
                 crashed = True                
             if event.type == pygame.KEYDOWN:         
