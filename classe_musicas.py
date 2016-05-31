@@ -417,5 +417,5 @@ def musica(modo):
 #    elif modo == 9:
 #        m = musica9()
     else:
-        continue
+        m = -1
     return m
