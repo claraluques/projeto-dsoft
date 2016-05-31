@@ -120,6 +120,26 @@ def imagebutton(x,y,w,h,imagem1,imagem2,action):
        Img2botao = pygame.image.load(imagem2)
        Img2botao = pygame.transform.scale(Img2botao, (w,h))
        gameDisplay.blit(Img2botao,(x , y))
+     
+def blink(img):
+    global intro
+    show_image = False
+    
+    while intro == True:
+    
+        clock.tick(10) 
+    
+        if show_image:    
+             window.blit(start, (300, 450))    
+             show_image = False
+    
+        else:    
+            window.blit(blank, (300, 450))    
+            show_image = True
+    
+        pygame.display.flip()
+
+         
           
 
 def sair_jogo():
@@ -195,30 +215,22 @@ def game_intro():
         for event in pygame.event.get():
             
             if event.type == pygame.QUIT:
-<<<<<<< HEAD
-
                 quit()
 
             if event.type == pygame.KEYDOWN:
                 
                 if event.key == pygame.K_SPACE:
                     Menu_musica()
+                    
                 if event.key == pygame.K_ESCAPE:
                     quit()
-        
-#        screen.blit(movie_screen,(0,0))
-=======
-                quit()
 
-        
->>>>>>> 7ebb84a6ef5ce1e28c01f5ddb7e1de7483f94bf4
         gameDisplay.fill(white)
         largeText = pygame.font.Font('freesansbold.ttf',100)
         TextSurf, TextRect = text_objects("Guitar Student", largeText)
         TextRect.center = ((display_width/2),(display_height/2))
         gameDisplay.blit(TextSurf, TextRect)
         
-<<<<<<< HEAD
 #        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)
 #        button("Jogar",150,450,100,50,green,bright_green,Menu_musica)        
 
@@ -227,11 +239,9 @@ def game_intro():
 #        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
 #        imagebutton(100,450,200,100,'jogar2.png','jogar1.png',Menu_musica)
 #        button("Jogar",150,450,100,50,green,bright_green,Menu_musica)        
-=======
-        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
-        imagebutton(100,450,200,100,'jogar2.png','jogar1.png',Menu_musica)
->>>>>>> 7ebb84a6ef5ce1e28c01f5ddb7e1de7483f94bf4
-        
+
+#        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
+#        imagebutton(100,450,200,100,'jogar2.png','jogar1.png',Menu_musica)
         
         pygame.display.update()
         clock.tick(FPS)
@@ -375,22 +385,12 @@ def Menu_musica():
                 pygame.quit()
                 quit()
               
-
-        
         gameDisplay.blit(escolhaImg, (0, 0))
 
-<<<<<<< HEAD
-#        button("Voltar",700,0,100,50,red,bright_red,game_intro)
-#        button("GO!",150,450,100,50,green,bright_green,loop_jogo)
-#        button("Voltar",450,450,100,50,red,bright_red,game_intro)
         imagebutton(display_width-190,570,180,90,'sair1.png','sair2.png', sair_jogo2)
-=======
-        imagebutton(display_width-170,10,180,90,'voltar1.png','voltar2.png', game_intro)
->>>>>>> 7ebb84a6ef5ce1e28c01f5ddb7e1de7483f94bf4
-#        button(blablabla,coluna1,100,largbot,altbot,green,bright_green, escolha_modo3)
         imagebutton(coluna1,(100+altbot+espaco),largbot,altbot,'rollinginthedeep2.png', 'rollinginthedeep1.png', escolha_modo4)
         imagebutton(coluna1,(100+2*(altbot+espaco)),largbot,altbot,'FiO1.png', 'FiO2.png', escolha_modo5)
-#        imagebutton(coluna1,(100+3*(altbot+espaco)),largbot,altbot,'ComWS1.png', ' ComWS2.png', escolha_modo1)
+        imagebutton(coluna1,(100+3*(altbot+espaco)),largbot,altbot,'ComWS1.png', ' ComWS2.png', escolha_modo1)
         imagebutton(coluna2,350,largbot,altbot,'CoD2.png', 'CoD1.png', escolha_modo2)
         
         pygame.display.update()
