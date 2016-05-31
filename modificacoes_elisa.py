@@ -1,3 +1,11 @@
+#fazer tela tutorial
+#criar função terminar jogo
+#criar tela score final
+#creditos + gifs?
+#musicas
+#botoes musicas
+#TIRAR BAILE DA MUSICAS
+
 import pygame
 import classe_musicas as m
 import classe_teclas as t
@@ -24,7 +32,7 @@ FPS = 60
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption(('Guitar Student!'))
 
-gameIcon = pygame.image.load('icone.png') #mudar icone
+gameIcon = pygame.image.load('guitar_icon.png') #mudar icone
 pygame.display.set_icon(gameIcon)
 
 clock = pygame.time.Clock()
@@ -48,8 +56,18 @@ pause = False
 
 modo = -1 
 
-PerfectImg = pygame.image.load('Perfect.sprite.png')
-PerfectImg = pygame.transform.scale(PerfectImg, (100,100))
+PerfectImg = pygame.image.load('PERFECT.png')
+PerfectImg = pygame.transform.scale(PerfectImg, (500,500))
+
+VerygoodImg = pygame.image.load('VERY.GOOD.png')
+VerygoodImg = pygame.transform.scale(VerygoodImg, (500,500))
+
+GoodImg = pygame.image.load('GOOD.png')
+GoodImg = pygame.transform.scale(GoodImg, (500,500))
+
+MissedImg = pygame.image.load('MISSED.png')
+MissedImg = pygame.transform.scale(MissedImg, (500,500))
+
    
 def bot(x,y,Img):
     botImg = pygame.image.load(Img)
@@ -111,29 +129,62 @@ def sair_jogo2():
     pygame.quit()
     quit()
     
-def escolha_modo1():
+def escolha_modo0(): #aleatorio
     global modo
     modo = 0
     loop_jogo()
-
-def escolha_modo2():
+    
+def escolha_modo1(): #baile
     global modo
     modo = 1
     loop_jogo()
-    
-def escolha_modo3():
+
+def escolha_modo2(): #cliffs
     global modo
     modo = 2
     loop_jogo()
+    
+def escolha_modo3(): #house of gold
+    global modo
+    modo = 3
+    loop_jogo()
+    
+def escolha_modo4(): #rolling in the deep
+    global modo
+    modo = 4
+    loop_jogo()
+
+def escolha_modo5(): #figure it out
+    global modo
+    modo = 5
+    loop_jogo()
+    
+def escolha_modo6(): #carry on my wayward son
+    global modo
+    modo = 6
+    loop_jogo()
+#    
+#def escolha_modo7(): 
+#    global modo
+#    modo = 7
+#    loop_jogo()
+#    
+#def escolha_modo8():
+#    global modo
+#    modo = 8
+#    loop_jogo()
+#    
+#def escolha_modo9():
+#    global modo
+#    modo = 9
+#    loop_jogo()
     
 def game_intro():
     global intro, Menu, FPS, movie, movie_screen, screen
 
     intro = True
-#    movie.set_display(movie_screen)
-#    movie.play()
-    
-    
+
+      
     pygame.mixer.music.load('musicaintro.mp3')
     pygame.mixer.music.play(0)
     pygame.mixer.music.set_volume(0.2) 
@@ -142,30 +193,17 @@ def game_intro():
         for event in pygame.event.get():
             
             if event.type == pygame.QUIT:
-#                movie.stop()
-#                pygame.quit()
                 quit()
 
         
-
-
-        
-#        screen.blit(movie_screen,(0,0))
         gameDisplay.fill(white)
-#        gameDisplay.blit(bg, (0, 0))
         largeText = pygame.font.Font('freesansbold.ttf',100)
         TextSurf, TextRect = text_objects("Guitar Student", largeText)
         TextRect.center = ((display_width/2),(display_height/2))
         gameDisplay.blit(TextSurf, TextRect)
         
-#        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)
-#        button("Jogar",150,450,100,50,green,bright_green,Menu_musica)        
-
-        #button("Quit",550,450,100,50,red,bright_red,sair_jogo)
-#        button("Quit",550,450,100,50,red,bright_red,sair_jogo)
-        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo)
+        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
         imagebutton(100,450,200,100,'jogar2.png','jogar1.png',Menu_musica)
-#        button("Jogar",150,450,100,50,green,bright_green,Menu_musica)        
         
         
         pygame.display.update()
@@ -195,14 +233,11 @@ def paused():
         gameDisplay.blit(TextSurf, TextRect)
         pygame.mixer.music.pause()        
         
-#        button("Continuar",150,450,100,50,green,bright_green,unpause)
         imagebutton(80,424,300,150,'continuar1.png', 'continuar2.png', unpause)
 
-#        button("Menu",350,450,100,50,blue,bright_blue,game_intro)
         imagebutton(350,450,200,100,'menu1.png','menu2.png', game_intro)
 
-#        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)        
-        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo)
+        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
         
         pygame.display.update()
         clock.tick(15)
@@ -211,9 +246,16 @@ def Menu_musica():
     global Menu,escolha, intro
 
     escolha = ""
+    
     Menu = True    
     intro = False
-
+    
+    altbot = 90
+    largbot = 300
+    coluna1 = 50
+    coluna2 = 350
+    espaco = 25
+    
     while Menu:
         for event in pygame.event.get():
             
@@ -221,23 +263,16 @@ def Menu_musica():
                 pygame.quit()
                 quit()
               
-#        gameDisplay.fill(white)
 
-#        largeText = pygame.font.Font('freesansbold.ttf',80)
-#        TextSurf, TextRect = text_objects("Escolha sua musica", largeText)
-#        TextRect.center = ((display_width/2),(display_height/2))
-#        gameDisplay.blit(TextSurf, TextRect)
         
         gameDisplay.blit(escolhaImg, (0, 0))
 
-#        button("Voltar",700,0,100,50,red,bright_red,game_intro)
-#        button("GO!",150,450,100,50,green,bright_green,loop_jogo)
-#        button("Voltar",450,450,100,50,red,bright_red,game_intro)
-        imagebutton(display_width-200,0,200,100,'voltar1.png','voltar2.png', game_intro)
-        button("Baile",150,550,100,50,green,bright_green,escolha_modo1)        
-        button("Cliffs",450,550,100,50,green,bright_green,escolha_modo3)
-        imagebutton(200,75,150,80,'HoG1.png','HoG2.png', game_intro)
-
+        imagebutton(display_width-170,10,180,90,'voltar1.png','voltar2.png', game_intro)
+        imagebutton(coluna1,100,largbot,altbot,'HoG1.png','HoG2.png', escolha_modo3)
+        imagebutton(coluna1,(100+altbot+espaco),largbot,altbot,'rollinginthedeep2.png', 'rollinginthedeep1.png', escolha_modo4)
+        imagebutton(coluna1,(100+2*(altbot+espaco)),largbot,altbot,'FiO1.png', 'FiO2.png', escolha_modo5)
+        imagebutton(coluna1,(100+3*(altbot+espaco)),largbot,altbot,'ComWS1.png', ' ComWS2.png', escolha_modo6)
+        imagebutton(coluna2,350,largbot,altbot,'CoD2.png', 'CoD1.png', escolha_modo2)
         
         pygame.display.update()
         clock.tick(15)
@@ -255,9 +290,8 @@ def loop_jogo():
     Menu = False
     
 def loop_jogo2():    
-    ganhou = False
 
-    musica = m.musica(modo)
+    musica, estados = m.musica(modo)
     listay1 = musica[0]
     listay2 = musica[1]
     listay3 = musica[2]
@@ -267,6 +301,9 @@ def loop_jogo2():
     x = 190
     
     count_perfect = -1
+    count_verygood = -1
+    count_good = -1
+    count_missed = -1
 
     y_change = 5
     
@@ -326,6 +363,8 @@ def loop_jogo2():
             listay5[i] += y_change
             if y5 < miny:
                 miny = y5
+               
+            
         
         if miny >= display_height:
             musica = m.musica(modo)
@@ -344,26 +383,49 @@ def loop_jogo2():
                     for i in range (len(listay1)):
                         y1 = listay1[i]
                         score,status = t.process_key1(y1, score)
+                        if status != None and status != "MISSED":
+                            print(i)
+                            estados[0][i] = 1
+                        print(status,estados[0][i])
+                        if estados[0][i] != 0:
+                            gerente_imagens.tecla1fogo(x,y1,gameDisplay)
+                            print("fogo")
+                            break
+                        else:
+                            gerente_imagens.tecla1(x,y1,gameDisplay)
+                            break
                             
                 elif event.key == pygame.K_w:
                     for i in range (len(listay2)):
                         y2 = listay2[i]
                         score,status = t.process_key2(y2, score)
+                        if status != None:
+                            gerente_imagens.tecla2fogo(x,y2,gameDisplay)
+                            break
                         
                 elif event.key == pygame.K_e:
                     for i in range (len(listay3)):
                         y3 = listay3[i]
                         score,status = t.process_key3(y3, score)
+                        if status != None:
+                            gerente_imagens.tecla3fogo(x,y3,gameDisplay)
+                            break
                         
                 elif event.key == pygame.K_r:
                     for i in range (len(listay4)):
                         y4 = listay4[i]
                         score,status = t.process_key4(y4, score)
+                        if status != None:
+                            gerente_imagens.tecla4fogo(x,y4,gameDisplay)
+                            break
                                             
                 elif event.key == pygame.K_t:
                     for i in range (len(listay5)):
                         y5 = listay5[i]
                         score,status = t.process_key5(y5, score)
+                        if status != None:
+                            gerente_imagens.tecla5fogo(x,y5,gameDisplay)
+                            break
                         
                 elif event.key == pygame.K_ESCAPE:
                     pause = True
@@ -372,20 +434,51 @@ def loop_jogo2():
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_DOWN or event.key == pygame.K_UP:
                     y_change = 0
-    
-        if score == 100:
-            ganhou = True
-        if ganhou == True:
-            crashed = True
+        
         
         if status == "PERFECT":
             count_perfect = 0
+        
+        if status == "VERY GOOD":
+            count_verygood = 0
             
+        if status == "GOOD":
+            count_good = 0
+        
+        if status == "MISSED":
+            count_missed = 0
+        
+        
         if count_perfect >= 0:
-            print("funcionou")
+            y1 = (900,900   )
+            gameDisplay.blit(PerfectImg,(550,100))
             count_perfect += 1
-            if count_perfect > 100:
+            if count_perfect > 20:
+                print("parei")
                 count_perfect = -1
+        
+        if count_verygood >= 0:
+                    gameDisplay.blit(VerygoodImg,(480,150))
+                    count_verygood += 1
+                    if count_verygood > 20:
+                        print("parei")
+                        count_verygood = -1
+                        
+        if count_good >= 0:
+                    gameDisplay.blit(GoodImg,(450,175))
+                    count_good += 1
+                    if count_good > 20:
+                        print("parei")
+                        count_good = -1
+
+        if count_missed >= 0:            
+            gameDisplay.blit(MissedImg,(450,220))
+            count_missed += 1
+            if count_missed > 20:
+                print("parei")
+                count_missed = -1
+
+        
         pygame.display.update()
         clock.tick(FPS)
         frames += 1
