@@ -136,7 +136,7 @@ def escolha_modo0(): #aleatorio
     modo = 0
     loop_jogo()
     
-def escolha_modo1(): #baile
+def escolha_modo1(): #carry on my wayward
     global modo
     modo = 1
     loop_jogo()
@@ -161,10 +161,10 @@ def escolha_modo5(): #figure it out
     modo = 5
     loop_jogo()
     
-def escolha_modo6(): #carry on my wayward son
-    global modo
-    modo = 6
-    loop_jogo()
+#def escolha_modo6(): 
+#    global modo
+#    modo = 6
+#    loop_jogo()
 #    
 #def escolha_modo7(): 
 #    global modo
@@ -197,13 +197,15 @@ def game_intro():
         for event in pygame.event.get():
             
             if event.type == pygame.QUIT:
-#                movie.stop()
-#                pygame.quit()
+
                 quit()
 
-        
-
-
+            if event.type == pygame.KEYDOWN:
+                
+                if event.key == pygame.K_SPACE:
+                    Menu_musica()
+                if event.key == pygame.K_ESCAPE:
+                    quit()
         
 #        screen.blit(movie_screen,(0,0))
         gameDisplay.fill(white)
@@ -218,8 +220,8 @@ def game_intro():
 
         #button("Quit",550,450,100,50,red,bright_red,sair_jogo)
 #        button("Quit",550,450,100,50,red,bright_red,sair_jogo)
-        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
-        imagebutton(100,450,200,100,'jogar2.png','jogar1.png',Menu_musica)
+#        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
+#        imagebutton(100,450,200,100,'jogar2.png','jogar1.png',Menu_musica)
 #        button("Jogar",150,450,100,50,green,bright_green,Menu_musica)        
         
         
@@ -357,8 +359,8 @@ def Menu_musica():
     
     altbot = 90
     largbot = 300
-    coluna1 = 50
-    coluna2 = 350
+    coluna1 = 75
+    coluna2 = 425
     espaco = 25
     
     while Menu:
@@ -380,11 +382,11 @@ def Menu_musica():
 #        button("Voltar",700,0,100,50,red,bright_red,game_intro)
 #        button("GO!",150,450,100,50,green,bright_green,loop_jogo)
 #        button("Voltar",450,450,100,50,red,bright_red,game_intro)
-        imagebutton(display_width-170,10,180,90,'voltar1.png','voltar2.png', game_intro)
+        imagebutton(display_width-190,570,180,90,'sair1.png','sair2.png', sair_jogo2)
 #        button(blablabla,coluna1,100,largbot,altbot,green,bright_green, escolha_modo3)
         imagebutton(coluna1,(100+altbot+espaco),largbot,altbot,'rollinginthedeep2.png', 'rollinginthedeep1.png', escolha_modo4)
         imagebutton(coluna1,(100+2*(altbot+espaco)),largbot,altbot,'FiO1.png', 'FiO2.png', escolha_modo5)
-#        imagebutton(coluna1,(100+3*(altbot+espaco)),largbot,altbot,'ComWS1.png', ' ComWS2.png', escolha_modo6)
+#        imagebutton(coluna1,(100+3*(altbot+espaco)),largbot,altbot,'ComWS1.png', ' ComWS2.png', escolha_modo1)
         imagebutton(coluna2,350,largbot,altbot,'CoD2.png', 'CoD1.png', escolha_modo2)
         
         pygame.display.update()
@@ -486,7 +488,10 @@ def loop_jogo2():
             listay3 = musica[2]
             listay4 = musica[3]
             listay5 = musica[4]
+            
         status = None
+        
+        
         for event in pygame.event.get():            
             if event.type == SONG_END:
                 crashed = True

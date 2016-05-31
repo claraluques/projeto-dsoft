@@ -8,11 +8,11 @@ def erro():
     sound.play(loops = 0)
             
 def musica1():
-    pygame.mixer.music.load('baile.mp3')
+    pygame.mixer.music.load('comws.mp3')
     pygame.mixer.music.play(0)
     pygame.mixer.music.set_volume(0.2)
     
-    oimusica = open('baile.txt', 'r')
+    oimusica = open('comws.txt', 'r')
     musicatxt = oimusica.readlines()
     oimusica.close()
     musicastr = list(musicatxt[0])
