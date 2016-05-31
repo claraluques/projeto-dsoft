@@ -1,4 +1,6 @@
 #creditos + gifs?
+#as frases e palavras do jogo esta metade em ingles e metade em portugues!!
+
 
 import pygame
 import classe_musicas as m
