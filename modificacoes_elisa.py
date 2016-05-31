@@ -32,7 +32,7 @@ bright_green = (0,200,0)
 FPS = 60
 
 gameDisplay = pygame.display.set_mode((display_width, display_height))
-pygame.display.set_caption(('Guitar Student!'))
+pygame.display.set_caption(('Pixel Guitar!'))
 
 gameIcon = pygame.image.load('guitar_icon.png') #mudar icone
 pygame.display.set_icon(gameIcon)
@@ -54,7 +54,14 @@ guitarraImg = pygame.transform.scale(guitarraImg, (800,650))
 escolhaImg = pygame.image.load('escolhamusica1.png')
 escolhaImg = pygame.transform.scale(escolhaImg, (800,650))
 
+tutorialImg = pygame.image.load('tutorial.png')
+tutorialImg = pygame.transform.scale(tutorialImg, (800,650))
+
+introImg = pygame.image.load('pressioneespaco.png')
+introImg = pygame.transform.scale(introImg, (800,650))
+
 pause = False
+tutorial = False
 
 modo = -1 
 
@@ -205,12 +212,38 @@ def escolha_modo5(): #figure it out
 #    modo = 9
 #    loop_jogo()
     
+def game_tutorial():
+    global tutorial, Menu, FPS, tutorialImg
+
+    tutorial = True
+
+    
+    while tutorial:
+        
+
+        gameDisplay.blit(tutorialImg,(0 , 0))
+                    
+        for event in pygame.event.get():
+            
+            if event.type == pygame.QUIT:
+                quit()
+
+            if event.type == pygame.KEYDOWN:
+                
+                if event.key == pygame.K_z:
+                    game_intro()
+
+                if event.key == pygame.K_ESCAPE:
+                    quit()
+
+        pygame.display.update()
+    
 def game_intro():
-    global intro, Menu, FPS
+    global intro, Menu, FPS, tutorial, introImg
 
     intro = True
-
-      
+    tutorial = False    
+    
     pygame.mixer.music.load('musicaintro.mp3')
     pygame.mixer.music.play(0)
     pygame.mixer.music.set_volume(0.2) 
@@ -225,16 +258,21 @@ def game_intro():
                 
                 if event.key == pygame.K_SPACE:
                     Menu_musica()
-                    
+
+                if event.key == pygame.K_a:
+                    game_tutorial()
+                       
                 if event.key == pygame.K_ESCAPE:
                     quit()
 
+        gameDisplay.blit(introImg,(0 , 0))
+
 #        gameDisplay.fill(white)
 #        blink('pressioneespaco.png')
-        largeText = pygame.font.Font('freesansbold.ttf',100)
-        TextSurf, TextRect = text_objects("Guitar Student", largeText)
-        TextRect.center = ((display_width/2),(display_height/2))
-        gameDisplay.blit(TextSurf, TextRect)
+#        largeText = pygame.font.Font('freesansbold.ttf',100)
+#        TextSurf, TextRect = text_objects("Guitar Student", largeText)
+#        TextRect.center = ((display_width/2),(display_height/2))
+#        gameDisplay.blit(TextSurf, TextRect)
         
 #        button("Quit",550,450,100,50,red,bright_red,sair_jogo2)
 #        button("Jogar",150,450,100,50,green,bright_green,Menu_musica)        
