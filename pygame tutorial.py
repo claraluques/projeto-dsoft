@@ -382,7 +382,7 @@ def main():
         print("Better luck next time.")        
 
 def Menu_musica():
-    global Menu,escolha, intro
+    global Menu,escolha, intro, score
 
     escolha = ""
     
@@ -394,6 +394,7 @@ def Menu_musica():
     coluna1 = 75
     coluna2 = 425
     espaco = 25
+    score = 0
     
     while Menu:
         for event in pygame.event.get():
@@ -407,8 +408,9 @@ def Menu_musica():
         imagebutton(display_width-190,570,180,90,'sair1.png','sair2.png', sair_jogo2)
         imagebutton(coluna1,(100+altbot+espaco),largbot,altbot,'rollinginthedeep2.png', 'rollinginthedeep1.png', escolha_modo4)
         imagebutton(coluna1,(100+2*(altbot+espaco)),largbot,altbot,'FiO1.png', 'FiO2.png', escolha_modo5)
-        imagebutton(coluna1,(100+3*(altbot+espaco)),largbot,altbot,'ComWS1.png', 'ComWS2.png', escolha_modo1)
-        imagebutton(coluna2,350,largbot,altbot,'CoD2.png', 'CoD1.png', escolha_modo2)
+        imagebutton(coluna2,(100+1*(altbot+espaco)),largbot,altbot,'ComWS1.png', 'ComWS2.png', escolha_modo1)
+        imagebutton(coluna2,(100+2*(altbot+espaco)),largbot,altbot,'CoD2.png', 'CoD1.png', escolha_modo2)
+        imagebutton(coluna1,(100+3*(altbot+espaco)),largbot,altbot,'HoG1.png', 'HoG2.png', escolha_modo2)
         
         pygame.display.update()
         clock.tick(15)
