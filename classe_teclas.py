@@ -1,7 +1,9 @@
 import pygame
 import classe_musicas as m
 
+#crianco a classe para geração da imagem dos botoes
 class GerenciadorImagens:
+    #carregando as imagens
     def __init__(self):
         self.tecla1Img = pygame.image.load('botao1.png')
         self.tecla1Img = pygame.transform.scale(self.tecla1Img, (100,100))
@@ -32,7 +34,8 @@ class GerenciadorImagens:
         
         self.tecla5fogoImg = pygame.image.load('bolinha.flamejante5.png')
         self.tecla5fogoImg = pygame.transform.scale(self.tecla5fogoImg, (100,100))
-        
+    
+#associando cada funçao de tecla com uma imagem    
     def tecla1(self, x, y1, gameDisplay):
         gameDisplay.blit(self.tecla1Img,(x,y1))
         
@@ -48,6 +51,7 @@ class GerenciadorImagens:
     def tecla5(self, x, y5, gameDisplay):
         gameDisplay.blit(self.tecla5Img,(x+316 , y5))
         
+#criando tambem funções para as imagens especiais de fogo        
     def tecla1fogo(self, x, y1, gameDisplay):
         gameDisplay.blit(self.tecla1fogoImg,(x , y1))
         
