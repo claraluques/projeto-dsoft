@@ -1,49 +1,43 @@
-#creditos + gifs?
-#as frases e palavras do jogo esta metade em ingles e metade em portugues!!
-
 
 import pygame
 import classe_musicas as m
 import classe_teclas as t
 
-pygame.init()
+pygame.init() # inicializa o pygame
 
-pygame.mixer.init(44100, -16,2,2048)
+pygame.mixer.init(44100, -16,2,2048) #i nicializa  a musica
 
+# tamanho da janela do jogo
 display_width = 800
 display_height = 650
 
-blue = (0,0,255)
-bright_blue = (0,0,200)
+# definindo cores em RGB
 black = (0,0,0)
 white = (255,255,255)
-purple = (151,65,239)
-red = (255,0,0)
-bright_red = (200,0,0)
-green = (0,255,0)
-bright_green = (0,200,0)
+
 
 FPS = 60
 
+# altura e largura dos botões
 altbot = 90
 largbot = 300
 
+# definido as colunas para os botões
 coluna1 = 75
 coluna2 = 425
 
+# Propriedades da janela
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption(('GUITARPIXEL!'))
-
-gameIcon = pygame.image.load('guitar_icon.png') #mudar icone
+gameIcon = pygame.image.load('guitar_icon.png')
 pygame.display.set_icon(gameIcon)
 
 clock = pygame.time.Clock()
-crashed = False
 
+# Coloca função da classe teclas em uma variável
 gerente_imagens = t.GerenciadorImagens()
 
-bg = pygame.image.load("fundofogo.png")
-
+# Carrega imagens
 guitarraImg = pygame.image.load('guitarra2.png')
 guitarraImg = pygame.transform.scale(guitarraImg, (800,650))
 
@@ -83,22 +77,27 @@ GoodImg = pygame.transform.scale(GoodImg, (500,500))
 MissedImg = pygame.image.load('MISSED.png')
 MissedImg = pygame.transform.scale(MissedImg, (500,500))
 
+
 pause = False
 tutorial = False
 credito = False
+crashed = False
 
 modo = -1 
 
+# Define função para carregar imagem do local de acerto
 def bot(x,y,Img):
     botImg = pygame.image.load(Img)
     botImg = pygame.transform.scale(botImg, (100,100))
     gameDisplay.blit(botImg,(x , y))
 
+# Função mostra score
 def Score(count):
     font = pygame.font.SysFont(None,40)
     text = font.render("Score: "+str(count), True, black)
     gameDisplay.blit(text,(650,0))    
 
+# 
 def Perfect(x, y):
     gameDisplay.blit(PerfectImg ,(650, 200))
 
@@ -250,7 +249,7 @@ def game_creditos():
         pygame.display.update()
     
 def game_intro():
-    global intro, Menu, FPS, tutorial, introImg
+    global intro, Menu, FPS, tutorial, introImg, credito
     
     intro = True
     tutorial = False
@@ -454,10 +453,10 @@ def Menu_musica():
 
         imagebutton(coluna1,(100+altbot+espaco),largbot,altbot,'rollinginthedeep2.png', 'rollinginthedeep1.png', escolha_modo4)
         imagebutton(coluna1,(100+2*(altbot+espaco)),largbot,altbot,'FiO1.png', 'FiO2.png', escolha_modo5)
-        imagebutton(coluna1,(100+3*(altbot+espaco)),largbot,altbot,'HoG1.png', 'HoG2.png', escolha_modo3)        
-        imagebutton(coluna2,(100+1*(altbot+espaco)),largbot,altbot,'ComWS1.png', 'ComWS2.png', escolha_modo1)
+        imagebutton(coluna2,(100+1*(altbot+espaco)),largbot,altbot,'HoG1.png', 'HoG2.png', escolha_modo3)        
+#        imagebutton(coluna1,(100+3*(altbot+espaco)),largbot,altbot,'ComWS1.png', 'ComWS2.png', escolha_modo1)
         imagebutton(coluna2,(100+2*(altbot+espaco)),largbot,altbot,'CoD2.png', 'CoD1.png', escolha_modo2)
-        imagebutton(coluna2,(100+3*(altbot+espaco)),largbot,altbot,'BR2.png', 'BR1.png', escolha_modo6)
+#        imagebutton(coluna2,(100+3*(altbot+espaco)),largbot,altbot,'BR2.png', 'BR1.png', escolha_modo6)
         
         pygame.display.update()
         clock.tick(15)
@@ -502,7 +501,6 @@ def loop_jogo2():
     while not crashed:
         global pause        
         
-        gameDisplay.fill(purple)
         gameDisplay.blit(guitarraImg, (0, 0))
         pygame.draw.line(gameDisplay, white ,[200,600], [600,600], 1)
         bot(x,543,'buraco1.png')

@@ -1,11 +1,15 @@
 import pygame
 import random
     
+#função do som de erro
+    
 def erro():
     sound = pygame.mixer.Sound("erro.ogg")
     sound.set_volume(2.0)
     sound.play(loops = 0)
-            
+       
+#funções que leem a lista de notas e transforma em listaas de posições para cada botão
+       #uma para cada musica
 def musica1():
     pygame.mixer.music.load('comws.mp3')
     pygame.mixer.music.play(0)
@@ -363,7 +367,7 @@ def musica6():
 #            y2.append(-100*i)
 #    return y1, y2, y3, y4, y5, len(musica)
 
-
+#função da musica gerada aleatoriamente
 def musicaale():
     nbolinhas = 5
     y1=[]
@@ -395,6 +399,8 @@ def musicaale():
     
     return y1, y2, y3, y4, y5, len(musica)
     
+    
+#função que define qual musica será rodada ao escolher o modo através dos botoes no codigo principal
 def musica(modo):
     if modo == 0:
         m = musicaale()
