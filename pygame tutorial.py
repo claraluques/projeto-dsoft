@@ -313,7 +313,7 @@ def paused():
         clock.tick(15)
 
 def tela_final_muito_bom():
-    global altbot, largbot, coluna1, coluna2
+    global altbot, largbot, coluna1, coluna2, gameDisplay
     
     while tela_final_muito_bom:
         for event in pygame.event.get():
@@ -328,14 +328,14 @@ def tela_final_muito_bom():
         pygame.mixer.music.pause()        
 
         imagebutton(coluna1,450,largbot,altbot,'menu1.png','menu2.png', game_intro)
-        imagebutton(coluna2,450,largbot,altbot,'sair2.png','sair1.png',sair_jogo2)
+        imagebutton(coluna2,450,largbot,altbot,'sair1.png','sair2.png',sair_jogo2)
         
         pygame.display.update()
         clock.tick(15)
 
 
 def tela_final_bom():
-    global altbot, largbot, coluna1, coluna2
+    global altbot, largbot, coluna1, coluna2, gameDisplay
         
     while tela_final_bom:
         for event in pygame.event.get():
@@ -349,13 +349,13 @@ def tela_final_bom():
         pygame.mixer.music.pause()        
         
         imagebutton(coluna1,450,largbot,altbot,'menu1.png','menu2.png', game_intro)
-        imagebutton(coluna2,450,largbot,altbot,'sair2.png','sair1.png',sair_jogo2)
+        imagebutton(coluna2,450,largbot,altbot,'sair1.png','sair2.png',sair_jogo2)
         
         pygame.display.update()
         clock.tick(15)
         
 def tela_fail():
-    global altbot, largbot, coluna1, coluna2
+    global altbot, largbot, coluna1, coluna2, gameDisplay
     
     while tela_fail:
         for event in pygame.event.get():
@@ -369,7 +369,7 @@ def tela_fail():
         pygame.mixer.music.pause()        
 
         imagebutton(coluna1,450,largbot,altbot,'menu1.png','menu2.png', game_intro)
-        imagebutton(coluna2,450,largbot,altbot,'sair2.png','sair1.png',sair_jogo2)
+        imagebutton(coluna2,450,largbot,altbot,'sair1.png','sair2.png',sair_jogo2)
         
         pygame.display.update()
         clock.tick(15)
