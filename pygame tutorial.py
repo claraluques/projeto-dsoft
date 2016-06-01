@@ -344,7 +344,7 @@ def tela_final_bom():
                 pygame.quit()
                 quit()
         
-        gameDisplay(yourockalittleImg,(0,0))
+        gameDisplay.blit(yourockalittleImg,(0,0))
         
         pygame.mixer.music.pause()        
         
