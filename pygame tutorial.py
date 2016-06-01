@@ -25,6 +25,12 @@ bright_green = (0,200,0)
 
 FPS = 60
 
+altbot = 90
+largbot = 300
+
+coluna1 = 75
+coluna2 = 425
+
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption(('GUITARPIXEL!'))
 
@@ -53,11 +59,17 @@ introImg = pygame.transform.scale(introImg, (800,650))
 creditoImg = pygame.image.load('creditos.png')
 creditoImg = pygame.transform.scale(creditoImg, (800,650))
 
-pause = False
-tutorial = False
-credito = False
+pausadoImg = pygame.image.load('pausado.png')
+pausadoImg = pygame.transform.scale(pausadoImg,(800,650))
 
-modo = -1 
+yourockImg = pygame.image.load('yourock.png')
+yourockImg = pygame.transform.scale(yourockImg,(800,650))
+
+yourockalittleImg = pygame.image.load('yourockalittle.png')
+yourockalittleImg = pygame.transform.scale(yourockalittleImg,(800,650))
+
+seulixoImg = pygame.image.load('seulixo.png')
+seulixoImg = pygame.transform.scale(seulixoImg,(800,650))
 
 PerfectImg = pygame.image.load('PERFECT.png')
 PerfectImg = pygame.transform.scale(PerfectImg, (500,500))
@@ -70,6 +82,12 @@ GoodImg = pygame.transform.scale(GoodImg, (500,500))
 
 MissedImg = pygame.image.load('MISSED.png')
 MissedImg = pygame.transform.scale(MissedImg, (500,500))
+
+pause = False
+tutorial = False
+credito = False
+
+modo = -1 
 
 def bot(x,y,Img):
     botImg = pygame.image.load(Img)
@@ -275,6 +293,7 @@ def unpause():
         pygame.mixer.music.unpause()
     
 def paused():
+    global altbot, largbot
     while pause:
         for event in pygame.event.get():
             
@@ -282,67 +301,62 @@ def paused():
                 pygame.quit()
                 quit()                    
       
-        gameDisplay.fill(white)
-        largeText = pygame.font.Font('freesansbold.ttf',100)
-        TextSurf, TextRect = text_objects("Paused", largeText)
-        TextRect.center = ((display_width/2),(display_height/2))
-        gameDisplay.blit(TextSurf, TextRect)
+        gameDisplay.blit(pausadoImg,(0 , 0))
+           
         pygame.mixer.music.pause()        
         
-        imagebutton(80,424,300,150,'continuar1.png', 'continuar2.png', unpause)
-        imagebutton(350,450,200,100,'menu1.png','menu2.png', game_intro)
-        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
+        imagebutton(250,310,largbot,altbot,'continuar1.png', 'continuar2.png', unpause)
+        imagebutton(250,410,largbot, altbot,'menu1.png','menu2.png', game_intro)
+        imagebutton(250,510,largbot,altbot,'sair1.png','sair2.png',sair_jogo2)
         
         pygame.display.update()
         clock.tick(15)
 
 def tela_final_muito_bom():
+    global altbot, largbot, coluna1, coluna2
+    
     while tela_final_muito_bom:
         for event in pygame.event.get():
             
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()          
-      
-        gameDisplay.fill(white)
-        largeText = pygame.font.Font('freesansbold.ttf',100)
-        TextSurf, TextRect = text_objects("YOU ROCK", largeText)
-        TextRect.center = ((display_width/2),(display_height/2))
-        gameDisplay.blit(TextSurf, TextRect)
+        
+        gameDisplay.blit(yourockImg,(0 , 0))
+        
+        
         pygame.mixer.music.pause()        
 
-        imagebutton(350,450,200,100,'menu1.png','menu2.png', game_intro)
-      
-        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
+        imagebutton(coluna1,450,largbot,altbot,'menu1.png','menu2.png', game_intro)
+        imagebutton(coluna2,450,largbot,altbot,'sair2.png','sair1.png',sair_jogo2)
         
         pygame.display.update()
         clock.tick(15)
 
 
 def tela_final_bom():
+    global altbot, largbot, coluna1, coluna2
+        
     while tela_final_bom:
         for event in pygame.event.get():
             
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
-                
-        gameDisplay.fill(white)
-        largeText = pygame.font.Font('freesansbold.ttf',80)
-       
-        TextSurf, TextRect = text_objects("YOU ROCK...a little", largeText)
-       
-        TextRect.center = ((display_width/2),(display_height/2))
-        gameDisplay.blit(TextSurf, TextRect)
+        
+        gameDisplay(yourockalittleImg,(0,0))
+        
         pygame.mixer.music.pause()        
         
-        imagebutton(350,450,200,100,'menu1.png','menu2.png', game_intro)
-        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
+        imagebutton(coluna1,450,largbot,altbot,'menu1.png','menu2.png', game_intro)
+        imagebutton(coluna2,450,largbot,altbot,'sair2.png','sair1.png',sair_jogo2)
         
         pygame.display.update()
         clock.tick(15)
         
 def tela_fail():
+    global altbot, largbot, coluna1, coluna2
+    
     while tela_fail:
         for event in pygame.event.get():
             
@@ -350,18 +364,12 @@ def tela_fail():
                 pygame.quit()
                 quit()
 
-        gameDisplay.fill(white)
-        largeText = pygame.font.Font('freesansbold.ttf',100)
-        pequenotexto = pygame.font.Font('freesansbold.ttf',25)
-        TextSurf, TextRect = text_objects("Você falhou! " , largeText)
-        TextSurf, TextRect = text_objects("seu ruim", pequenotexto)
-        TextRect.center = ((display_width/2),(display_height/2))
-        gameDisplay.blit(TextSurf, TextRect)
+        gameDisplay.blit(seulixoImg,(0,0))
+
         pygame.mixer.music.pause()        
 
-        imagebutton(350,450,200,100,'menu1.png','menu2.png', game_intro)
-   
-        imagebutton(500,450,200,100,'sair2.png','sair1.png',sair_jogo2)
+        imagebutton(coluna1,450,largbot,altbot,'menu1.png','menu2.png', game_intro)
+        imagebutton(coluna2,450,largbot,altbot,'sair2.png','sair1.png',sair_jogo2)
         
         pygame.display.update()
         clock.tick(15)
@@ -420,17 +428,15 @@ def main():
         print("Better luck next time.")        
 
 def Menu_musica():
-    global Menu,escolha, intro, score
+    global Menu,escolha, intro, score, altbot, largbot, coluna1, coluna2
 
     escolha = ""
     
     Menu = True    
     intro = False
     
-    altbot = 90
-    largbot = 300
-    coluna1 = 75
-    coluna2 = 425
+
+
     espaco = 25
     score = 0
     
@@ -443,7 +449,9 @@ def Menu_musica():
               
         gameDisplay.blit(escolhaImg, (0, 0))
 
-        imagebutton(display_width-190,570,180,90,'sair1.png','sair2.png', sair_jogo2)
+        imagebutton(coluna1,550,largbot,altbot,'voltar2.png','voltar1.png',game_intro)     
+        imagebutton(coluna2,550,largbot,altbot,'sair1.png','sair2.png',sair_jogo2)
+
         imagebutton(coluna1,(100+altbot+espaco),largbot,altbot,'rollinginthedeep2.png', 'rollinginthedeep1.png', escolha_modo4)
         imagebutton(coluna1,(100+2*(altbot+espaco)),largbot,altbot,'FiO1.png', 'FiO2.png', escolha_modo5)
         imagebutton(coluna1,(100+3*(altbot+espaco)),largbot,altbot,'HoG1.png', 'HoG2.png', escolha_modo2)        
