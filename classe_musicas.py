@@ -44,7 +44,7 @@ def musica1():
             y1.append(-100*i)
             y2.append(-100*i)
 
-    return y1, y2, y3, y4, y5
+    return y1, y2, y3, y4, y5, len(musica)
     
     
 def musica2():
@@ -85,7 +85,7 @@ def musica2():
             y1.append(-100*i)
             y2.append(-100*i)
     
-    return y1, y2, y3, y4, y5
+    return y1, y2, y3, y4, y5, len(musica)
     
     
 def musica3():
@@ -126,7 +126,7 @@ def musica3():
             y1.append(-100*i)
             y2.append(-100*i)
     
-    return y1, y2, y3, y4, y5
+    return y1, y2, y3, y4, y5, len(musica)
             
 def musica4():
     pygame.mixer.music.load('ritd.mp3')
@@ -166,7 +166,7 @@ def musica4():
             y1.append(-100*i)
             y2.append(-100*i)
 
-    return y1, y2, y3, y4, y5
+    return y1, y2, y3, y4, y5, len(musica)
             
 def musica5():
     pygame.mixer.music.load('fio.mp3')
@@ -205,7 +205,7 @@ def musica5():
         elif musica[i] == 9:
             y1.append(-100*i)
             y2.append(-100*i)
-    return y1, y2, y3, y4, y5
+    return y1, y2, y3, y4, y5, len(musica)
 
 def musica6():
     pygame.mixer.music.load('br.mp3')
@@ -244,7 +244,7 @@ def musica6():
         elif musica[i] == 9:
             y1.append(-100*i)
             y2.append(-100*i)
-    return y1, y2, y3, y4, y5
+    return y1, y2, y3, y4, y5, len(musica)
     
 #def musica7():
 #    pygame.mixer.music.load('.mp3')
@@ -283,7 +283,7 @@ def musica6():
 #        elif musica[i] == 9:
 #            y1.append(-100*i)
 #            y2.append(-100*i)
-#    return y1, y2, y3, y4, y5
+#    return y1, y2, y3, y4, y5, len(musica)
 
 #def musica8():
 #    pygame.mixer.music.load('.mp3')
@@ -322,7 +322,7 @@ def musica6():
 #        elif musica[i] == 9:
 #            y1.append(-100*i)
 #            y2.append(-100*i)
-#    return y1, y2, y3, y4, y5
+#    return y1, y2, y3, y4, y5, len(musica)
 
 #def musica9():
 #    pygame.mixer.music.load('.mp3')
@@ -361,7 +361,7 @@ def musica6():
 #        elif musica[i] == 9:
 #            y1.append(-100*i)
 #            y2.append(-100*i)
-#    return y1, y2, y3, y4, y5l      
+#    return y1, y2, y3, y4, y5, len(musica)
 
 
 def musicaale():
@@ -393,7 +393,7 @@ def musicaale():
             y1.append(-100*i)
             y2.append(-100*i)
     
-    return y1, y2, y3, y4, y5
+    return y1, y2, y3, y4, y5, len(musica)
     
 def musica(modo):
     if modo == 0:

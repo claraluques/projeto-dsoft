@@ -482,6 +482,7 @@ def loop_jogo2():
     listay3 = musica[2]
     listay4 = musica[3]
     listay5 = musica[4]
+    tamanho = musica[5]
         
     x = 190
     
@@ -548,11 +549,12 @@ def loop_jogo2():
             listay5[i] += y_change
             if y5 < miny:
                 miny = y5
-            
+        
+        porcen = score/tamanho
         if miny >= display_height:
-            if score > 500:
+            if porcen > 2:
                 tela_final_muito_bom()
-            elif score > 300:
+            elif porcen > 1:
                 tela_final_bom()
             else:
                 tela_fail()
