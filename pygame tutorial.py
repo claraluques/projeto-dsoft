@@ -344,7 +344,7 @@ def tela_final_bom():
                 pygame.quit()
                 quit()
         
-        gameDisplay(yourockalittleImg,(0,0))
+        gameDisplay.blit(yourockalittleImg,(0,0))
         
         pygame.mixer.music.pause()        
         
@@ -454,7 +454,7 @@ def Menu_musica():
 
         imagebutton(coluna1,(100+altbot+espaco),largbot,altbot,'rollinginthedeep2.png', 'rollinginthedeep1.png', escolha_modo4)
         imagebutton(coluna1,(100+2*(altbot+espaco)),largbot,altbot,'FiO1.png', 'FiO2.png', escolha_modo5)
-        imagebutton(coluna1,(100+3*(altbot+espaco)),largbot,altbot,'HoG1.png', 'HoG2.png', escolha_modo2)        
+        imagebutton(coluna1,(100+3*(altbot+espaco)),largbot,altbot,'HoG1.png', 'HoG2.png', escolha_modo3)        
         imagebutton(coluna2,(100+1*(altbot+espaco)),largbot,altbot,'ComWS1.png', 'ComWS2.png', escolha_modo1)
         imagebutton(coluna2,(100+2*(altbot+espaco)),largbot,altbot,'CoD2.png', 'CoD1.png', escolha_modo2)
         imagebutton(coluna2,(100+3*(altbot+espaco)),largbot,altbot,'BR2.png', 'BR1.png', escolha_modo6)
